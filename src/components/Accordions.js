@@ -1,7 +1,7 @@
 import React from "react";
 
 const Acc = (props) => {
-        let fq = [
+        let faqs = [
                 {
                         label:
                                 "Can I personalize the boxes in any size, color,and style with custom printed logo/artwork?",
@@ -53,7 +53,7 @@ const Acc = (props) => {
                                 {props.heading}
                        </h2>
                         <section className=" py-12 container max-w-[1300px] mx-auto">
-                                {fq.map((v, i) => {
+                                {faqs.map((v, i) => {
                                         return (
                                                 <div key={i} className={`tab   py-0.5`}>
                                                         <input
