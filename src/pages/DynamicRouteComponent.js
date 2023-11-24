@@ -12,25 +12,25 @@ import ImageWithBox from './2ndpageComponents/ImageWithBox';
 import LoadingComponent from './loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import BlogCard from './BlogCard'
+import BlogCard from './2ndpageComponents/BlogCard'
 const DynamicRouteComponent = () => {
   const { slug } = useParams();
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState([]);
   const [additionalState, setAdditionalState] = useState(null);
-  const [currentImage, setCurrentImage] = useState(null);
+  const [currentImage, setCurrentImage] = useState('');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [otherImage, setOtherImage] = useState(null);
+  const [otherImage, setOtherImage] = useState('');
   const [otherImageIndex, setOtherImageIndex] = useState(0);
-  const [remainingImage, setRemainingImage] = useState(null);
+  const [remainingImage, setRemainingImage] = useState('');
   const [remainingImageIndex, setRemainingImageIndex] = useState(0);
-  const [fourthImage, setFourthImage] = useState(null);
+  const [fourthImage, setFourthImage] = useState('');
   const [fourthImageIndex, setFourthImageIndex] = useState(0);
-  const [fifthImage, setFifthImage] = useState(null);
+  const [fifthImage, setFifthImage] = useState('');
   const [fifthImageIndex, setFifthImageIndex] = useState(0);
-  const [sixthImage, setSixthImage] = useState(null);
+  const [sixthImage, setSixthImage] = useState('');
   const [sixthImageIndex, setSixthImageIndex] = useState(0);
-  const [seventhImage, setSeventhImage] = useState(null);
+  const [seventhImage, setSeventhImage] = useState('');
   const [seventhImageIndex, setSeventhImageIndex] = useState(0);
 
   const fetchData = async (repo, imageStateSetter, indexStateSetter) => {
@@ -232,20 +232,12 @@ const DynamicRouteComponent = () => {
 
   const ProductView = ({ product }) => {
 
-    if (product.slug === undefined) {
+    if (product.slug === null) {
       return (
-        <div className=" bg-[#f8d7da] border-[#f5c6cb] text-[#721c24]  p-[10px] my-[10px]">
-          <div className='flex'>
-            <i className="fa-solid fa-circle-exclamation mt-2 px-1"></i>
-            <p className='leading-8'>Error: Product not found</p>
-          </div>
-          <p className='leading-8'>Please check the other products.</p>
-          <Link to="/AllProducts">
-            <button type="button" className=" font-medium rounded-sm mx-12 my-2 text-sm  "><i className="fa-solid fa-circle-arrow-left text-[#721c24] hover:text-[#923a44] text-4xl "></i></button>
-          </Link>
-        </div>
+       ''
       );
     }
+  
     const renderStars = (starCount) => {
       const stars = Array.from({ length: starCount }, (_, index) => (
         <FontAwesomeIcon key={index} icon={faStar} className="text-yellow-300" />

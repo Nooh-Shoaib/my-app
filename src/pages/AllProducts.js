@@ -8,199 +8,199 @@ let imagesArr = [
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1632879803small-pillow-boxes-sire-printing.png ",
 		label: " Small Pillow Boxes",
-		link: "/SmallPillowBoxes"
+		link: "/small-pillow-boxes"
 	},
 	{
 		imageUrl:
 			" https://s3.amazonaws.com/sireprinting.com/products/1666201862Custom-Printed-Kraft-Cereal-Boxes-05.png",
 		label: " Kraft Cereal Boxes",
-		link: "/KraftCerealBoxes"
+		link: "/kraft-cereal-boxes"
 	},
 	{
 		imageUrl:
 			" https://s3.amazonaws.com/sireprinting.com/products/1664586049Incense%20Boxes%20Sire%20Printing%2002.png",
 		label: "Incense Boxes ",
-		link: "/IncenseBoxes"
+		link: "/incense-boxes"
 	},
 	{
 		imageUrl:
 			" https://s3.amazonaws.com/sireprinting.com/products/1664588402Kraft%20Window%20Boxes%20SIre%20Printing%20001.png",
 		label: " Kraft Window Boxes",
-		link: "/KraftBoxeswithWindow"
+		link: "/kraft-window-boxes"
 	},
 	{
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1665622319Mailer-Boxes-with-Handle-Sire%20Printing%2001.png ",
 		label: " Mailer Boxes with Handles",
-		link: "/MailerBoxeswithHandles"
+		link: "/cardboard-box-with-handles"
 	},
 	{
 		imageUrl:
 			" https://s3.amazonaws.com/sireprinting.com/products/1627776386CBD-Bath-Bomb-Boxes-01.png",
 		label: "CBD Bath Bomb Boxes ",
-		link: "/CustomCBDBathBombBoxes"
+		link: "/cbd-bath-bomb-boxes"
 	},
 	{
 		imageUrl:
 			" https://s3.amazonaws.com/sireprinting.com/products/1640140622Small%20Mailer%20Boxes%20Sire%20Printing%2001.png",
 		label: " Small Mailer Boxes",
-		link: "/SmallMailerBoxes"
+		link: "/small-mailer-boxes"
 	},
 	{
 		imageUrl:
 			" https://s3.amazonaws.com/sireprinting.com/products/1627778089CBD-Stickers-SirePrinting-01.png",
 		label: "CBD Stickers ",
-		link: "/CustomCBDStickersLabels"
+		link: "/cbd-stickers"
 	},
 	{
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1627776596CBD-Extract-Boxes-03.png ",
 		label: " CBD Extract Boxes",
-		link: "/CustomCBDExtractBoxes"
+		link: "/cbd-extract-boxes"
 	},
 	{
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1627776830SirePrinting-Tincture-Boxes-01.png",
 		label: "Custom Tincture Boxes ",
-		link: "/CustomTinctureBoxes"
+		link: "/custom-tincture-boxes"
 	},
 	{
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1627776966Custom-Cigarette-Boxes-SirePrinting%2001.png ",
 		label: "Custom Cigarette Boxes ",
-		link: "/CustomCigaretteBoxes"
+		link: "/custom-cigarette-boxes"
 	},
 	{
 		imageUrl:
 			" https://s3.amazonaws.com/sireprinting.com/products/1627777676Cannabis--Blunt-Boxes-SirePrinting%2001.png",
 		label: " Cannabis Blunt Boxes",
-		link: '/CustomCannabisBluntBoxes'
+		link: '/cannabis-blunt-boxes'
 	},
 	{
 		imageUrl:
 			" https://s3.amazonaws.com/sireprinting.com/products/1627778531Cannabis-Display-Boxes-02.png",
 		label: "Cannabis Display Boxes ",
-		link: "/CustomCannabisDisplayBoxes"
+		link: "/cannabis-display-boxes"
 	},
 	{
 		imageUrl:
 			" https://s3.amazonaws.com/sireprinting.com/products/1627778644Cannabis-Perfume-Boxes-SirePrinting-01.png",
 		label: " Cannabis Perfume Boxes",
-		link: '/CustomCannabisPerfumeBoxes'
+		link: '/cannabis-perfume-boxes'
 	},
 	{
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1627778736CBD-Candy-Boxes-SirePrinting-01.png ",
 		label: " CBD Candy Boxes",
-		link: '/CBDCandyBoxes'
+		link: '/cbd-candy-boxes'
 	},
 	{
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1627778989CBD-Muscle-Rub%20Boxes%2001.png",
 		label: "CBD Muscle Rub Boxes ",
-		link: "/CBDMuscleRubBoxes"
+		link: "/cbd-muscle-rub-boxes"
 	},
 	{
 		imageUrl:
 			" https://s3.amazonaws.com/sireprinting.com/products/1627779293CBD-Cosmetic-Boxes-SirePrinting%2001.png",
 		label: " CBD Cosmetic Boxes",
-		link: "/CBDCosmeticBoxes"
+		link: "/cbd-cosmetic-boxes"
 	},
 	{
 		imageUrl:
 			" https://s3.amazonaws.com/sireprinting.com/products/1628902886Dropper%20Bottle%20Boxes-SirePrnting01.png",
 		label: " CBD Dropper Bottle Boxes",
-		link: '/CBDDropperBottleBoxes'
+		link: '/cbd-dropper-bottle-boxes'
 	},
 	{
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1627779425CBD-Essential-Oil-Boxes-01.png",
 		label: "CBD Essential Oil Boxes",
-		link: "/CBDEssentialOilBoxes"
+		link: "/cbd-essential-oil-boxes"
 	},
 	{
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1627831048CBD%20Kush%20Cannabis%20Boxes%20SirePrinting%2001.png",
 		label: " CBD Kush Cannabis Boxes",
-		link: "/CBDKushCannabisBoxes"
+		link: "/cbd-kush-cannabis-boxes"
 	},
 	{
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1627779660CBD%20Oil%20Boxes%20SirePrinting%2001.png",
 		label: " CBD Oil Boxes",
-		link: "/CBDOilBoxes"
+		link: "/cbd-oil-boxes"
 	},
 	{
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1627830290CBD-Roll-On-Boxes-SirePrinting%2001.png",
 		label: "CBD Roll On Boxes ",
-		link: "/CBDRollOnBoxes "
+		link: "/cbd-roll-on-boxes"
 	},
 	{
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1627830624Child-Resistant-Boxes-SirePrinting%2001.png",
 		label: " Child Resistant Boxes",
-		link: "/ChildResistantBoxes"
+		link: "/child-resistant-boxes"
 	},
 	{
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1627830764Custom-Cannabis-Boxes-SirePrinting%2001.png",
 		label: " Custom Cannabis Boxes",
-		link: "/CustomCannabisBoxes"
+		link: "/custom-cannabis-boxes"
 	},
 	{
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1627830898CBD-Concentrate-Boxes-SirePrinting%2001.png",
 		label: "CBD Concentrate Boxes ",
-		link: '/CBDConcentrateBoxes'
+		link: '/cbd-concentrate-boxes'
 	},
 	{
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1627831230Custom-Hemp-Boxes-SirePrinting%2001.png",
 		label: " Custom Hemp Boxes",
-		link: '/CustomHempBoxes'
+		link: '/custom-hemp-boxes'
 	},
 	{
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1627831709Pre-Rolls-Cones-Boxes-SirePrinting%2001.png",
 		label: " Custom Pre Rolled Cones Boxes",
-		link: "/CustomPreRolledConesBoxes"
+		link: "/custom-pre-rolled-cones-boxes"
 	},
 	{
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1627779934Custom-Vape-Boxes-SirePrinting%2001.png",
 		label: "Custom Vape Boxes ",
-		link: "/CustomVapeBoxes"
+		link: "/custom-vape-boxes"
 	},
 	{
 		imageUrl:
 			"https://res.cloudinary.com/sireprinting/image/upload/v1601945322/e-liquid-boxes.png",
 		label: "E Liquid Boxes ",
-		link: "/eLiquidBoxes"
+		link: "/e-liquid-boxes"
 	},
 	{
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1627831925Hemp-Tea-Boxes-SirePrinting%2001.png",
 		label: " Hemp Tea Boxes",
-		link: "/HempTeaBoxes"
+		link: "/hemp-tea-boxes"
 	},
 	{
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1627832313Medical-Cannabis-Boxes-SirePrinting%2001.png",
 		label: "Medical Cannabis Boxes ",
-		link: "/MedicalCannabisBoxes"
+		link: "/medical-cannabis-boxes"
 	},
 	{
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1627836715Pod-Vape-Boxes-SirePrinting%2001.png",
 		label: " Pod Vape Boxes",
-		link: "/PodVapeBoxes"
+		link: "/pod-vape-boxes"
 	},
 	{
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1627835289Hemp-Pre-Rolled-Boxes-SirePrinting%2001.png",
 		label: " Hemp Pre Rolled Boxes",
-		link: "/HempPreRolledBoxes"
+		link: "/hemp-pre-rolled-boxes"
 	},
 	{
 		imageUrl:
