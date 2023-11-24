@@ -18,56 +18,43 @@ const DynamicRouteComponent = () => {
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState([]);
   const [additionalState, setAdditionalState] = useState(null);
-
-  // State and setters for the first endpoint
+  // 1
   const [currentImage, setCurrentImage] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  // State and setters for the second endpoint
+  // 2
   const [otherImage, setOtherImage] = useState(null);
   const [otherImageIndex, setOtherImageIndex] = useState(0);
-
-  // State and setters for the third endpoint
+  // 3
   const [remainingImage, setRemainingImage] = useState(null);
   const [remainingImageIndex, setRemainingImageIndex] = useState(0);
-
-  // State and setters for the fourth endpoint
+  // 4
   const [fourthImage, setFourthImage] = useState(null);
   const [fourthImageIndex, setFourthImageIndex] = useState(0);
-
-  // State and setters for the fifth endpoint
+  // 5
   const [fifthImage, setFifthImage] = useState(null);
   const [fifthImageIndex, setFifthImageIndex] = useState(0);
-
-  // State and setters for the sixth endpoint
+  // 6
   const [sixthImage, setSixthImage] = useState(null);
   const [sixthImageIndex, setSixthImageIndex] = useState(0);
-
-  // State and setters for the seventh endpoint
+  // 7
   const [seventhImage, setSeventhImage] = useState(null);
   const [seventhImageIndex, setSeventhImageIndex] = useState(0);
-
-  // State and setters for the eighth endpoint
+  // 8
   const [eighthImage, setEighthImage] = useState(null);
   const [eighthImageIndex, setEighthImageIndex] = useState(0);
-
-  // State and setters for the ninth endpoint
+  // 9
   const [ninthImage, setNinthImage] = useState(null);
   const [ninthImageIndex, setNinthImageIndex] = useState(0);
-
-  // State and setters for the tenth endpoint
+  // 10
   const [tenthImage, setTenthImage] = useState(null);
   const [tenthImageIndex, setTenthImageIndex] = useState(0);
-
-  // State and setters for the eleventh endpoint
+  // 11
   const [eleventhImage, setEleventhImage] = useState(null);
   const [eleventhImageIndex, setEleventhImageIndex] = useState(0);
-
-  // State and setters for the twelfth endpoint
+  // 12
   const [twelfthImage, setTwelfthImage] = useState(null);
   const [twelfthImageIndex, setTwelfthImageIndex] = useState(0);
-
-  // State and setters for the thirteenth endpoint
+  // 13
   const [thirteenthImage, setThirteenthImage] = useState(null);
   const [thirteenthImageIndex, setThirteenthImageIndex] = useState(0);
 
@@ -298,21 +285,21 @@ const DynamicRouteComponent = () => {
       //   </div>
       // );
     }
-    
+
     const renderStars = (starCount) => {
       const stars = Array.from({ length: starCount }, (_, index) => (
         <FontAwesomeIcon key={index} icon={faStar} className="text-yellow-300" />
       ));
-    
+
       return stars;
     };
     return (
       <>
 
         <h1 className="bg-slate-200 h-12 flex items-center">
-          <Link to="/" className=" mx-7 font-semibold">{product?.link}</Link>
+          <Link to="/" className=" mx-7 font-semibold">{product?.homelink}</Link>
           <span className="text-xs">&raquo;&nbsp;&nbsp;</span>
-          <Link to="/CBDPackaging" className=" mx-7 font-semibold">{product?.linkTitle}</Link>
+          <Link to={product?.Titlelink} className=" mx-7 font-semibold">{product?.Title}</Link>
           <span className="text-xs">&raquo;&nbsp;&nbsp;</span>
           <span className="text-amber-500 font-semibold"><em>{product?.productTitle}</em></span>
         </h1>
@@ -327,8 +314,8 @@ const DynamicRouteComponent = () => {
               .map((_, index) => (
                 <i key={index} className="fa-solid fa-star text-yellow-300"></i>
               ))} */}
-              
-              {renderStars(5)}
+
+            {renderStars(5)}
 
 
           </div>
