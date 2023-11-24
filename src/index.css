@@ -73,8 +73,6 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-
-
 .custom-testimonial-content {
   display: flex;
   flex-direction: column;
@@ -109,7 +107,6 @@
 .custom-testimonial-navigation {
   margin-top: 20px;
 }
-
 
 .section {
   display: grid;
@@ -198,12 +195,10 @@
   color: #e08b0a;
 }
 
-
 .field {
   border: 1px solid #ccc;
   border-radius:1px;
 }
-
 
 .overlay {
   position: fixed;
@@ -216,14 +211,10 @@
   display: block;
 }
 
-
-
 body.disable-scroll {
   overflow: hidden;
   position: fixed;  
 }
-
-
 
 
 .button {
@@ -234,8 +225,6 @@ body.disable-scroll {
   margin-left: 30px;
   font-weight: bold;
 }
-
-
 
 .button-2 {
   color: #f8f4f4;
@@ -250,10 +239,6 @@ body.disable-scroll {
   background-position: 100%;
   color: #000000;
 }
-
-
-
-
 
 
 ::-webkit-scrollbar {
@@ -323,11 +308,6 @@ body.disable-scroll {
 }
 
 
-
-
-
-
-
 .thumbnail img {
 
   border: 0.5px solid rgb(163, 163, 163);
@@ -342,6 +322,3 @@ body.disable-scroll {
   border-radius: 10px;
 
 }
-
-
-
