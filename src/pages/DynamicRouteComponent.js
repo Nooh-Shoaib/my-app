@@ -18,20 +18,58 @@ const DynamicRouteComponent = () => {
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState([]);
   const [additionalState, setAdditionalState] = useState(null);
-  const [currentImage, setCurrentImage] = useState('');
+
+  // State and setters for the first endpoint
+  const [currentImage, setCurrentImage] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [otherImage, setOtherImage] = useState('');
+
+  // State and setters for the second endpoint
+  const [otherImage, setOtherImage] = useState(null);
   const [otherImageIndex, setOtherImageIndex] = useState(0);
-  const [remainingImage, setRemainingImage] = useState('');
+
+  // State and setters for the third endpoint
+  const [remainingImage, setRemainingImage] = useState(null);
   const [remainingImageIndex, setRemainingImageIndex] = useState(0);
-  const [fourthImage, setFourthImage] = useState('');
+
+  // State and setters for the fourth endpoint
+  const [fourthImage, setFourthImage] = useState(null);
   const [fourthImageIndex, setFourthImageIndex] = useState(0);
-  const [fifthImage, setFifthImage] = useState('');
+
+  // State and setters for the fifth endpoint
+  const [fifthImage, setFifthImage] = useState(null);
   const [fifthImageIndex, setFifthImageIndex] = useState(0);
-  const [sixthImage, setSixthImage] = useState('');
+
+  // State and setters for the sixth endpoint
+  const [sixthImage, setSixthImage] = useState(null);
   const [sixthImageIndex, setSixthImageIndex] = useState(0);
-  const [seventhImage, setSeventhImage] = useState('');
+
+  // State and setters for the seventh endpoint
+  const [seventhImage, setSeventhImage] = useState(null);
   const [seventhImageIndex, setSeventhImageIndex] = useState(0);
+
+  // State and setters for the eighth endpoint
+  const [eighthImage, setEighthImage] = useState(null);
+  const [eighthImageIndex, setEighthImageIndex] = useState(0);
+
+  // State and setters for the ninth endpoint
+  const [ninthImage, setNinthImage] = useState(null);
+  const [ninthImageIndex, setNinthImageIndex] = useState(0);
+
+  // State and setters for the tenth endpoint
+  const [tenthImage, setTenthImage] = useState(null);
+  const [tenthImageIndex, setTenthImageIndex] = useState(0);
+
+  // State and setters for the eleventh endpoint
+  const [eleventhImage, setEleventhImage] = useState(null);
+  const [eleventhImageIndex, setEleventhImageIndex] = useState(0);
+
+  // State and setters for the twelfth endpoint
+  const [twelfthImage, setTwelfthImage] = useState(null);
+  const [twelfthImageIndex, setTwelfthImageIndex] = useState(0);
+
+  // State and setters for the thirteenth endpoint
+  const [thirteenthImage, setThirteenthImage] = useState(null);
+  const [thirteenthImageIndex, setThirteenthImageIndex] = useState(0);
 
   const fetchData = async (repo, imageStateSetter, indexStateSetter) => {
     try {
@@ -70,6 +108,13 @@ const DynamicRouteComponent = () => {
       fetchData('/fifthproducts/products', setFifthImage, setFifthImageIndex),
       fetchData('/sixthproducts/products', setSixthImage, setSixthImageIndex),
       fetchData('/seventhproducts/products', setSeventhImage, setSeventhImageIndex),
+      fetchData('/eighthproducts/products', setEighthImage, setEighthImageIndex),
+      fetchData('/ninthproducts/products', setNinthImage, setNinthImageIndex),
+      fetchData('/tenthproducts/products', setTenthImage, setTenthImageIndex),
+      fetchData('/eleventhproducts/products', setEleventhImage, setEleventhImageIndex),
+      fetchData('/twelfthproducts/products', setTwelfthImage, setTwelfthImageIndex),
+      fetchData('/thirteenthproducts/products', setThirteenthImage, setThirteenthImageIndex),
+      // Add seven more fetchData calls for your additional endpoints here
     ])
       .then(() => {
         console.log('All fetches are complete!');
@@ -80,12 +125,18 @@ const DynamicRouteComponent = () => {
         console.log('Fifth Image:', fifthImage);
         console.log('Sixth Image:', sixthImage);
         console.log('Seventh Image:', seventhImage);
+        console.log('Eighth Image:', eighthImage);
+        console.log('Ninth Image:', ninthImage);
+        console.log('Tenth Image:', tenthImage);
+        console.log('Eleventh Image:', eleventhImage);
+        console.log('Twelfth Image:', twelfthImage);
+        console.log('Thirteenth Image:', thirteenthImage);
+        // Log data for the additional endpoints here
       })
       .catch((error) => {
         console.error('Error during data fetching:', error.message);
       });
   }, [slug]);
-
 
 
   // specifications
@@ -232,12 +283,22 @@ const DynamicRouteComponent = () => {
 
   const ProductView = ({ product }) => {
 
-    if (product.slug === null) {
-      return (
-       ''
-      );
+    if (product.slug === undefined) {
+      return ""
+      // (
+      //   <div className=" bg-[#f8d7da] border-[#f5c6cb] text-[#721c24]  p-[10px] my-[10px]">
+      //     <div className='flex'>
+      //       <i className="fa-solid fa-circle-exclamation mt-2 px-1"></i>
+      //       <p className='leading-8'>Error: Product not found</p>
+      //     </div>
+      //     <p className='leading-8'>Please check the other products.</p>
+      //     <Link to="/AllProducts">
+      //       <button type="button" className=" font-medium rounded-sm mx-12 my-2 text-sm  "><i className="fa-solid fa-circle-arrow-left text-[#721c24] hover:text-[#923a44] text-4xl "></i></button>
+      //     </Link>
+      //   </div>
+      // );
     }
-  
+    
     const renderStars = (starCount) => {
       const stars = Array.from({ length: starCount }, (_, index) => (
         <FontAwesomeIcon key={index} icon={faStar} className="text-yellow-300" />
@@ -266,14 +327,17 @@ const DynamicRouteComponent = () => {
               .map((_, index) => (
                 <i key={index} className="fa-solid fa-star text-yellow-300"></i>
               ))} */}
+              
               {renderStars(5)}
+
+
           </div>
         </div>
         <div className="lg:flex my-10 md:flex justify-center">
           <div className="custom-carousel mx-8">
             <div className="w-[100%] relative border rounded mt-7">
               <img
-                src={selectedImage || currentImage || otherImage || remainingImage || fourthImage || fifthImage || sixthImage || seventhImage}
+                src={selectedImage || currentImage || otherImage || remainingImage || fourthImage || fifthImage || sixthImage || seventhImage || eighthImage || ninthImage || tenthImage || eleventhImage || twelfthImage || thirteenthImage}
                 alt="Main Image"
                 className="hover:scale-110 duration-500 cursor-pointer lg:w-full w-72"
               />

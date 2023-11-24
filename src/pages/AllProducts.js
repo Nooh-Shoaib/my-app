@@ -206,37 +206,37 @@ let imagesArr = [
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1627835995Pre-Rolls-Boxes-SirePrinting%2001.png",
 		label: " CBD Pre Rolls Boxes",
-		link: "/CBDPreRollsBoxes"
+		link: "/pre-rolls-boxes"
 	},
 	{
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1627836895Vape-Accessories-Boxes-SirePrinting%2001.png",
 		label: "Vape Accessories Boxes ",
-		link: "/VapeAccessoriesBoxes"
+		link: "/vape-accessories-boxes"
 	},
 	{
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1627836225Vape-Juice-Bottle-Boxes-SirePrinting%2001.png",
 		label: " Vape Juice Bottle Boxes",
-		link: "/VapeJuiceBottleBoxes"
+		link: "/vape-juice-bottle-boxes"
 	},
 	{
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1627780198Vape-Oil-Cartridge-Boxes-SirePrinting%2001.png",
 		label: "Vape Oil Cartridge Boxes ",
-		link: "/VapeOilCartridgeBoxes"
+		link: "/vape-oil-cartridge-boxes"
 	},
 	{
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1627836476Vape-Pen-Boxes-SirePrinting%2001.png",
 		label: "Vape Pen Boxes ",
-		link: "/VapePenBoxes"
+		link: "/vape-pen-boxes"
 	},
 	{
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1632874083Bath%20Bomb%20Boxes%20Sire%20Printing%2001.png",
 		label: " Bath Bomb Boxes",
-		link: "/BathBombBoxes"
+		link: "/bath-bomb-boxes"
 	},
 	{
 		imageUrl:
