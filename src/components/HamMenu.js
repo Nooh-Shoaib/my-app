@@ -5,13 +5,13 @@ import CustomBoxes from '../pages/2ndpageComponents/CustomBoxes';
 import ButtonQuote from '../pages/2ndpageComponents/ButtonQuote';
 
 let menuArr = [
-  { url: "/AllProducts", label: "All Products", key: "allProducts" },
-  { url: "/CBDPackaging", label: "CBD Packaging", key: "cbdPackaging" },
+  { url: "/all-products", label: "All Products", key: "allProducts" },
+  { url: "/cbd-packaging", label: "CBD Packaging", key: "cbdPackaging" },
   { label: <span><CustomBoxes /></span>, key: "customBoxes" },
-  { url: "/CustomBoxStyles", label: "Custom Box Styles", key: "customBoxStyles" },
-  { url: "/CustomStickers", label: "Custom Stickers", key: "customStickers" },
-  { url: "/ChristmasBoxes", label: "Christmas Boxes", key: "christmasBoxes" },
-  { url: "/Portfolio", label: "Portfolio", key: "portfolio" },
+  { url: "/custom-box-styles", label: "Custom Box Styles", key: "customBoxStyles" },
+  { url: "/custom-stickers", label: "Custom Stickers", key: "customStickers" },
+  { url: "/christmas-boxes", label: "Christmas Boxes", key: "christmasBoxes" },
+  { url: "/portfolio", label: "Portfolio", key: "portfolio" },
 ];
 const Ham = () => {
   return (

@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -13,48 +14,49 @@ import LoadingComponent from './loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import BlogCard from './2ndpageComponents/BlogCard'
+
 const DynamicRouteComponent = () => {
   const { slug } = useParams();
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState([]);
   const [additionalState, setAdditionalState] = useState(null);
-  // 1
+
   const [currentImage, setCurrentImage] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  // 2
+
   const [otherImage, setOtherImage] = useState(null);
   const [otherImageIndex, setOtherImageIndex] = useState(0);
-  // 3
+
   const [remainingImage, setRemainingImage] = useState(null);
   const [remainingImageIndex, setRemainingImageIndex] = useState(0);
-  // 4
+
   const [fourthImage, setFourthImage] = useState(null);
   const [fourthImageIndex, setFourthImageIndex] = useState(0);
-  // 5
+
   const [fifthImage, setFifthImage] = useState(null);
   const [fifthImageIndex, setFifthImageIndex] = useState(0);
-  // 6
+
   const [sixthImage, setSixthImage] = useState(null);
   const [sixthImageIndex, setSixthImageIndex] = useState(0);
-  // 7
+
   const [seventhImage, setSeventhImage] = useState(null);
   const [seventhImageIndex, setSeventhImageIndex] = useState(0);
-  // 8
+
   const [eighthImage, setEighthImage] = useState(null);
   const [eighthImageIndex, setEighthImageIndex] = useState(0);
-  // 9
+
   const [ninthImage, setNinthImage] = useState(null);
   const [ninthImageIndex, setNinthImageIndex] = useState(0);
-  // 10
+
   const [tenthImage, setTenthImage] = useState(null);
   const [tenthImageIndex, setTenthImageIndex] = useState(0);
-  // 11
+
   const [eleventhImage, setEleventhImage] = useState(null);
   const [eleventhImageIndex, setEleventhImageIndex] = useState(0);
-  // 12
+
   const [twelfthImage, setTwelfthImage] = useState(null);
   const [twelfthImageIndex, setTwelfthImageIndex] = useState(0);
-  // 13
+
   const [thirteenthImage, setThirteenthImage] = useState(null);
   const [thirteenthImageIndex, setThirteenthImageIndex] = useState(0);
 
@@ -63,7 +65,7 @@ const DynamicRouteComponent = () => {
       const response = await fetch(`https://my-json-server.typicode.com/Nooh-Shoaib${repo}/${slug}`);
 
       if (response.status === 404) {
-        // Handle 404, maybe set default values or return early
+        // Handle 404
         return {};
       } else {
         const data = await response.json();
@@ -77,7 +79,7 @@ const DynamicRouteComponent = () => {
         return data;
       }
     } catch (error) {
-      console.error(`Error fetching data for ${repo}:`, error.message);
+      // console.error(`Error fetching data for ${repo}:`, error.message);
       setProduct([]);
       setLoading(false);
       throw error;
@@ -101,24 +103,22 @@ const DynamicRouteComponent = () => {
       fetchData('/eleventhproducts/products', setEleventhImage, setEleventhImageIndex),
       fetchData('/twelfthproducts/products', setTwelfthImage, setTwelfthImageIndex),
       fetchData('/thirteenthproducts/products', setThirteenthImage, setThirteenthImageIndex),
-      // Add seven more fetchData calls for your additional endpoints here
     ])
       .then(() => {
-        console.log('All fetches are complete!');
-        console.log('Current Image:', currentImage);
-        console.log('Other Image:', otherImage);
-        console.log('Remaining Image:', remainingImage);
-        console.log('Fourth Image:', fourthImage);
-        console.log('Fifth Image:', fifthImage);
-        console.log('Sixth Image:', sixthImage);
-        console.log('Seventh Image:', seventhImage);
-        console.log('Eighth Image:', eighthImage);
-        console.log('Ninth Image:', ninthImage);
-        console.log('Tenth Image:', tenthImage);
-        console.log('Eleventh Image:', eleventhImage);
-        console.log('Twelfth Image:', twelfthImage);
-        console.log('Thirteenth Image:', thirteenthImage);
-        // Log data for the additional endpoints here
+        // console.log('All fetches are complete!');
+        // console.log('Current Image:', currentImage);
+        // console.log('Other Image:', otherImage);
+        // console.log('Remaining Image:', remainingImage);
+        // console.log('Fourth Image:', fourthImage);
+        // console.log('Fifth Image:', fifthImage);
+        // console.log('Sixth Image:', sixthImage);
+        // console.log('Seventh Image:', seventhImage);
+        // console.log('Eighth Image:', eighthImage);
+        // console.log('Ninth Image:', ninthImage);
+        // console.log('Tenth Image:', tenthImage);
+        // console.log('Eleventh Image:', eleventhImage);
+        // console.log('Twelfth Image:', twelfthImage);
+        // console.log('Thirteenth Image:', thirteenthImage);
       })
       .catch((error) => {
         console.error('Error during data fetching:', error.message);
@@ -296,13 +296,13 @@ const DynamicRouteComponent = () => {
     return (
       <>
 
-        <h1 className="bg-slate-200 h-12 flex items-center">
-          <Link to="/" className=" mx-7 font-semibold">{product?.homelink}</Link>
+        {/* <h1 className="bg-slate-200 h-12 flex items-center">
+          <Link to="/" className=" mx-7 font-semibold">Home</Link>
           <span className="text-xs">&raquo;&nbsp;&nbsp;</span>
-          <Link to={product?.Titlelink} className=" mx-7 font-semibold">{product?.Title}</Link>
+          <Link to={product?.categorySlug} className=" mx-7 font-semibold">{product?.name}</Link>
           <span className="text-xs">&raquo;&nbsp;&nbsp;</span>
           <span className="text-amber-500 font-semibold"><em>{product?.productTitle}</em></span>
-        </h1>
+        </h1> */}
 
         <div className='mt-10'>
           <div className='flex justify-center'>

@@ -37,42 +37,42 @@ function Navbar() {
           <section className="grid lg:grid-cols-3 md:grid-cols-3">
 
             <ul className=' text-sm lg:text-base font-semibold px-2 lg:px-6 md:px-1 py-5 gap-x-1 '>
-              <Link to="/CustomRetailPackaging">
+              <Link to="/custom-retail-packaging">
                 <li className='flex text-black hover:bg-slate-100 py-2 '>
                   <img src='https://sireprinting.com/frontend-theme/assets/images/design.png' alt='' className='w-7' />
                   &nbsp;
                   <p className='flex items-center'>Custom Retail Packaging</p>
                 </li>
               </Link>
-             <Link to="/RigidBoxes">
+             <Link to="/rigid-boxes">
                 <li className='flex text-black hover:bg-slate-100 py-2 '>
                   <img src='https://sireprinting.com/frontend-theme/assets/images/box.png' alt='' className='w-7' />
                   &nbsp;
                   <p className='flex items-center'>Rigid Boxes</p>
                 </li>
                 </Link>
-                <Link to="/FoodPackaging">
+                <Link to="/food-packaging">
               <li className='flex text-black hover:bg-slate-100 py-2'>
                 <img src='https://sireprinting.com/frontend-theme/assets/images/coffee-bag.png' alt='' className='w-7' />
                 &nbsp;
                 <p className='flex items-center'>Food Packaging</p>
               </li>
               </Link>
-                <Link to="/CosmeticPackagingBoxes">
+                <Link to="/cosmetic-packaging-boxes">
               <li className='flex text-black hover:bg-slate-100 py-2 md:text-start'>
                 <img src='https://sireprinting.com/frontend-theme/assets/images/cosmetics.png' alt='' className='w-7' />
                 &nbsp;
                 <p className='flex items-center'>Cosmetic Packaging Boxes</p>
               </li>
                 </Link>
-                <Link to="/EcoFriendly">
+                <Link to="/eco-friendly">
               <li className='flex text-black hover:bg-slate-100 py-2'>
                 <img src='https://sireprinting.com/frontend-theme/assets/images/sustainable.png' alt='' className='w-7' />
                 &nbsp;
                 <p className='flex items-center'>Eco Friendly</p>
               </li>
               </Link>
-              <Link to="/CustomPillowPackagingBoxes">
+              <Link to="/custom-pillow-packaging-boxes">
               <li className='flex text-black hover:bg-slate-100 py-2 md:text-start'>
                 <img src='https://sireprinting.com/frontend-theme/assets/images/pillow.png' alt='' className='w-7' />
                 &nbsp;
@@ -82,35 +82,35 @@ function Navbar() {
             </ul>
 
             <ul className=' text-base font-semibold lg:px-6 px-2 md:px-1 py-5 gap-x-1'>
-              <Link to="/GiftPackagingBoxes">
+              <Link to="/giftpackaging-boxes">
               <li className='flex text-black hover:bg-slate-100 py-2'>
                 <img src='https://sireprinting.com/frontend-theme/assets/images/gift-box.png' alt='' className='w-7' />
                 &nbsp;
                 <p className='flex items-center'>Gift Packaging Boxes</p>
               </li>
               </Link>
-              <Link to="/SoapPackagingBoxes">
+              <Link to="/soap-packaging-boxes">
               <li className='flex text-black hover:bg-slate-100 py-2'>
                 <img src='https://sireprinting.com/frontend-theme/assets/images/stand.png' alt='' className='w-7' />
                 &nbsp;
                 <p className='flex items-center'>Soap Packaging Boxes</p>
               </li>
               </Link>
-                 <Link to="/CustomMedicinePackaging">
+                 <Link to="/custom-medicine-packaging">
               <li className='flex text-black hover:bg-slate-100 py-2 md:text-start'>
                 <img src='https://sireprinting.com/frontend-theme/assets/images/medical.png' alt='' className='w-7 ' />
                 &nbsp;
                 <p className='flex items-center'>Custom Medicine Packaging</p>
               </li>
                  </Link>
-              <Link to="/CustomHangTags">
+              <Link to="/custom-hang-tags">
               <li className='flex text-black hover:bg-slate-100 py-2'>
                 <img src='https://sireprinting.com/frontend-theme/assets/images/tag.png' alt='' className='w-7' />
                 &nbsp;
                 <p className='flex items-center'>Custom Hand Tags</p>
               </li>
               </Link>
-              <Link to="/WovenEmbroideredPatches">
+              <Link to="/woven-embroidered-patches">
               <li className='flex text-black hover:bg-slate-100 py-2 md:text-start'>
                 <img src='https://sireprinting.com/frontend-theme/assets/images/label.png' alt='' className='w-7' />
                 &nbsp;
@@ -119,19 +119,19 @@ function Navbar() {
               </Link>
             </ul>
             <ul className=' text-base font-semibold  lg:px-6 px-2 md:px-1 pb-9 pt-5 gap-x-1  '>
-                <Link to="/CorrugatedBoxes">
+                <Link to="/corrugated-boxes">
               <li className='flex items-center text-black hover:bg-slate-100 py-2'> Corrugated Boxes </li>
                 </Link>
-                <Link to="/KraftPaperBoxes">
+                <Link to="/kraft-paper-boxes">
               <li className='flex items-center text-black hover:bg-slate-100 py-2'> Kraft Paper Boxes</li>
               </Link>        
-              <Link to="/CustomDisplayBoxes">
+              <Link to="/custom-display-boxes">
               <li className='flex items-center text-black hover:bg-slate-100 py-2'> Custom Display Boxes</li>
               </Link>
-              <Link to="/CustomPackagingBoxes">
+              <Link to="/custom-packaging-boxes">
               <li className='flex items-center text-black hover:bg-slate-100 py-2'>  Custom Packaging Boxes</li>
               </Link>
-              <Link to="/CustomMailerBoxes">
+              <Link to="/custom-mailer-boxes">
               <li className='flex items-center text-black hover:bg-slate-100 py-2'> Custom Mailer Boxes</li>
               </Link>
             </ul>

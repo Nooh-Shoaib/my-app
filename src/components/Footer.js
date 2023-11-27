@@ -8,12 +8,12 @@ let phone = "(410) 834-9965";
 let email = "support@sireprinting.com";
 
 let footer = [
-        { label: 'Rigid Boxes', link: '/RigidBoxes' },
-        { label: 'Cosmetic Packaging Boxes', link: '/CosmeticPackagingBoxes' },
-        { label: 'Custom Display Boxes', link: '/CustomDisplayBoxes' },
-        { label: 'Eco-Friendly Packaging', link: '/EcoFriendly' },
-        { label: 'Custom Pillow Packaging Boxes', link: '/CustomPillowPackagingBoxes' },
-        { label: 'Soap Packaging Boxes', link: '/SoapPackagingBoxes' },
+        { label: 'Rigid Boxes', link: '/rigid-boxes' },
+        { label: 'Cosmetic Packaging Boxes', link: '/cosmetic-packaging-boxes' },
+        { label: 'Custom Display Boxes', link: '/custom-display-boxes' },
+        { label: 'Eco-Friendly Packaging', link: '/eco-friendly' },
+        { label: 'Custom Pillow Packaging Boxes', link: '/custom-pillow-packaging-boxes' },
+        { label: 'Soap Packaging Boxes', link: '/soap-packaging-boxes' },
 ];
 
 const Footercategories = () => {
@@ -37,11 +37,11 @@ const Footercategories = () => {
 
 let footer2 = [
         { label: 'About Us', link: '/about-us' },
-        { label: "Contact Us", link: '/ContactUs' },
-        { label: "Portfolio", link: '/Portfolio' },
-        { label: "Blogs", link: '/Blogs' },
-        { label: "Privacy Policy", link: '/PrivacyPolicy' },
-        { label: "Terms And Conditions", link: '/TermsAndConditions' },
+        { label: "Contact Us", link: '/contact-us' },
+        { label: "Portfolio", link: '/portfolio' },
+        { label: "Blogs", link: '/blogs' },
+        { label: "Privacy Policy", link: '/privacy-policy' },
+        { label: "Terms And Conditions", link: '/terms-and-conditions' },
 ];
 
 const Footerlinks = () => {
@@ -115,25 +115,25 @@ export default function Footer(props) {
                                                 </h2>
                                                 <li className="mt-2 mx-2 md:text-center lg:text-start text-center">
                                                         <Link to="tel:+14108349965">
-                                                               
-                                                                        <i className="fa-solid fa-phone text-white hover:text-yellow-500">
-                                                                                &nbsp;
-                                                                                <span className="footericon">
+
+                                                                <i className="fa-solid fa-phone text-white hover:text-yellow-500">
+                                                                        &nbsp;
+                                                                        <span className="footericon">
                                                                                 {phone}
-                                                                                </span>
-                                                                        </i>
+                                                                        </span>
+                                                                </i>
                                                         </Link>
                                                 </li>
                                                 <li className="mt-2 mx-2 md:text-center lg:text-start text-center">
                                                         <Link to="mailto:support@sireprinting.com">
-                                                               
-                                                              
+
+
                                                                 <i className="fa-solid fa-envelope text-white hover:text-yellow-500">
-                                                                                &nbsp;
-                                                                                <span className="footericon">
+                                                                        &nbsp;
+                                                                        <span className="footericon">
                                                                                 {email}
-                                                                                </span>
-                                                                        </i>
+                                                                        </span>
+                                                                </i>
                                                         </Link>
                                                 </li>
                                                 <li className="mt-2 md:text-center lg:text-start text-center">
@@ -141,12 +141,10 @@ export default function Footer(props) {
                                                         <span className="text-white font-semibold">{address}</span>
                                                 </li>
                                                 <li className="mt-2 md:text-center lg:text-start text-center">
-                                                        <Link to="">
-                                                                <i className="fa-solid fa-truck text-white">&nbsp;</i>
-                                                                <span className=" text-white font-semibold">
-                                                                        {freeShipping}
-                                                                </span>
-                                                        </Link>
+                                                        <i className="fa-solid fa-truck text-white">&nbsp;</i>
+                                                        <span className=" text-white font-semibold">
+                                                                {freeShipping}
+                                                        </span>
                                                 </li>
                                                 <li className="lg:space-x-6 space-x-6 md:space-x-4 mt-4  flex justify-center lg:justify-normal">
                                                         <Link to="https://www.facebook.com/sireprinting/" target="_blank">

@@ -5,14 +5,14 @@ import ButtonQuote from '../pages/2ndpageComponents/ButtonQuote';
 
 export default function Navbar() {
   const navItems = [
-    { text: 'All Products', link: '/AllProducts', key: 'allProducts' },
-    { text: 'CBD Packaging', link: '/CBDPackaging', key: 'cbdPackaging' },
-    { text: <CustomBoxes />, key: 'customBoxes' },
-    { text: 'Custom Box Styles', link: '/CustomBoxStyles', key: 'customBoxStyles' },
+    { text: 'All Products', link: '/products-all', key: 'all-Products' },
+    { text: 'CBD Packaging', link: '/cbd-packaging', key: 'cbdPackaging' },
+    { text: <CustomBoxes />, key: 'custom-boxes' },
+    { text: 'Custom Box Styles', link: '/custom-box-styles', key: 'customBoxStyles' },
     { text: 'logo', key: 'logo' },
-    { text: 'Custom Stickers', link: '/CustomStickers', key: 'customStickers' },
-    { text: 'Christmas Boxes', link: '/ChristmasBoxes', key: 'christmasBoxes' },
-    { text: 'Portfolio', link: '/DynamicPortfolio', key: 'dynamicPortfolio' },
+    { text: 'Custom Stickers', link: '/custom-stickers', key: 'customStickers' },
+    { text: 'Christmas Boxes', link: '/christmas-boxes', key: 'christmasBoxes' },
+    { text: 'Portfolio', link: '/portfolio', key: 'dynamicPortfolio' },
   ];
   
 

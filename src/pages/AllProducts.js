@@ -242,7 +242,7 @@ let imagesArr = [
 		imageUrl:
 			"https://s3.amazonaws.com/sireprinting.com/products/1632957661Candle%20Boxes%20Sire%20Printing.png",
 		label: " Candle Boxes",
-		link: "/CandleBoxes"
+		link: "/candle-boxes"
 	},
 	{
 		imageUrl:

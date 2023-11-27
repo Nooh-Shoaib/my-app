@@ -1,13 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import Layout from '../layout';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Link } from "react-router-dom";
 import LoadingComponent from './loading';
 
-const Portfolio = (props) => {
+const Portfolio = () => {
 
 	const [loading, setLoading] = useState(true);
 	const [portfolio, setPortfolio] = useState([]);
