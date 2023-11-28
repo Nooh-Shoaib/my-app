@@ -14,6 +14,7 @@ import LoadingComponent from './loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import BlogCard from './2ndpageComponents/BlogCard'
+import { Helmet } from 'react-helmet';
 
 const DynamicRouteComponent = () => {
   const { slug } = useParams();
@@ -294,7 +295,9 @@ const DynamicRouteComponent = () => {
     };
     return (
       <>
-
+        <Helmet>
+          <title>{product?.productTitle} Wholesale | Sire Printing</title>
+        </Helmet>
         {/* <h1 className="bg-slate-200 h-12 flex items-center">
           <Link to="/" className=" mx-7 font-semibold">Home</Link>
           <span className="text-xs">&raquo;&nbsp;&nbsp;</span>

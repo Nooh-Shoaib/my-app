@@ -41,11 +41,11 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        {/* <Route path="/:slug" element={<NavbarRoute />} />
-        // <Route path="/:slug" element={<DynamicRouteComponent />} /> */}\
-        <Route path="/:slug" element={<CombinedRoutes />} />
+        <Route path="/:slug" element={<NavbarRoute />} />
+        {/* <Route path="/:slug" element={<DynamicRouteComponent />} /> */}
+        {/* <Route path="/:slug" element={<CombinedRoutes />} /> */}
         <Route path="/portfolio" element={<Portfolio />} />
-        <Route exact path="/all-products" element={<AllProducts />} />
+        {/* <Route exact path="/all-products" element={<AllProducts />} /> */}
         <Route exact path="/cbd-packaging" element={<CBDPackaging />} />
         <Route exact path="/custom-retail-packaging" element={<CustomRetailPackaging />} />
         <Route exact path="/rigid-boxes" element={<RigidBoxes />} />

@@ -1,6 +1,6 @@
 
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 const faqItems = [
@@ -30,8 +30,8 @@ const faqItems = [
     label:
       'How do I request a quote for the project? How soon do I receive the price quote?',
     content:
-   
-    ' <div><p>You can fill in any online form available on the website commonly used product page form, which will not only help you choose the specifications but also providing you the related information. Other online forms are also available like “Get a Free Quote” & “Beat My Quote”.</p> <p>You can also get online assistance through our Live Chat Support, where 24/7 sales representative serving you proactively. You can chat with them and provide your packaging needs for a quick price quote.</p> <p> You can directly Email us at <strong className={`text-amber-500`}><a href="mailto:support@sireprinting.com">support@sireprinting.com.</a></strong>, one of our packaging expert will be in touch with you for further assistance. Once your inquiry is submitted, the price quote will be sent your way no later than 24 hours.</p></div>'
+
+      ' <div><p>You can fill in any online form available on the website commonly used product page form, which will not only help you choose the specifications but also providing you the related information. Other online forms are also available like “Get a Free Quote” & “Beat My Quote”.</p> <p>You can also get online assistance through our Live Chat Support, where 24/7 sales representative serving you proactively. You can chat with them and provide your packaging needs for a quick price quote.</p> <p> You can directly Email us at <strong className={`text-amber-500`}><a href="mailto:support@sireprinting.com">support@sireprinting.com.</a></strong>, one of our packaging expert will be in touch with you for further assistance. Once your inquiry is submitted, the price quote will be sent your way no later than 24 hours.</p></div>'
   },
   {
     label: 'What if I don’t have the Design/Artwork file ready to print?',
@@ -59,7 +59,6 @@ const faqItems = [
       'Yes! The packaging industry has the simple formula “Price goes down as the quantity increases”. SirePrinting being a leading packaging company and offering its services for more than a decade, therefore, wholesalers are welcome significantly. In order to serve this niche, we have specially made a department “Beat My Quote” where wholesalers can expect better pricing from the market. All they need to do is submit the requirements along with the market price quote they received, and leave the rest to us, and for sure, we will beat the price for you.'
   },
 ];
-
 export default function FAQS(props) {
   const initialExpandedState = {};
   faqItems.forEach((_item, index) => {
@@ -67,22 +66,34 @@ export default function FAQS(props) {
   });
 
   const [expandedState, setExpandedState] = useState(initialExpandedState);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const toggleStyle = (itemIndex) => {
+    setIsTransitioning(true);
     setExpandedState((prevState) => ({
       ...prevState,
       [itemIndex]: !prevState[itemIndex],
     }));
 
-    
-    console.log(`FAQ item ${itemIndex} is ${expandedState[itemIndex] ? 'collapsed':'expanded'  }`);
+    console.log(`FAQ item ${itemIndex} is ${expandedState[itemIndex] ? 'collapsed' : 'expanded'}`);
+
+    setTimeout(() => {
+      setIsTransitioning(true);
+    }, 15000); 
   };
+
+  useEffect(() => {
+
+    return () => {
+      setIsTransitioning(true);
+    };
+  }, []);
 
   return (
     <>
-     <h2 className="text-center text-4xl pt-24 font-semibold text-black">
+      <h2 className="text-center text-4xl pt-24 font-semibold text-black">
         {props.heading}
-     </h2>
+      </h2>
       <section className="py-12 container max-w-[1300px] mx-auto">
         {faqItems.map((item, index) => (
           <div className="tab py-0.5" key={index}>
@@ -105,15 +116,13 @@ export default function FAQS(props) {
             >
               {item.label}
             </label>
-           
 
-            <div className="tab__content">
-              <div className="accordion__body p-4 " id={`panel${index}`}>
+            <div className={`tab__content overflow-hidden transition-max-height ease-in-out ${isTransitioning ? 'transition-delay' : ''} ${expandedState[index] ? 'max-h-[1000px]' : 'max-h-0'}`}>
+              <div className="accordion__body p-4" id={`panel${index}`}>
                 <div dangerouslySetInnerHTML={{ __html: item.content }} />
               </div>
-              
             </div>
-            <hr/>
+            <hr />
           </div>
         ))}
       </section>

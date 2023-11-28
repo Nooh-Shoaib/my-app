@@ -10,7 +10,7 @@
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faStar } from '@fortawesome/free-solid-svg-icons';
 // import BlogCard from './2ndpageComponents/BlogCard';
-// import NavbarComponents from './NavbarComponents';  // Adjust the path accordingly
+// // import ProductData from './ProductData';
 
 
 // const CombinedRoutes = ({ navbarProduct }) => {
@@ -18,9 +18,8 @@
 //         const [loading, setLoading] = useState(true);
 //         const [product, setProduct] = useState([]);
 //         const [additionalState, setAdditionalState] = useState(null);
+
 //         const [currentImage, setCurrentImage] = useState(null);
-
-
 //         const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
 //         const [otherImage, setOtherImage] = useState(null);
@@ -245,12 +244,63 @@
 //                 );
 //         };
 
-//         const ProductView = ({ product }) => {
+
+
+
+//         const AllProducts = ({ allProducts }) => {
+//                 const products = allProducts ?? [];
+//                 const firstProduct = products[0] ?? {};
+//                 const { allProductTitle, allProductImages, productDescription } = firstProduct;
+
+//                 return (
+//                         <div>
+//                                 <h2 className='text-2xl lg:text-4xl text-center font-medium mt-5'>{allProductTitle}</h2>
+//                                 <div className="max-w-[1375px] lg:mx-32 grid lg:grid-cols-4 grid-cols-1 md:grid-cols-2 lg:px-20 mx-5 md:px-4 gap-7 pb-16 mt-5 px-1">
+//                                         {allProductImages?.map((product, i) => (
+//                                                 <Link key={i} to={"/" + product.slug}>
+//                                                         <div className="text-center hover:scale-105 duration-500 hover:opacity-60 cursor-pointer">
+//                                                                 <img src={product.productImage} alt={product.productTitle} loading="lazy" />
+//                                                                 <div>
+//                                                                         <h2 className="font-medium py-2 px-3 lg:py-4 md:py-5 md:text-lg lg:text-lg ltext-[0.6rem] text-black bg-amber-500">
+//                                                                                 {product.productTitle}
+//                                                                         </h2>
+//                                                                 </div>
+//                                                         </div>
+//                                                 </Link>
+//                                         ))}
+//                                 </div>
+//                                 {productDescription?.map((description, index) => (
+//                                         <div key={index}>
+//                                                 <h1 className='text-4xl my-6'>{description.productDescriptionHeading}</h1>
+//                                                 <p className='leading-9'>{description.productDescriptionText}</p>
+//                                         </div>
+//                                 ))}
+//                         </div>
+//                 );
+//         };
+
+
+
+
+
+//         const ProductView = ({ product, navbarProduct }) => {
 
 //                 if (product.slug === undefined) {
-//                         return ""
+//                         return (
+//                                 <div className=" bg-[#f8d7da] border-[#f5c6cb] text-[#721c24]  p-[10px] my-[10px]">
+//                                         <div className='flex'>
+//                                                 <i className="fa-solid fa-circle-exclamation mt-2 px-1"></i>
+//                                                 <p className='leading-8'>Error: Product not found</p>
+//                                         </div>
+//                                         <p className='leading-8'>Please check the other products.</p>
+//                                         <Link to="/AllProducts">
+//                                                 <button type="button" className=" font-medium rounded-sm mx-12 my-2 text-sm  "><i className="fa-solid fa-circle-arrow-left text-[#721c24] hover:text-[#923a44] text-4xl "></i></button>
+//                                         </Link>
+//                                 </div>
+//                         );
 
 //                 }
+
 
 //                 const renderStars = (starCount) => {
 //                         const stars = Array.from({ length: starCount }, (_, index) => (
@@ -269,10 +319,10 @@
 //                                         <div className='text-center'>
 //                                                 {renderStars(5)}
 //                                         </div>
-//                                         {/* navbarcomponents */}
-//                                         {NavbarComponents?.navbarProduct?.length > 0 ? (
-//                                                 <NavbarComponents navbarProduct={NavbarComponents.navbarProduct} />
-//                                         ) : null}
+//                                         {/* all products
+//                                         {navbarProduct && navbarProduct.length > 0 ? (
+//                                                 <NavbarComponents navbarProduct={navbarProduct} />
+//                                         ) : null} */}
 
 //                                 </div>
 //                                 <div className="lg:flex my-10 md:flex justify-center">
@@ -283,12 +333,12 @@
 //                                                                 alt="Main Image"
 //                                                                 className="hover:scale-110 duration-500 cursor-pointer lg:w-full w-72"
 //                                                         />
-//                                                         <div className="absolute lg:top-[50%] top-32 lg:space-x-[358px] space-x-[202px]  mx-3">
+//                                                         <div className="absolute lg:top-[50%] top-32 lg:space-x-[339px] space-x-[177px]  mx-3">
 //                                                                 <button onClick={handlePrevious} className="prev-button ">
-//                                                                         <i className="fa-solid fa-chevron-left"></i>
+//                                                                         <i className="fa-solid fa-chevron-left text-4xl text-gray-600 hover:text-black"></i>
 //                                                                 </button>
 //                                                                 <button onClick={handleNext} className="next-button">
-//                                                                         <i className="fa-solid fa-chevron-right"></i>
+//                                                                         <i className="fa-solid fa-chevron-right text-4xl text-gray-600 hover:text-black"></i>
 //                                                                 </button>
 //                                                         </div>
 //                                                 </div>
@@ -353,15 +403,17 @@
 
 //         return (
 //                 <Layout>
-
 //                         {loading ? (
 //                                 <LoadingComponent />
 //                         ) : (
-//                                 <ProductView
-//                                         product={product}
-//                                         navbarProduct={NavbarComponents?.navbarProduct}
-//                                         additionalState={additionalState}
-//                                 />
+//                                 <>
+//                                         <ProductView
+//                                                 product={product}
+//                                                 navbarProduct={NavbarComponents?.navbarProduct}
+//                                                 additionalState={additionalState}
+//                                         />
+//                                         <AllProducts allProducts={NavbarComponents?.navbarProducts} />
+//                                 </>
 //                         )}
 //                 </Layout>
 //         );
@@ -371,25 +423,32 @@
 
 
 
+
 import React from 'react';
 import DynamicRouteComponent from './DynamicRouteComponent';
 import NavbarRoute from './NavbarRoute';
 
 const CombinedRoutes = ({ navbarProduct = [], products = [] }) => {
   console.log('Navbar Product:', navbarProduct);
-  console.log('Products:', products);
 
-  return (
-    <>
-      {navbarProduct.length > 1 || <NavbarRoute />}
-      {products.length > 0 && <DynamicRouteComponent />}
-    </>
-  );
-};
-
-export default CombinedRoutes;
-
-
+  if (navbarProduct.length === 0) {
+    console.log('Rendering DynamicRouteComponent');
+    return (
+      <>
+        {products && <DynamicRouteComponent />}
+      </>
+    );
+  } else {
+    console.log('Rendering NavbarRoute');
+    return (
+        <>
+        {/* AllProducts */}
+          {navbarProduct.length > 0 && <NavbarRoute />}
+        </>
+      );
+    }
+  };
+  export default CombinedRoutes;
 
 
 

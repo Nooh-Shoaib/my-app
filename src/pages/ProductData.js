@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Quote from './2ndpageComponents/beatQuote';
 
-const Navbar = () => {
+const ProductData = () => {
   const [loading, setLoading] = useState(true);
   const [navbarData, setNavbarData] = useState([]);
 
@@ -62,7 +62,7 @@ const Navbar = () => {
         <div key={categoryIndex}>
           <div className="py-10 lg:flex md:flex relative">
             {productImages(category)}
-            {/* Assuming Quote is another component */}
+            {/* Quote is another component */}
             <Quote />
           </div>
           {category.productDescription && category.productDescription.length > 0 && (
@@ -77,4 +77,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default ProductData;
