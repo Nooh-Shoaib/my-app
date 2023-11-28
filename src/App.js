@@ -17,8 +17,8 @@ import CustomMailerBoxes from "./pages/CustomMailerBoxes";
 import CustomPackagingBoxes from "./pages/CustomPackagingBoxes";
 import CustomPillowPackagingBoxes from "./pages/CustomPillowPackagingBoxes";
 import CustomStickers from "./pages/CustomStickers";
-// import DynamicRouteComponent from "./pages/DynamicRouteComponent";
-// import NavbarRoute from "./pages/NavbarRoute";
+import DynamicRouteComponent from "./pages/DynamicRouteComponent";
+import NavbarRoute from "./pages/NavbarRoute";
 import Portfolio from "./pages/DynamicPortfolio";
 import EcoFriendly from "./pages/EcoFriendly";
 import FoodPackaging from "./pages/FoodPackaging";
@@ -41,8 +41,8 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        {/* <Route path="/:slug" element={<DynamicRouteComponent />} /> */}
-        {/* <Route path="/:slug" element={<NavbarRoute />} /> */}
+        {/* <Route path="/:slug" element={<NavbarRoute />} />
+        // <Route path="/:slug" element={<DynamicRouteComponent />} /> */}\
         <Route path="/:slug" element={<CombinedRoutes />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route exact path="/all-products" element={<AllProducts />} />

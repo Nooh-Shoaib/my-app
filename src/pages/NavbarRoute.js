@@ -84,8 +84,8 @@ const NavbarRoute = () => {
               {category.productDescription &&
                   category.productDescription.length > 0 && (
               <div>
-                <h2>{category.productDescription[0].productDescriptionHeading}</h2>
-                <p>{category.productDescription[0].productDescriptionText}</p>
+                <h2 className=' text-3xl px-12 my-6'>{category.productDescription[0].productDescriptionHeading}</h2>
+                <p className='px-12 mb-7 leading-7 tracking- text-base'>{category.productDescription[0].productDescriptionText}</p>
               </div>
               )} 
             </div>

@@ -98,7 +98,7 @@ const DynamicRouteComponent = () => {
       fetchData('/sixthproducts/products', setSixthImage, setSixthImageIndex),
       fetchData('/seventhproducts/products', setSeventhImage, setSeventhImageIndex),
       fetchData('/eighthproducts/products', setEighthImage, setEighthImageIndex),
-      fetchData('/ninthproducts/products', setNinthImage, setNinthImageIndex),
+      fetchData('/Example/navbarProduct'),
       fetchData('/tenthproducts/products', setTenthImage, setTenthImageIndex),
       fetchData('/eleventhproducts/products', setEleventhImage, setEleventhImageIndex),
       fetchData('/twelfthproducts/products', setTwelfthImage, setTwelfthImageIndex),
@@ -271,19 +271,18 @@ const DynamicRouteComponent = () => {
   const ProductView = ({ product }) => {
 
     if (product.slug === undefined) {
-      return ""
-      // (
-      //   <div className=" bg-[#f8d7da] border-[#f5c6cb] text-[#721c24]  p-[10px] my-[10px]">
-      //     <div className='flex'>
-      //       <i className="fa-solid fa-circle-exclamation mt-2 px-1"></i>
-      //       <p className='leading-8'>Error: Product not found</p>
-      //     </div>
-      //     <p className='leading-8'>Please check the other products.</p>
-      //     <Link to="/AllProducts">
-      //       <button type="button" className=" font-medium rounded-sm mx-12 my-2 text-sm  "><i className="fa-solid fa-circle-arrow-left text-[#721c24] hover:text-[#923a44] text-4xl "></i></button>
-      //     </Link>
-      //   </div>
-      // );
+      return (
+        <div className=" bg-[#f8d7da] border-[#f5c6cb] text-[#721c24]  p-[10px] my-[10px]">
+          <div className='flex'>
+            <i className="fa-solid fa-circle-exclamation mt-2 px-1"></i>
+            <p className='leading-8'>Error: Product not found</p>
+          </div>
+          <p className='leading-8'>Please check the other products.</p>
+          <Link to="/AllProducts">
+            <button type="button" className=" font-medium rounded-sm mx-12 my-2 text-sm  "><i className="fa-solid fa-circle-arrow-left text-[#721c24] hover:text-[#923a44] text-4xl "></i></button>
+          </Link>
+        </div>
+      );
     }
 
     const renderStars = (starCount) => {
@@ -299,7 +298,7 @@ const DynamicRouteComponent = () => {
         {/* <h1 className="bg-slate-200 h-12 flex items-center">
           <Link to="/" className=" mx-7 font-semibold">Home</Link>
           <span className="text-xs">&raquo;&nbsp;&nbsp;</span>
-          <Link to={product?.categorySlug} className=" mx-7 font-semibold">{product?.name}</Link>
+          <Link to={product?.categories[0].categorySlug} className=" mx-7 font-semibold">{product?.categories[0].name}</Link>
           <span className="text-xs">&raquo;&nbsp;&nbsp;</span>
           <span className="text-amber-500 font-semibold"><em>{product?.productTitle}</em></span>
         </h1> */}
