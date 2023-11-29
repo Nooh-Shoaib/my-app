@@ -424,31 +424,31 @@
 
 
 
-import React from 'react';
-import DynamicRouteComponent from './DynamicRouteComponent';
-import NavbarRoute from './NavbarRoute';
+// import React from 'react';
+// import DynamicRouteComponent from './DynamicRouteComponent';
+// import AllProducts from './AllProducts';
 
-const CombinedRoutes = ({ navbarProduct = [], products = [] }) => {
-  console.log('Navbar Product:', navbarProduct);
+// const CombinedRoutes = ({ navbarProduct = [], products = [] }) => {
+//   console.log('Navbar Product:', navbarProduct);
 
-  if (navbarProduct.length === 0) {
-    console.log('Rendering DynamicRouteComponent');
-    return (
-      <>
-        {products && <DynamicRouteComponent />}
-      </>
-    );
-  } else {
-    console.log('Rendering NavbarRoute');
-    return (
-        <>
-        {/* AllProducts */}
-          {navbarProduct.length > 0 && <NavbarRoute />}
-        </>
-      );
-    }
-  };
-  export default CombinedRoutes;
+//   if (navbarProduct.length === 0) {
+//     console.log('Rendering DynamicRouteComponent');
+//     return (
+//       <>
+//         {products && <DynamicRouteComponent />}
+//       </>
+//     );
+//   } else {
+//     console.log('Rendering NavbarRoute');
+//     return (
+//         <>
+//         {/* AllProducts */}
+//           {navbarProduct.length > 0 && <AllProducts />}
+//         </>
+//       );
+//     }
+//   };
+//   export default CombinedRoutes;
 
 
 

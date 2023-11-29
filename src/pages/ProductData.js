@@ -62,7 +62,6 @@ const ProductData = () => {
         <div key={categoryIndex}>
           <div className="py-10 lg:flex md:flex relative">
             {productImages(category)}
-            {/* Quote is another component */}
             <Quote />
           </div>
           {category.productDescription && category.productDescription.length > 0 && (

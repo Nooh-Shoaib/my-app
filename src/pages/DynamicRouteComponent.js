@@ -2,10 +2,10 @@
 import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import Layout from '../layout';
 import { Link } from 'react-router-dom';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import ProductInfoSection from './2ndpageComponents/ProductInfoSection';
 import QuoteAdvantages from './2ndpageComponents/QuoteAdvantages';
 import SideTestimonials from './2ndpageComponents/SideTestimonials';
@@ -15,117 +15,103 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import BlogCard from './2ndpageComponents/BlogCard'
 import { Helmet } from 'react-helmet';
+import AllProducts from './AllProducts'
 
-const DynamicRouteComponent = () => {
-  const { slug } = useParams();
-  const [loading, setLoading] = useState(true);
-  const [product, setProduct] = useState([]);
-  const [additionalState, setAdditionalState] = useState(null);
 
-  const [currentImage, setCurrentImage] = useState(null);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const DynamicRouteComponent = () => {
+    const { slug } = useParams();
+    const [loading, setLoading] = useState(true);
+    const [product, setProduct] = useState([]);
+    const [additionalState, setAdditionalState] = useState(null);
+    const fetchInProgress = useRef(false);
 
-  const [otherImage, setOtherImage] = useState(null);
-  const [otherImageIndex, setOtherImageIndex] = useState(0);
-
-  const [remainingImage, setRemainingImage] = useState(null);
-  const [remainingImageIndex, setRemainingImageIndex] = useState(0);
-
-  const [fourthImage, setFourthImage] = useState(null);
-  const [fourthImageIndex, setFourthImageIndex] = useState(0);
-
-  const [fifthImage, setFifthImage] = useState(null);
-  const [fifthImageIndex, setFifthImageIndex] = useState(0);
-
-  const [sixthImage, setSixthImage] = useState(null);
-  const [sixthImageIndex, setSixthImageIndex] = useState(0);
-
-  const [seventhImage, setSeventhImage] = useState(null);
-  const [seventhImageIndex, setSeventhImageIndex] = useState(0);
-
-  const [eighthImage, setEighthImage] = useState(null);
-  const [eighthImageIndex, setEighthImageIndex] = useState(0);
-
-  const [ninthImage, setNinthImage] = useState(null);
-  const [ninthImageIndex, setNinthImageIndex] = useState(0);
-
-  const [tenthImage, setTenthImage] = useState(null);
-  const [tenthImageIndex, setTenthImageIndex] = useState(0);
-
-  const [eleventhImage, setEleventhImage] = useState(null);
-  const [eleventhImageIndex, setEleventhImageIndex] = useState(0);
-
-  const [twelfthImage, setTwelfthImage] = useState(null);
-  const [twelfthImageIndex, setTwelfthImageIndex] = useState(0);
-
-  const [thirteenthImage, setThirteenthImage] = useState(null);
-  const [thirteenthImageIndex, setThirteenthImageIndex] = useState(0);
-
-  const fetchData = async (repo, imageStateSetter, indexStateSetter) => {
-    try {
-      const response = await fetch(`https://my-json-server.typicode.com/Nooh-Shoaib${repo}/${slug}`);
-
-      if (response.status === 404) {
-        // Handle 404
-        return {};
-      } else {
-        const data = await response.json();
-        setAdditionalState(data?.addition);
-        imageStateSetter(data?.productImages[0]);
-        indexStateSetter(0);
-
-        setProduct(data);
+    const [currentImage, setCurrentImage] = useState(null);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+    const [otherImage, setOtherImage] = useState(null);
+    const [otherImageIndex, setOtherImageIndex] = useState(0);
+  
+    const [remainingImage, setRemainingImage] = useState(null);
+    const [remainingImageIndex, setRemainingImageIndex] = useState(0);
+  
+    const [fourthImage, setFourthImage] = useState(null);
+    const [fourthImageIndex, setFourthImageIndex] = useState(0);
+  
+    const [fifthImage, setFifthImage] = useState(null);
+    const [fifthImageIndex, setFifthImageIndex] = useState(0);
+  
+    const [sixthImage, setSixthImage] = useState(null);
+    const [sixthImageIndex, setSixthImageIndex] = useState(0);
+  
+    const [seventhImage, setSeventhImage] = useState(null);
+    const [seventhImageIndex, setSeventhImageIndex] = useState(0);
+  
+    const [eighthImage, setEighthImage] = useState(null);
+    const [eighthImageIndex, setEighthImageIndex] = useState(0);
+  
+    const [ninthImage, setNinthImage] = useState(null);
+    const [ninthImageIndex, setNinthImageIndex] = useState(0);
+  
+    const [tenthImage, setTenthImage] = useState(null);
+    const [tenthImageIndex, setTenthImageIndex] = useState(0);
+  
+    const [eleventhImage, setEleventhImage] = useState(null);
+    const [eleventhImageIndex, setEleventhImageIndex] = useState(0);
+  
+    const [twelfthImage, setTwelfthImage] = useState(null);
+    const [twelfthImageIndex, setTwelfthImageIndex] = useState(0);
+  
+    const [thirteenthImage, setThirteenthImage] = useState(null);
+    const [thirteenthImageIndex, setThirteenthImageIndex] = useState(0);
+  
+    const repos = [
+      'products/products',
+      'otherproducts/products',
+      'remainingproducts/products',
+      'fourthproducts/products',
+      'fifthproducts/products',
+      'sixthproducts/products',
+      'seventhproducts/products',
+      'ProductData/data'
+    ];
+  
+    const fetchData = async (repo = 0) => {
+      try {
+        if (repos[repo] === undefined) throw 'undefined error';
+  
+        const response = await fetch(`https://my-json-server.typicode.com/Nooh-Shoaib/${repos[repo]}/${slug}`);
+  
+        if (repo < repos.length && response.status === 404) {
+          // Handle 404
+          fetchData(++repo);
+        } else {
+          const data = await response.json();
+          setAdditionalState(data?.addition);
+          setCurrentImage(data?.productImages[0]);
+          setCurrentImageIndex(0);
+  
+          setProduct(data);
+          setLoading(false);
+  
+          return data;
+        }
+      } catch (error) {
+        // console.error(`Error fetching data for ${repo}:`, error.message);
+        setProduct([]);
         setLoading(false);
-
-        return data;
+        throw error;
       }
-    } catch (error) {
-      // console.error(`Error fetching data for ${repo}:`, error.message);
-      setProduct([]);
-      setLoading(false);
-      throw error;
-    }
-  };
-
-  useEffect(() => {
-    setLoading(true);
-
-    Promise.all([
-      fetchData('/products/products', setCurrentImage, setCurrentImageIndex),
-      fetchData('/otherproducts/products', setOtherImage, setOtherImageIndex),
-      fetchData('/remainingproducts/products', setRemainingImage, setRemainingImageIndex),
-      fetchData('/fourthproducts/products', setFourthImage, setFourthImageIndex),
-      fetchData('/fifthproducts/products', setFifthImage, setFifthImageIndex),
-      fetchData('/sixthproducts/products', setSixthImage, setSixthImageIndex),
-      fetchData('/seventhproducts/products', setSeventhImage, setSeventhImageIndex),
-      fetchData('/eighthproducts/products', setEighthImage, setEighthImageIndex),
-      fetchData('/Example/navbarProduct'),
-      fetchData('/tenthproducts/products', setTenthImage, setTenthImageIndex),
-      fetchData('/eleventhproducts/products', setEleventhImage, setEleventhImageIndex),
-      fetchData('/twelfthproducts/products', setTwelfthImage, setTwelfthImageIndex),
-      fetchData('/thirteenthproducts/products', setThirteenthImage, setThirteenthImageIndex),
-    ])
-      .then(() => {
-        // console.log('All fetches are complete!');
-        // console.log('Current Image:', currentImage);
-        // console.log('Other Image:', otherImage);
-        // console.log('Remaining Image:', remainingImage);
-        // console.log('Fourth Image:', fourthImage);
-        // console.log('Fifth Image:', fifthImage);
-        // console.log('Sixth Image:', sixthImage);
-        // console.log('Seventh Image:', seventhImage);
-        // console.log('Eighth Image:', eighthImage);
-        // console.log('Ninth Image:', ninthImage);
-        // console.log('Tenth Image:', tenthImage);
-        // console.log('Eleventh Image:', eleventhImage);
-        // console.log('Twelfth Image:', twelfthImage);
-        // console.log('Thirteenth Image:', thirteenthImage);
-      })
-      .catch((error) => {
-        console.error('Error during data fetching:', error.message);
-      });
-  }, [slug]);
-
+    };
+  
+    useEffect(() => {
+      const fetchDataAndSetState = async () => {
+        setLoading(true);
+        await fetchData(0);
+      };
+  
+      fetchDataAndSetState();
+    }, [slug]);
+  
 
   // specifications
   const MyComponent = ({ specifications }) => {
@@ -305,8 +291,10 @@ const DynamicRouteComponent = () => {
           <span className="text-xs">&raquo;&nbsp;&nbsp;</span>
           <span className="text-amber-500 font-semibold"><em>{product?.productTitle}</em></span>
         </h1> */}
-
-        <div className='mt-10'>
+        
+<AllProducts/>
+  
+<div className='mt-10'>
           <div className='flex justify-center'>
             <h1 className='lg:text-4xl text-2xl font-medium text-center'>{product?.productTitle}</h1>
           </div>
@@ -401,9 +389,19 @@ const DynamicRouteComponent = () => {
 
   return (
     <Layout>
-      {loading ? <LoadingComponent /> : <ProductView product={product} additionalState={additionalState} />}
+      {loading ? (
+        <LoadingComponent />
+      ) : (
+        <>
+          <ProductView product={product} additionalState={additionalState} />
+          {/* Render AllProducts component only if product is defined and length is greater than 0 */}
+          {product && product.allProductImages && product.allProductImages.length > 0 && (
+            <AllProducts allProductsData={product.allProductImages} />
+          )}
+        </>
+      )}
     </Layout>
   );
 };
 
-export default DynamicRouteComponent
+export default DynamicRouteComponent;

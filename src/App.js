@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import AboutUs from "./pages/AboutUs";
-import AllProducts from "./pages/AllProducts";
 import Blogs from "./pages/Blogs";
 import CBDPackaging from "./pages/CBDPackaging";
 import ChristmasBoxes from "./pages/ChristmasBoxes";
@@ -18,7 +17,7 @@ import CustomPackagingBoxes from "./pages/CustomPackagingBoxes";
 import CustomPillowPackagingBoxes from "./pages/CustomPillowPackagingBoxes";
 import CustomStickers from "./pages/CustomStickers";
 import DynamicRouteComponent from "./pages/DynamicRouteComponent";
-import NavbarRoute from "./pages/NavbarRoute";
+import AllProducts from "./pages/AllProducts";
 import Portfolio from "./pages/DynamicPortfolio";
 import EcoFriendly from "./pages/EcoFriendly";
 import FoodPackaging from "./pages/FoodPackaging";
@@ -32,6 +31,7 @@ import SoapPackagingBoxes from "./pages/SoapPackagingBoxes";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import WovenEmbroideredPatches from "./pages/Woven Embroidered Patches";
 import CombinedRoutes from "./pages/CombinedRoutes";
+import NavAndDynamicRoutes from "./pages/NavAndDynamicRoutes";
 
 
 function App() {
@@ -41,11 +41,12 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/:slug" element={<NavbarRoute />} />
-        {/* <Route path="/:slug" element={<DynamicRouteComponent />} /> */}
+        <Route path="/:slug" element={<DynamicRouteComponent />} />
+        {/* <Route path="/:slug" element={<AllProducts />} /> */}
         {/* <Route path="/:slug" element={<CombinedRoutes />} /> */}
+        {/* <Route path="/:slug" element={<NavAndDynamicRoutes />} /> */}
+        {/* <Route path="/MainComponent" element={<MainComponent />} /> */}
         <Route path="/portfolio" element={<Portfolio />} />
-        {/* <Route exact path="/all-products" element={<AllProducts />} /> */}
         <Route exact path="/cbd-packaging" element={<CBDPackaging />} />
         <Route exact path="/custom-retail-packaging" element={<CustomRetailPackaging />} />
         <Route exact path="/rigid-boxes" element={<RigidBoxes />} />
