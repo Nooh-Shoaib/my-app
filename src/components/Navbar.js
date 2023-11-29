@@ -5,7 +5,7 @@ import ButtonQuote from '../pages/2ndpageComponents/ButtonQuote';
 
 export default function Navbar() {
   const navItems = [
-    { text: 'All Products', link: '/products-all', key: 'all-Products' },
+    { text: 'All Products', link: 'products-all', key: 'all-Products' },
     { text: 'CBD Packaging', link: '/cbd-packaging', key: 'cbdPackaging' },
     { text: <CustomBoxes />, key: 'custom-boxes' },
     { text: 'Custom Box Styles', link: '/custom-box-styles', key: 'customBoxStyles' },

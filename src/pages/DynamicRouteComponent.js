@@ -16,6 +16,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import BlogCard from './2ndpageComponents/BlogCard'
 import { Helmet } from 'react-helmet';
 import AllProducts from './AllProducts'
+import Quote from "./2ndpageComponents/beatQuote";
 
 
   const DynamicRouteComponent = () => {
@@ -24,6 +25,7 @@ import AllProducts from './AllProducts'
     const [product, setProduct] = useState([]);
     const [additionalState, setAdditionalState] = useState(null);
     const fetchInProgress = useRef(false);
+    const [navbarProduct, setNavbarProduct] = useState([]);
 
     const [currentImage, setCurrentImage] = useState(null);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -255,6 +257,55 @@ import AllProducts from './AllProducts'
     );
   };
 
+
+
+
+
+
+  const productImages = (category) => {
+    if (productImages == undefined)
+      return '';
+    return (<>
+        <Helmet>
+      <title> {category.allProductTitle} | Sire Printing</title>
+    </Helmet>
+      <div className=" lg:w-2/3 md:w-2/3 mx-3 overflow-hidden">
+
+        {category.allProductTitle && (
+          <h1 className="w-full text-center my-12 text-4xl font-semibold">{category.allProductTitle}</h1>
+        )}
+        <div className=" w-full grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 md:px-10 gap-4 py-0 px-1">
+          {category.allProductImages &&
+            category.allProductImages.map((product, productIndex) => (
+              <div key={productIndex}>
+                <Link to={`/${product.slug}`}>
+                  <div className="text-center hover:scale-105 duration-500 hover:opacity-60 cursor-pointer">
+                    {product.productImage && (
+
+                      <img
+                        src={product.productImage}
+                        alt={`Product Image ${productIndex + 1}`}
+                      />
+                    )}
+                    <div>
+                      {product.productTitle && <h2 className="font-medium py-2 px-3 lg:py-4 text-[0.6rem] text-black text-sm bg-amber-500">{product.productTitle}</h2>}
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))}
+        </div>
+      </div>
+      </>
+    );
+  };
+
+
+
+
+
+
+
   const ProductView = ({ product }) => {
 
     if (product.slug === undefined) {
@@ -291,9 +342,7 @@ import AllProducts from './AllProducts'
           <span className="text-xs">&raquo;&nbsp;&nbsp;</span>
           <span className="text-amber-500 font-semibold"><em>{product?.productTitle}</em></span>
         </h1> */}
-        
-<AllProducts/>
-  
+    
 <div className='mt-10'>
           <div className='flex justify-center'>
             <h1 className='lg:text-4xl text-2xl font-medium text-center'>{product?.productTitle}</h1>
@@ -306,7 +355,35 @@ import AllProducts from './AllProducts'
               ))} */}
 
             {renderStars(5)}
+            <div>
+        {loading && <LoadingComponent />}
+        {!loading && !navbarProduct.length && (
+          <div>Error: Unable to load products</div>
+        )}
+        {!loading && navbarProduct && navbarProduct.length > 0 && (
+          <div>
+            {navbarProduct.map((category, categoryIndex) => (
+              <div key={categoryIndex}>
 
+
+                <div className="py-10 lg:flex md:flex relative">
+                  {productImages(category)}
+                  <Quote />
+
+                </div>
+
+                {category.productDescription &&
+                  category.productDescription.length > 0 && (
+                    <div>
+                      <h2 className=' text-3xl px-12 my-6'>{category.productDescription[0].productDescriptionHeading}</h2>
+                      <p className='px-12 mb-7 leading-7 tracking- text-base'>{category.productDescription[0].productDescriptionText}</p>
+                    </div>
+                  )}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
 
           </div>
         </div>
@@ -394,14 +471,13 @@ import AllProducts from './AllProducts'
       ) : (
         <>
           <ProductView product={product} additionalState={additionalState} />
-          {/* Render AllProducts component only if product is defined and length is greater than 0 */}
-          {product && product.allProductImages && product.allProductImages.length > 0 && (
+          {product && product.productTitle && (
             <AllProducts allProductsData={product.allProductImages} />
           )}
         </>
       )}
     </Layout>
   );
-};
+          };
 
-export default DynamicRouteComponent;
+export default DynamicRouteComponent
