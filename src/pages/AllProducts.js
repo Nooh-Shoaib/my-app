@@ -52,8 +52,8 @@ const AllProducts = () => {
             {`
           <title>${category.allProductTitle} - ${<Title />}</title>
     `}
-        </head>
-      </Helmet >
+          </head>
+        </Helmet >
 
         <div>
           <h1 className="w-full text-center my-12 text-4xl font-semibold">
@@ -88,27 +88,27 @@ const AllProducts = () => {
     );
   };
 
-return (
-  <Layout>
-    <div>
-      {loading && <LoadingComponent />}
-      {!loading && !mergedData.length && <div>Error: Unable to load products</div>}
-      {!loading && mergedData && mergedData.length > 0 && (
-        <div>
-          {mergedData.map((category, categoryIndex) => (
-            <div key={categoryIndex}>
-              <div className="py-10 lg:flex md:flex relative">
-                {productImages(category)}
-                <Quote imageCount={mergedData.reduce((total, category) => total + category.allProductImages.length, 0)} />
+  return (
+    <Layout>
+      <div>
+        {loading && <LoadingComponent />}
+        {!loading && !mergedData.length && <div>Error: Unable to load products</div>}
+        {!loading && mergedData && mergedData.length > 0 && (
+          <div>
+            {mergedData.map((category, categoryIndex) => (
+              <div key={categoryIndex}>
+                <div className="py-10 lg:flex md:flex relative">
+                  {productImages(category)}
+                  <Quote imageCount={mergedData.reduce((total, category) => total + category.allProductImages.length, 0)} />
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
 
-        </div>
-      )}
-    </div>
-  </Layout>
-);
+          </div>
+        )}
+      </div>
+    </Layout>
+  );
 };
 
 export default AllProducts;

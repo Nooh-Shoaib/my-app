@@ -12,7 +12,7 @@ import { Helmet } from 'react-helmet';
 import renderStars from './utils/renderstars';
 import Title from './utils/Title';
 import Url from './utils/Url';
-
+import ProductNotFound from './utils/ProductNotFound';
 
 
 const DynamicRouteComponent = () => {
@@ -32,19 +32,17 @@ const DynamicRouteComponent = () => {
     'seventhproducts/products',
   ];
 
-
   const fetchData = async (repo = 0) => {
     try {
       if (repos[repo] === undefined) {
         if (repo === repos.length) {
-          throw 'Data not found in any endpoint';
+          throw new Error('Data not found in any endpoint');
         }
         fetchData(++repo);
         return;
       }
 
       const response = await fetch(`${Url}/${repos[repo]}/${slug}`);
-
       if (repo < repos.length && response.status === 404) {
         fetchData(++repo);
       } else {
@@ -52,18 +50,16 @@ const DynamicRouteComponent = () => {
         setCurrentImage(data?.productImages[0]);
         setCurrentImageIndex(0);
         setProduct(data);
-        setLoading(false);
-        return data;
       }
     } catch (error) {
+      console.error('An error occurred:', error.message);
       setProduct({});
+    } finally {
       setLoading(false);
-      throw error;
     }
   };
 
   const fetchDataAndSetState = async () => {
-    setLoading(true);
     await fetchData(0);
   };
 
@@ -75,7 +71,7 @@ const DynamicRouteComponent = () => {
   }, [slug]);
 
 
-
+  // Carousel with thumbnails
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -95,7 +91,7 @@ const DynamicRouteComponent = () => {
     setSelectedImage(product?.productImages[newIndex]);
     setSelectedIndex(newIndex);
   };
-
+  // relatedportfolio
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
   const openLightbox = (index) => {
@@ -207,18 +203,7 @@ const DynamicRouteComponent = () => {
   const ProductView = ({ product }) => {
     if (product.slug === undefined) {
       return (
-        <div className=' bg-[#f8d7da] border-[#f5c6cb] text-[#721c24]  p-[10px] my-[10px]'>
-          <div className='flex'>
-            <i className='fa-solid fa-circle-exclamation mt-2 px-1'></i>
-            <p className='leading-8'>Error: Product not found</p>
-          </div>
-          <p className='leading-8'>Please check the other products.</p>
-          <Link to='/products-all'>
-            <button type='button' className=' font-medium rounded-sm mx-12 my-2 text-sm  '>
-              <i className='fa-solid fa-circle-arrow-left text-[#721c24] hover:text-[#923a44] text-4xl '></i>
-            </button>
-          </Link>
-        </div>
+        <ProductNotFound />
       );
     }
     return (

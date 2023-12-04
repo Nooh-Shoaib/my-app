@@ -1,6 +1,7 @@
 import React from "react";
 import propTypes from "prop-types";
 import { Link } from "react-router-dom";
+import SearchComponent from "./SearchComponent";
 
 export default function Topbar(props) {
   // const [text, setText] = useState('|');
@@ -11,17 +12,17 @@ export default function Topbar(props) {
           <div>
             <ul className="flex my-1">
               <li className="">
-               <Link to="tel:+14108349965">
+                <Link to="tel:+14108349965">
                   <i className="fa fa-phone icon_nav text-white text-base bg-black px-1.5 py-0.5 mt-1.5 rounded"></i>
                   &nbsp; <span>{props.number}</span>
-               </Link>
+                </Link>
               </li>
               <li className="mt-1.5">&nbsp;&nbsp;|&nbsp;&nbsp;</li>
               <li>
-               <Link to="mailto:support@sireprinting.com">
+                <Link to="mailto:support@sireprinting.com">
                   <i className="fa fa-envelope icon_nav text-white text-sm bg-black px-2 py-1 mt-1.5 rounded"></i>
                   &nbsp;<span>{props.email}</span>
-               </Link>
+                </Link>
               </li>
               <li className="mt-1.5">&nbsp;&nbsp;|&nbsp;&nbsp;</li>
               <li>
@@ -30,16 +31,12 @@ export default function Topbar(props) {
                   target="_blank"
                 >
                   <i className="fab fa-whatsapp text-2xl	rounded  px-1 mt-1.5    bg-green-700 text-white"></i>
-               </Link>
+                </Link>
               </li>
             </ul>
           </div>
           <div className="flex items-center ">
-            <input
-              type="search"
-              placeholder="Search"
-              className="rounded-md px-3 py-1.5 focus outline-none focus:ring-0 border-2 bg-slate-50 border-amber-500 placeholder-slate-600"
-            />
+            <SearchComponent />
             <button>
               <span className="input-group-text border-0 bg-black py-2 px-3 text-white rounded-md">
                 <i className="fas fa-search"></i>

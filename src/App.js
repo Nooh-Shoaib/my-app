@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import CBDPackaging from "./pages/CBDPackaging";
 import ChristmasBoxes from "./pages/ChristmasBoxes";
 import CorrugatedBoxes from "./pages/CorrugatedBoxes";
@@ -26,24 +27,21 @@ import Home from "./pages/Home";
 import AllProducts from "./pages/AllProducts";
 import Blogs from "./pages/Blogs";
 import ContactUs from "./pages/ContactUs";
-import LegalPage from './pages/LegalPages';
-import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import LegalPages from './pages/LegalPages';
 import NoPage from "./pages/NoPage";
-// import Layout from './layout';
 
 
-// const ComponentSelector = () => {
-//   const { slug } = useParams();
+const ComponentSelector = () => {
+  const { slug } = useParams();
 
-//   if (slug === 'DynamicRouteComponent') {
-//     return <LegalPage />;
-//   } else if (slug === 'LegalPage') {
-//     return <DynamicRouteComponent />;
-//   } else {
-//     return (<div>Not Found</div>);
- // }
-// };
+  if (slug === 'DynamicRouteComponent') {
+    return <DynamicRouteComponent />;
+  } else if (slug === 'LegalPage') {
+    return <LegalPages />;
+  } else {
+    return (<div>Not Found</div>);
+  }
+};
 
 function App() {
 
@@ -52,10 +50,11 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        {/* <Route path="/:slug" element={<LegalPage />} /> */}
+        <Route path="/:slug" element={<LegalPages />} />
+        <Route path="/:slug" element={<ComponentSelector />} />
         <Route path="/:slug" element={<DynamicRouteComponent />} />
         <Route path="/products-all" element={<AllProducts />} />
-        <Route path="/portfolio" element={<Portfolio />} />
+        <Route exact path="/portfolio" element={<Portfolio />} />
         <Route exact path="/cbd-packaging" element={<CBDPackaging />} />
         <Route exact path="/custom-retail-packaging" element={<CustomRetailPackaging />} />
         <Route exact path="/rigid-boxes" element={<RigidBoxes />} />

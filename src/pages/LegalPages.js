@@ -3,6 +3,7 @@ import Layout from '../layout';
 import { Link, useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import LoadingComponent from './loading';
+import Url from './utils/Url';
 
 const LegalPages = () => {
   const { slug } = useParams();
@@ -11,7 +12,7 @@ const LegalPages = () => {
 
   const fetchPageData = async () => {
     try {
-      const response = await fetch(`https://my-json-server.typicode.com/Nooh-Shoaib/legalpages/pagedata`);
+      const response = await fetch(`${Url}/legalpages/pagedata`);
 
       if (!response.ok) {
         console.error(`Error fetching pagedata for ${slug}: ${response.statusText}`);
@@ -52,14 +53,14 @@ const LegalPages = () => {
                   <h2 className='text-3xl font-semibold '>{data.heading}</h2>
                   <p>{data.text}</p>
                   <Link to="tel:+14108349965" target='_blank'>
-                  <h2 className='text-base font-bold'>{data.phone}</h2>
+                    <h2 className='text-base font-bold'>{data.phone}</h2>
                   </Link>
                   <h2 className='text-base font-bold'>{data.email}</h2>
 
                 </div>
               ))}
             </div>
-            
+
           </div>
         )}
       </Layout>

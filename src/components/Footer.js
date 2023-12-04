@@ -7,7 +7,7 @@ let freeShipping = "100% Free shipping all across USA";
 let phone = "(410) 834-9965";
 let email = "support@sireprinting.com";
 
-let footer = [
+let categories = [
         { label: 'Rigid Boxes', link: '/rigid-boxes' },
         { label: 'Cosmetic Packaging Boxes', link: '/cosmetic-packaging-boxes' },
         { label: 'Custom Display Boxes', link: '/custom-display-boxes' },
@@ -20,7 +20,7 @@ const Footercategories = () => {
         return (
                 <div>
                         <ul>
-                                {footer.map((v, i) => {
+                                {categories.map((v, i) => {
                                         return (
                                                 <li
                                                         key={i}
@@ -35,7 +35,7 @@ const Footercategories = () => {
         );
 };
 
-let footer2 = [
+let usefullLinks = [
         { label: 'About Us', link: '/about-us' },
         { label: "Contact Us", link: '/contact-us' },
         { label: "Portfolio", link: '/portfolio' },
@@ -48,7 +48,7 @@ const Footerlinks = () => {
         return (
                 <div>
                         <ul>
-                                {footer2.map((v, id) => {
+                                {usefullLinks.map((v, id) => {
                                         return (
                                                 <li
                                                         key={id}
@@ -65,7 +65,7 @@ const Footerlinks = () => {
 
 let paymentImg =
         "https://sireprinting.com/frontend-theme/assets/images/payment-cards.png";
-let CWhref = "https://thecustomwebsites.com/";
+let CWLink = "https://thecustomwebsites.com/";
 let playstoreImg =
         "https://sireprinting.com/frontend-theme/assets/images/download-app.png";
 export default function Footer(props) {
@@ -181,7 +181,7 @@ export default function Footer(props) {
                         <div className="text-center  py-10 text-white  ">
                                 <p>
                                         Copyright ©<span>2020 - 2023 Sire Printing</span> |
-                                        <Link to={CWhref} target="_blank">
+                                        <Link to={CWLink} target="_blank">
                                                 The Custom Websites
                                         </Link>
                                 </p>

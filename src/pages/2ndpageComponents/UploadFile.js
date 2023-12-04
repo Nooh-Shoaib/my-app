@@ -4,7 +4,6 @@ const UploadFile = ({ handleFile }) => {
   const hiddenFileInput = useRef(null);
 
   const handleClick = (e) => {
-    
     hiddenFileInput.current.click();
   };
   const Btn = "Upload A File"
