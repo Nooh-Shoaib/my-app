@@ -146,10 +146,3 @@ export default function ImageWithBox() {
                 </div>
         )
 }
-
-
-
-
-
-
-

@@ -111,87 +111,87 @@ export default function QuoteAdvantages() {
     <div className="border border-gray-300 m-7 rounded-md">
       <form className="lg:flex ">
         <fieldset>
-            <div className=" lg:mb-2 mx-2 items-center md:justify-center md:text-2xl flex justify-start lg:font-medium text-lg font-semibold text-center lg:text-3xl lg:py-6 py-4">
-              GET CUSTOM QUOTE
-            </div>
+          <div className=" lg:mb-2 mx-2 items-center md:justify-center md:text-2xl flex justify-start lg:font-medium text-lg font-semibold text-center lg:text-3xl lg:py-6 py-4">
+            GET CUSTOM QUOTE
+          </div>
 
-            <div className="">
-              {formFields.map((field, index) => (
-                <input
-                  key={index}
-                  type={field.type}
-                  name={field.name}
-                  placeholder={field.placeholder}
-                  className={field.classNames}
+          <div className="">
+            {formFields.map((field, index) => (
+              <input
+                key={index}
+                type={field.type}
+                name={field.name}
+                placeholder={field.placeholder}
+                className={field.classNames}
 
-                />
-              ))}
-              <select className="focus outline-none focus:ring-0 lg:w-20 md:w-24 w-24 mx-1 h-9  border text-sm">
-                <option>Inch</option>
-                <option>mm</option>
-                <option>cm</option>
-              </select>
-            </div>
+              />
+            ))}
+            <select className="focus outline-none focus:ring-0 lg:w-20 md:w-24 w-24 mx-1 h-9  border text-sm">
+              <option>Inch</option>
+              <option>mm</option>
+              <option>cm</option>
+            </select>
+          </div>
 
-            <div className='flex'>
-              <span>
+          <div className='flex'>
+            <span>
               <h4 className="mx-2 lg:text-base text-sm font-semibold">Color:</h4>
               <select className="focus outline-none focus:ring-0 lg:w-36 w-28 md:w-[170px] px-2 mx-2 h-9 border text-base font-semibold">
                 {colorOptions.map((option, index) => (
                   <option className='font-semibold' key={index}>{option}</option>
                 ))}
               </select>
-              </span>
-              <span>
+            </span>
+            <span>
               <h4 className="text-sm lg:text-base font-semibold">*Quantity</h4>
-                <input type="number" className="mx-2 border w-[100px] md:w-[171px] lg:w-[139px] h-9" />
-              </span>
-            </div>
-            
-            <div className='flex'>
-              <span>
+              <input type="number" className="mx-2 border w-[100px] md:w-[171px] lg:w-[139px] h-9" />
+            </span>
+          </div>
+
+          <div className='flex'>
+            <span>
               <h4 className="lg:text-base text-sm font-semibold ">*Full name:</h4>
               <input
                 type="text"
                 className="my-1 w-[110px]  md:w-[170px]  lg:w-[140px] border mx-2 px-2 h-9 placeholder:text-sm"
                 name="fullName"
               />
-</span>
-<span>
+            </span>
+            <span>
               <h4 className="text-sm lg:text-base font-semibold">*Phone</h4>
               <input
                 type="text"
                 className="my-1 w-[110px] lg:w-[140px]  md:w-[170px]  border md:mx-3 mx-2 h-9 px-2 placeholder:text-sm"
                 name="phone"
               />
-              </span>
-            </div>
-            <div>
-              <h2 className='text-base font-semibold'>*Email Address:</h2>
-              <input
-                type="text"
-                className="my-1 w-[240px] md:w-[360px] lg:w-[300px] border mx-2 h-9 px-2 placeholder:text-sm"
-                name="email"
-              />
-            </div>
-            <File />
-            <div>
-              <h2 className='lg:mt-5 font-semibold'> *Message:</h2>
-              <textarea
-                className="border placeholder:text-black placeholder:px-2 py-2 lg:mx-2 mx-0.5 w-[250px] md:w-[360px] lg:w-[300px] placeholder-text-black text-sm"
-                placeholder="Write short message"
-                name="message"
-              ></textarea>
-            </div>
-            <div className='flex lg:justify-end justify-center'>
-              <button
-                type="submit"
-                className="bg-black text-white lg:px-7 md:px-[150px] lg:mb-6 lg:mt-3   px-24 py-2 hover:animate-pulse font-bold"
-              >
-                {button}
-              </button>
+            </span>
+          </div>
+          <div>
+            <h2 className='text-base font-semibold'>*Email Address:</h2>
+            <input
+              type="text"
+              className="my-1 w-[240px] md:w-[360px] lg:w-[300px] border mx-2 h-9 px-2 placeholder:text-sm"
+              name="email"
+            />
+          </div>
+          <File />
+          <div>
+            <h2 className='lg:mt-5 font-semibold'> *Message:</h2>
+            <textarea
+              className="border placeholder:text-black placeholder:px-2 py-2 lg:mx-2 mx-0.5 w-[250px] md:w-[360px] lg:w-[300px] placeholder-text-black text-sm"
+              placeholder="Write short message"
+              name="message"
+            ></textarea>
+          </div>
+          <div className='flex lg:justify-end justify-center'>
+            <button
+              type="submit"
+              className="bg-black text-white lg:px-7 md:px-[150px] lg:mb-6 lg:mt-3   px-24 py-2 hover:animate-pulse font-bold"
+            >
+              {button}
+            </button>
 
-            </div>
+          </div>
         </fieldset>
         <Advantages />
       </form>

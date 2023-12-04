@@ -31,18 +31,18 @@ import LegalPages from './pages/LegalPages';
 import NoPage from "./pages/NoPage";
 
 
-const ComponentSelector = () => {
-  const { slug } = useParams();
-  console.log('Slug:', slug);
+// const ComponentSelector = () => {
+//   const { slug } = useParams();
+//   console.log('Slug:', slug);
 
-  if (slug === 'DynamicRouteComponent') {
-    return <DynamicRouteComponent />;
-  } else if (slug === 'LegalPage') {
-    return <LegalPages />;
-  } else {
-    return (<div>Not Found</div>);
-  }
-};
+//   if (slug === 'DynamicRouteComponent') {
+//     return <DynamicRouteComponent />;
+//   } else if (slug === 'LegalPage') {
+//     return <LegalPages />;
+//   } else {
+//     return (<div>Not Found</div>);
+//   }
+// };
 
 function App() {
 
@@ -51,9 +51,9 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/:slug" element={<LegalPages />} />
+        {/* <Route path="/:slug" element={<LegalPages />} /> */}
         {/* <Route path="/:slug" element={<ComponentSelector />} /> */}
-        {/* <Route path="/:slug" element={<DynamicRouteComponent />} /> */}
+        <Route path="/:slug" element={<DynamicRouteComponent />} />
         <Route path="/products-all" element={<AllProducts />} />
         <Route exact path="/portfolio" element={<Portfolio />} />
         <Route exact path="/cbd-packaging" element={<CBDPackaging />} />

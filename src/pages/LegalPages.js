@@ -14,7 +14,6 @@ const LegalPages = () => {
 
   const fetchPageData = async () => {
     try {
-      // Fetch data from the first endpoint
       const response = await fetch(`${Url}/legalpages/pagedata`);
 
       if (!response.ok) {
@@ -25,7 +24,6 @@ const LegalPages = () => {
       const jsonPagedata = await response.json();
       const pageData = jsonPagedata.find((page) => page.slug === slug) || {};
 
-      // Fetch additional data from the second endpoint
       const additionalResponse = await fetch(`${Url}/remainingLegalData/pagedata`);
 
       if (!additionalResponse.ok) {
@@ -36,7 +34,7 @@ const LegalPages = () => {
       const additionalJsonPagedata = await additionalResponse.json();
       const additionalPageData = additionalJsonPagedata.find((page) => page.slug === slug) || {};
 
-      // Combine data from both endpoints
+      // Combine both endpoints
       const mergedPageData = { ...pageData, ...additionalPageData };
 
       setPagedata(mergedPageData);
@@ -58,7 +56,6 @@ const LegalPages = () => {
     <>
       <Helmet>
         <title>{pagedata?.pagetitle || 'Page Title'}</title>
-        {/* Add other meta tags as needed */}
       </Helmet>
 
       <Layout>
@@ -88,18 +85,17 @@ const LegalPages = () => {
                   <p className='text-base text-justify'>{data.text}</p>
                   {data.phone && (
                     <div className="mt-2">
-                      <h2 className='text-base font-bold'>Phone: </h2>
-                      <Link to={`tel:${data.phone}`} className='text-blue-500 hover:underline'>
+
+                      <Link to={`tel:${data.phone}`} className='hover:text-blue-500 font-bold'>
                         {data.phone}
                       </Link>
                     </div>
                   )}
                   {data.email && (
                     <div className="mt-2">
-                      <h2 className='text-base font-bold'>Email: </h2>
-                      <a href={`mailto:${data.email}`} className='text-blue-500 hover:underline'>
+                      <Link to={`mailto:${data.email}`} className='hover:text-blue-500 font-bold'>
                         {data.email}
-                      </a>
+                      </Link>
                     </div>
                   )}
                 </div>
