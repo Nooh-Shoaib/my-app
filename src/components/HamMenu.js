@@ -5,7 +5,7 @@ import CustomBoxes from '../pages/2ndpageComponents/CustomBoxes';
 import ButtonQuote from '../pages/2ndpageComponents/ButtonQuote';
 
 let menuArr = [
-  { url: "/all-products", label: "All Products", key: "allProducts" },
+  { url: "/products-all", label: "All Products", key: "allProducts" },
   { url: "/cbd-packaging", label: "CBD Packaging", key: "cbdPackaging" },
   { label: <span><CustomBoxes /></span>, key: "customBoxes" },
   { url: "/custom-box-styles", label: "Custom Box Styles", key: "customBoxStyles" },

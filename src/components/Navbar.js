@@ -5,7 +5,7 @@ import ButtonQuote from '../pages/2ndpageComponents/ButtonQuote';
 
 export default function Navbar() {
   const navItems = [
-    { text: 'All Products', link: 'products-all', key: 'all-Products' },
+    { text: 'All Products', link: '/products-all', key: 'all-Products' },
     { text: 'CBD Packaging', link: '/cbd-packaging', key: 'cbdPackaging' },
     { text: <CustomBoxes />, key: 'custom-boxes' },
     { text: 'Custom Box Styles', link: '/custom-box-styles', key: 'customBoxStyles' },
@@ -44,3 +44,19 @@ export default function Navbar() {
     </nav>
   );
 }
+
+
+
+
+{/* <h1 className="bg-slate-200 h-12 flex items-center">
+          <Link to="/" className=" mx-7 font-semibold">Home</Link>
+          <span className="text-xs">&raquo;&nbsp;&nbsp;</span>
+          <Link to={product?.categories[0].categorySlug} className=" mx-7 font-semibold">{product?.categories[0].name}</Link>
+          <span className="text-xs">&raquo;&nbsp;&nbsp;</span>
+          <span className="text-amber-500 font-semibold"><em>{product?.productTitle}</em></span>
+        </h1> */}
+        {/* {Array(5)
+              .fill(null)
+              .map((_, index) => (
+                <i key={index} className="fa-solid fa-star text-yellow-300"></i>
+              ))} */}

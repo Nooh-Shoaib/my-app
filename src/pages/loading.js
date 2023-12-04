@@ -6,7 +6,7 @@ const LoadingComponent = () => {
   useEffect(() => {
     const loadingTimeout = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 2000);
 
     return () => clearTimeout(loadingTimeout);
   }, []);

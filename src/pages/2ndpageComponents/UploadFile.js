@@ -1,43 +1,52 @@
 import React, { useRef } from 'react';
 
-function FileUploadButton() {
-  // Create a ref for the file input element
-  const fileInputRef = useRef(null);
+const UploadFile = ({ handleFile }) => {
+  const hiddenFileInput = useRef(null);
 
-  // Function to handle file selection
-  const handleFileSelect = () => {
-    fileInputRef.current.click(); // Trigger the file input element
+  const handleClick = (e) => {
+    
+    hiddenFileInput.current.click();
   };
+  const Btn = "Upload A File"
+  const handleChange = async (e) => {
+    const fileUploaded = e.target.files[0];
 
-  // Function to handle file upload
-  const handleFileUpload = (e) => {
-    const selectedFile = e.target.files[0];
-    if (selectedFile) {
-      // You can perform actions with the selected file here
-      console.log('Selected File:', selectedFile);
+    try {
+
+      await uploadFileAsync(fileUploaded);
+      handleFile(fileUploaded);
+    } catch (error) {
+      console.error('Error uploading file:', error.message);
     }
   };
 
+  const uploadFileAsync = () => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve();
+        reject(new Error('File upload failed'));
+      }, 1500);
+    });
+  };
+
   return (
-    <div>
-      {/* Hidden file input element */}
+    <div className='flex lg:justify-center'>
+      <button
+        className="bg-white border-2 border-black md:w-[360px] w-[250px] mx-0.5 py-2 lg:w-72 lg:mx-3 rounded-lg my-2 md:mx-2"
+        onClick={handleClick}>
+
+        {Btn}
+      </button>
       <input
         type="file"
-        accept=".pdf, .doc, .docx, .png, .jpg" // Specify allowed file types
-        ref={fileInputRef}
+        onChange={handleChange}
+        ref={hiddenFileInput}
+        className="hidden-file-input"
         style={{ display: 'none' }}
-        onChange={handleFileUpload}
       />
-
-      {/* Button to trigger file selection */}
-      <button
-        onClick={handleFileSelect}
-        className="bg-white  px-4 border-2 border-black md:w-48 w-64 mx-5 py-2 lg:w-96 lg:mx-3 rounded-lg my-2 md:mx-2"
-      >
-        Upload File
-      </button>
     </div>
   );
-}
+};
 
-export default FileUploadButton;
+export default UploadFile;
+

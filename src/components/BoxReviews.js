@@ -51,4 +51,3 @@ const BoxReviews = () => {
 };
 
 export default BoxReviews;
-// fjhdfghgdfhjkfh

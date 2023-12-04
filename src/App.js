@@ -1,10 +1,7 @@
 import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import AboutUs from "./pages/AboutUs";
-import Blogs from "./pages/Blogs";
 import CBDPackaging from "./pages/CBDPackaging";
 import ChristmasBoxes from "./pages/ChristmasBoxes";
-import ContactUs from "./pages/ContactUs";
 import CorrugatedBoxes from "./pages/CorrugatedBoxes";
 import CosmeticPackagingBoxes from "./pages/CosmeticPackagingBoxes";
 import CustomMedicinePackaging from "./pages/Custom Medicine Packaging";
@@ -17,22 +14,36 @@ import CustomPackagingBoxes from "./pages/CustomPackagingBoxes";
 import CustomPillowPackagingBoxes from "./pages/CustomPillowPackagingBoxes";
 import CustomStickers from "./pages/CustomStickers";
 import DynamicRouteComponent from "./pages/DynamicRouteComponent";
-import AllProducts from "./pages/AllProducts";
 import Portfolio from "./pages/DynamicPortfolio";
 import EcoFriendly from "./pages/EcoFriendly";
 import FoodPackaging from "./pages/FoodPackaging";
 import GiftPackagingBoxes from "./pages/GiftPackagingBoxes";
-import Home from "./pages/Home";
 import KraftPaperBoxes from "./pages/KraftPaperBoxes";
-import NoPage from "./pages/NoPage";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
 import RigidBoxes from "./pages/RigidBoxes";
 import SoapPackagingBoxes from "./pages/SoapPackagingBoxes";
-import TermsAndConditions from "./pages/TermsAndConditions";
 import WovenEmbroideredPatches from "./pages/Woven Embroidered Patches";
-import CombinedRoutes from "./pages/CombinedRoutes";
-import NavAndDynamicRoutes from "./pages/NavAndDynamicRoutes";
+import Home from "./pages/Home";
+import AllProducts from "./pages/AllProducts";
+import Blogs from "./pages/Blogs";
+import ContactUs from "./pages/ContactUs";
+import LegalPage from './pages/LegalPages';
+import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import NoPage from "./pages/NoPage";
+// import Layout from './layout';
 
+
+// const ComponentSelector = () => {
+//   const { slug } = useParams();
+
+//   if (slug === 'DynamicRouteComponent') {
+//     return <LegalPage />;
+//   } else if (slug === 'LegalPage') {
+//     return <DynamicRouteComponent />;
+//   } else {
+//     return (<div>Not Found</div>);
+ // }
+// };
 
 function App() {
 
@@ -41,11 +52,9 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<Home />} />
+        {/* <Route path="/:slug" element={<LegalPage />} /> */}
         <Route path="/:slug" element={<DynamicRouteComponent />} />
-        {/* <Route path="/:slug" element={<AllProducts />} /> */}
-        {/* <Route path="/:slug" element={<CombinedRoutes />} /> */}
-        {/* <Route path="/:slug" element={<NavAndDynamicRoutes />} /> */}
-        {/* <Route path="/MainComponent" element={<MainComponent />} /> */}
+        <Route path="/products-all" element={<AllProducts />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route exact path="/cbd-packaging" element={<CBDPackaging />} />
         <Route exact path="/custom-retail-packaging" element={<CustomRetailPackaging />} />
@@ -67,11 +76,8 @@ function App() {
         <Route exact path="/custom-box-styles" element={<CustomBoxStyles />} />
         <Route exact path="/custom-stickers" element={<CustomStickers />} />
         <Route exact path="/christmas-boxes" element={<ChristmasBoxes />} />
-        <Route exact path="/about-us" element={<AboutUs />} />
         <Route exact path="/contact-us" element={<ContactUs />} />
         <Route exact path="/blogs" element={<Blogs />} />
-        <Route exact path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route exact path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route exact path="*" element={<NoPage />} />
       </Routes>
     </Router>

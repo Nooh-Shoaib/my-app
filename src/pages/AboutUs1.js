@@ -2,6 +2,7 @@ import React from 'react'
 import Layout from "../layout";
 import { TabTitle } from './utils/GeneralFunction';
 import { Link } from "react-router-dom";
+import { Helmet } from 'react-helmet';
 
 const pageTitle = "About Us"
 const homeLink = "/"
@@ -13,8 +14,11 @@ const AboutUs = () => {
 
   TabTitle(siteTitle);
 
-  return (
-
+  return (<>
+  <Helmet>
+        <title> About Us | Sire Printing</title>
+        <meta name="description" content="This Is About Our Website" />
+      </Helmet>
     <Layout>
      <h2 className="bg-slate-200 h-14 flex items-center"><Link to={homeLink} className="mx-7 font-semibold">{linkLabel}</Link><span className="text-xs">&raquo;&nbsp;&nbsp;</span><span className="text-amber-500 font-semibold"><em> {Label}</em></span></h2>
       <div className='bg-white '>
@@ -35,6 +39,7 @@ const AboutUs = () => {
       </div>
 
     </Layout>
+    </>
   )
 }
 export default AboutUs;

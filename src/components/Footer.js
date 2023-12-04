@@ -41,7 +41,7 @@ let footer2 = [
         { label: "Portfolio", link: '/portfolio' },
         { label: "Blogs", link: '/blogs' },
         { label: "Privacy Policy", link: '/privacy-policy' },
-        { label: "Terms And Conditions", link: '/terms-and-conditions' },
+        { label: "Terms And Conditions", link: '/terms-conditions' },
 ];
 
 const Footerlinks = () => {
