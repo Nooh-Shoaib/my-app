@@ -14,7 +14,7 @@ export default function Navbar() {
     { text: 'Christmas Boxes', link: '/christmas-boxes', key: 'christmasBoxes' },
     { text: 'Portfolio', link: '/portfolio', key: 'dynamicPortfolio' },
   ];
-  
+
 
   const logoUrl = 'https://sireprinting.com/img/brand/Sire-Printing.png';
   // console.log('link is clicked ');
@@ -22,23 +22,23 @@ export default function Navbar() {
     <nav className="hidden lg:block sticky top-0 bg-white z-20">
       <div className=" shadow-md">
         <ul className="flex items-center justify-center space-x-6 h-24 ">
-        {navItems.map((item) => (
-  <li key={item.key} className="text-black text-[15px] font-semibold hover:text-amber-500">
-    {item.text === 'logo' ? (
-      <Link to='/'>
-        <img src={logoUrl} alt="Sire Printing" />
-      </Link>
-    ) : (
-      item.link ? (
-        <Link to={item.link}>{item.text}</Link>
-      ) : (
-        item.text
-      )
-    )}
-  </li>
-))}
+          {navItems.map((item) => (
+            <li key={item.key} className="text-black text-[15px] font-semibold hover:text-amber-500">
+              {item.text === 'logo' ? (
+                <Link to='/'>
+                  <img src={logoUrl} alt="Sire Printing" />
+                </Link>
+              ) : (
+                item.link ? (
+                  <Link to={item.link}>{item.text}</Link>
+                ) : (
+                  item.text
+                )
+              )}
+            </li>
+          ))}
 
-        <ButtonQuote/>
+          <ButtonQuote />
         </ul>
       </div>
     </nav>
@@ -55,7 +55,7 @@ export default function Navbar() {
           <span className="text-xs">&raquo;&nbsp;&nbsp;</span>
           <span className="text-amber-500 font-semibold"><em>{product?.productTitle}</em></span>
         </h1> */}
-        {/* {Array(5)
+{/* {Array(5)
               .fill(null)
               .map((_, index) => (
                 <i key={index} className="fa-solid fa-star text-yellow-300"></i>

@@ -14,6 +14,7 @@ const LegalPages = () => {
 
   const fetchPageData = async () => {
     try {
+      // Fetch data from the first endpoint
       const response = await fetch(`${Url}/legalpages/pagedata`);
 
       if (!response.ok) {
@@ -23,7 +24,22 @@ const LegalPages = () => {
 
       const jsonPagedata = await response.json();
       const pageData = jsonPagedata.find((page) => page.slug === slug) || {};
-      setPagedata(pageData);
+
+      // Fetch additional data from the second endpoint
+      const additionalResponse = await fetch(`${Url}/remainingLegalData/pagedata`);
+
+      if (!additionalResponse.ok) {
+        console.error(`Error fetching additional pagedata for ${slug}: ${additionalResponse.statusText}`);
+        throw new Error(`Error fetching additional pagedata for ${slug}: ${additionalResponse.statusText}`);
+      }
+
+      const additionalJsonPagedata = await additionalResponse.json();
+      const additionalPageData = additionalJsonPagedata.find((page) => page.slug === slug) || {};
+
+      // Combine data from both endpoints
+      const mergedPageData = { ...pageData, ...additionalPageData };
+
+      setPagedata(mergedPageData);
       setLoading(false);
     } catch (error) {
       console.error(`Error fetching pagedata for ${slug}:`, error.message);
@@ -36,6 +52,7 @@ const LegalPages = () => {
   useEffect(() => {
     fetchPageData();
   }, [slug]);
+
 
   return (
     <>
@@ -63,7 +80,7 @@ const LegalPages = () => {
             </h1>
 
             <div className='px-48 py-12'>
-              <h1 className="my-4 text-4xl font-semibold">{pagedata?.pagetitle}</h1>
+              <h1 className="my-14 text-5xl font-semibold">{pagedata?.pagetitle}</h1>
               {pagedata?.description && pagedata?.description.map((data, index) => (
                 <div key={index} className="mb-6">
                   <p className='text-base text-justify'>{data.firsttext}</p>

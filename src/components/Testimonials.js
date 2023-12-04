@@ -35,23 +35,23 @@ export default function CustomTestimonials({ heading }) {
 
   const clientHTML = testimonialsData[currentTestimonial].client;
   useEffect(() => {
-    const interval = setInterval(nextTestimonial, 5000); 
+    const interval = setInterval(nextTestimonial, 5000);
     return () => clearInterval(interval);
   }, [currentTestimonial]);
 
   return (
     <div className="pt-24 py-4">
       <h2 className="text-center text-4xl font-semibold text-black">
-      {heading}
-    </h2>
-    <div className="lg:bg-black md:bg-black lg:py-24 md:py-24 flex justify-center">
+        {heading}
+      </h2>
+      <div className="lg:bg-black md:bg-black lg:py-24 md:py-24 flex justify-center">
 
         <div className="custom-testimonial-content">
           <img src={testimonialsData[currentTestimonial].imgSrc} alt="Client" className="custom-testimonial-image" />
-          <p className="custom-testimonial-text text-base text-center">{testimonialsData[currentTestimonial].text}</p>
-          <p className="custom-testimonial-client" dangerouslySetInnerHTML={{ __html: clientHTML }}></p>
+          <p className="custom-testimonial-text lg:text-base md:text-base text-sm text-center ">{testimonialsData[currentTestimonial].text}</p>
+          <p className="custom-testimonial-client lg:text-base md:text-base text-sm" dangerouslySetInnerHTML={{ __html: clientHTML }}></p>
         </div>
-       
+
       </div>
     </div>
   );
