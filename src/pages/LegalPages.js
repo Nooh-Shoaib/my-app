@@ -66,7 +66,7 @@ const LegalPages = () => {
           <>
             {pagedata.image && <img src={pagedata.image} alt='' className='w-full' />}
 
-            <h1 className="bg-slate-200 h-16 flex items-center">
+            <h1 className="bg-slate-100 h-16 flex items-center">
               <Link to="/" className="mx-4 font-bold hover:text-blue-600">
                 Home
               </Link>
@@ -76,13 +76,13 @@ const LegalPages = () => {
               </span>
             </h1>
 
-            <div className='px-48 py-12'>
-              <h1 className="my-14 text-5xl font-semibold">{pagedata?.pagetitle}</h1>
+            <div className='lg:px-48 px-5 lg:py-12 py-7'>
+              <h1 className="lg:my-14 my-6 lg:text-5xl text-3xl font-semibold">{pagedata?.pagetitle}</h1>
               {pagedata?.description && pagedata?.description.map((data, index) => (
                 <div key={index} className="mb-6">
-                  <p className='text-base text-justify'>{data.firsttext}</p>
-                  <h2 className='text-3xl font-semibold'>{data.heading}</h2>
-                  <p className='text-base text-justify'>{data.text}</p>
+                  <p className='lg:text-base text-sm md:text-base text-justify'>{data.firsttext}</p>
+                  <h2 className='text-2xl font-semibold'>{data.heading}</h2>
+                  <p className='lg:text-base md:text-base text-sm lg:text-justify'>{data.text}</p>
                   {data.phone && (
                     <div className="mt-2">
 

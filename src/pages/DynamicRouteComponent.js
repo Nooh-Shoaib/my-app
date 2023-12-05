@@ -203,7 +203,9 @@ const DynamicRouteComponent = () => {
   const ProductView = ({ product }) => {
     if (product.slug === undefined) {
       return (
-        <ProductNotFound />
+        <div>
+          {/* <ProductNotFound /> */}
+        </div>
       );
     }
     return (

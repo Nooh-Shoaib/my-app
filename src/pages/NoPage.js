@@ -10,7 +10,7 @@ export default function NoPage() {
 
   return (
     <body className='bg-amber-50 w-full h-screen'>
-      <div className='h-52  py-64 mx-24 w-96 '>
+      <div className='h-52  py-52 mx-24 w-96 '>
         <h1 className='text-3xl flex justify-center py-5 text-black '>402 PAGE NOT FOUND</h1>
         <p className='container px-5 text-xs py-4'><em>The Requested URL/your-402-page-stinks was not found on this server<hr /> {customMessage}</em></p>
 
