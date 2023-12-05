@@ -1,29 +1,28 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
 
 
 let hoverimgArr = [
         {
                 imageUrl:
-                        "https://sireprinting.com/frontend-theme/assets/images/cardboard.jpg ",
+                        "https://sireprinting.com/frontend-theme/assets/images/cardboard.webp",
                 label: " Cardboard",
                 paragraph: "Versatile and recyclable, it's a go-to for packaging needs. Affordable, sturdy, and customizable for any product design.",
         },
         {
                 imageUrl:
-                        " https://sireprinting.com/frontend-theme/assets/images/kraft.jpg",
+                        "https://sireprinting.com/frontend-theme/assets/images/kraft.avif",
                 label: " Kraft",
                 paragraph: "An eco-friendly, durable choice. Ideal for packaging, it's both robust and recyclable. A sustainable solution for your business needs",
         },
         {
                 imageUrl:
-                        " https://sireprinting.com/frontend-theme/assets/images/rigid.png",
+                        "https://sireprinting.com/frontend-theme/assets/images/rigid.avif",
                 label: " Rigid",
                 paragraph: " Rigid stock material offers superior durability and elegance for packaging. The perfect choice for premium products requiring a luxe feel.",
         },
         {
                 imageUrl:
-                        "https://sireprinting.com/frontend-theme/assets/images/corrugated.png ",
+                        "https://sireprinting.com/frontend-theme/assets/images/corrugated.avif",
                 label: " Corrugated",
                 paragraph: "The go-to for shipping needs. Durable, lightweight, and protective, it's the eco-friendly choice for your product's journey.",
         },
@@ -59,49 +58,49 @@ const Hoverimgs = () => {
 let textimgArr = [
         {
                 imageUrl:
-                        " https://sireprinting.com/frontend-theme/assets/images/stamping.png",
+                        "https://sireprinting.com/frontend-theme/assets/images/stamping.avif",
                 label: " Foil Stamping",
                 paragraph: " A touch of luxury for your packaging. This technique adds metallic shine and depth, elevating your product's visual appeal.",
         },
         {
                 imageUrl:
-                        " https://sireprinting.com/frontend-theme/assets/images/spot.png",
+                        "https://sireprinting.com/frontend-theme/assets/images/spot.avif",
                 label: "Spot UV ",
                 paragraph: "Enhance your design with high-shine detail. This technique adds texture and depth, spotlighting key features of your product's packaging. ",
         },
         {
                 imageUrl:
-                        "https://sireprinting.com/frontend-theme/assets/images/gloss.png ",
+                        "https://sireprinting.com/frontend-theme/assets/images/gloss.avif",
                 label: "Gloss ",
                 paragraph: "Amp up your packaging's appeal with its vibrant shine. It enhances color and detail, making your product stand out on the shelves. ",
         },
         {
                 imageUrl:
-                        " https://sireprinting.com/frontend-theme/assets/images/holographic.png",
+                        "https://sireprinting.com/frontend-theme/assets/images/holographic.avif",
                 label: " Holographic Foiling",
                 paragraph: "Add a futuristic flair to your packaging. It offers a captivating, multi-dimensional shine that catches the eye immediately. ",
         },
         {
                 imageUrl:
-                        "https://sireprinting.com/frontend-theme/assets/images/embossing.png ",
+                        "https://sireprinting.com/frontend-theme/assets/images/embossing.avif",
                 label: " Embossing",
                 paragraph: " Elevate your packaging with a tactile, 3D effect. It adds a touch of elegance and sophistication, making your brand truly stand out.",
         },
         {
                 imageUrl:
-                        "https://sireprinting.com/frontend-theme/assets/images/debossed.png ",
+                        "https://sireprinting.com/frontend-theme/assets/images/debossed.avif",
                 label: " Debossing",
                 paragraph: " Add a unique element to your packaging. This method creates indented detail, lending an understated, chic aesthetic to your product.",
         },
         {
                 imageUrl:
-                        " https://sireprinting.com/frontend-theme/assets/images/matte.png",
+                        "https://sireprinting.com/frontend-theme/assets/images/matte.avif",
                 label: " Matte",
                 paragraph: " This finish provides a smooth and decent dull look, non-reflective surface, adding a touch of elegance to your packaging.",
         },
         {
                 imageUrl:
-                        " https://sireprinting.com/frontend-theme/assets/images/softtouch.png",
+                        "https://sireprinting.com/frontend-theme/assets/images/softtouch.avif",
                 label: " Soft Touch Lamination",
                 paragraph: " Infuse a touch of luxury into your packaging. It provides a velvety feel to your packaging, making your product irresistible to touch.",
         },
