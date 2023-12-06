@@ -9,6 +9,7 @@ import Url from './utils/Url';
 import ProductNotFound from './utils/ProductNotFound';
 import NoPage from './NoPage';
 
+
 const AllProducts = () => {
   const [loading, setLoading] = useState(true);
   const [mergedData, setMergedData] = useState([]);
@@ -19,14 +20,7 @@ const AllProducts = () => {
     try {
       console.log('Fetching data...');
 
-      const [
-        firstResponse,
-        secondResponse,
-        thirdResponse,
-        fourthResponse,
-        fifthResponse,
-        sixthResponse,
-      ] = await Promise.all([
+      const responseArray = await Promise.all([
         axios.get(`${Url}/allproducts/data`),
         axios.get(`${Url}/leftoverdata/data`),
         axios.get(`${Url}/otherdata/data`),
@@ -35,24 +29,17 @@ const AllProducts = () => {
         axios.get(`${Url}/catalog/cbdData`),
       ]);
 
-      console.log('Responses:', firstResponse, secondResponse, thirdResponse, fourthResponse, fifthResponse, sixthResponse);
+      console.log('Responses:', responseArray);
 
-      const firstData = firstResponse.data;
-      const secondData = secondResponse.data;
-      const thirdData = thirdResponse.data;
-      const fourthData = fourthResponse.data;
-      const fifthData = fifthResponse.data;
-      const sixthData = sixthResponse.data;
+      const data = responseArray.map(response => response.data);
 
-      console.log('Data:', firstData, secondData, thirdData, fourthData, fifthData, sixthData);
+      console.log('Data:', data);
 
-      // Check if data is available for all endpoints
-      if (!firstData || !secondData || !thirdData || !fourthData || !fifthData || !sixthData) {
-        throw new Error('Data is missing for one or more endpoints.');
-      }
+      // if (data.some(categoryData => !categoryData)) {
+      //   throw new Error('Data is missing for one or more endpoints.');
+      // }
 
-      // Combine data from all endpoints
-      const combinedData = [...firstData, ...secondData, ...thirdData, ...fourthData, ...fifthData, ...sixthData];
+      const combinedData = data.reduce((accumulator, currentData) => [...accumulator, ...currentData], []);
       setMergedData(combinedData);
     } catch (error) {
       console.error('Error fetching API data:', error.message);
@@ -66,9 +53,10 @@ const AllProducts = () => {
     getApiData();
   }, [getApiData]);
 
+
   const productImages = (category) => {
     if (!category || !category.allProductImages) {
-      return null; // or handle it in a way that makes sense for your application
+      return null;
     }
 
     return (
