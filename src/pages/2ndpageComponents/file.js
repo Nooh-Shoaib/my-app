@@ -38,6 +38,7 @@ const File = ({ handleFile }) => {
       </button>
       <input
         type="file"
+        accept=".pdf, .doc, .docx, .png, .jpg" // Specify allowed file types
         onChange={handleChange}
         ref={hiddenFileInput}
         style={{ display: 'none' }}

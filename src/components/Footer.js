@@ -180,8 +180,8 @@ export default function Footer(props) {
                         </section>
                         <div className="text-center  py-10 text-white  ">
                                 <p>
-                                        Copyright ©<span>2020 - 2023 Sire Printing</span> |
-                                        <Link to={CWLink} target="_blank">
+                                        Copyright ©<span>2020 - 2023 Sire Printing</span> &nbsp;| &nbsp;
+                                        <Link to={CWLink} target="_blank" className="hover:underline">
                                                 The Custom Websites
                                         </Link>
                                 </p>

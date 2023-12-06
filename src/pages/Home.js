@@ -7,10 +7,9 @@ import AutoImageSlider from "../components/Herosection";
 import FAQS from "../components/FAQS";
 import Layout from "../layout";
 import { TabTitle } from "./utils/GeneralFunction";
-import Icons from "../components/Icons";
 
 const Home = () => {
-TabTitle('Custom Packaging Boxes Wholesale | Printed Boxes With Logo | sireprinting')
+        TabTitle('Custom Packaging Boxes Wholesale | Printed Boxes With Logo | sireprinting')
 
         return (
 
@@ -23,7 +22,6 @@ TabTitle('Custom Packaging Boxes Wholesale | Printed Boxes With Logo | sireprint
                                 <HowWork />
 
                         </div>
-                        <Icons />
                         <div className="bg-white">
                                 <Images heading="Enjoy Sireprinting" str="PERKS" />
                         </div>

@@ -9,7 +9,6 @@ import Title from './utils/Title';
 import Url from './utils/Url';
 import ProductNotFound from './utils/ProductNotFound';
 import NoPage from './NoPage';
-// ... (your imports)
 
 const AllProducts = () => {
   const [loading, setLoading] = useState(true);
@@ -24,7 +23,7 @@ const AllProducts = () => {
         axios.get(`${Url}/allproducts/data`),
         axios.get(`${Url}/LeftOverData/data`),
         axios.get(`${Url}/otherdata/data`),
-        axios.get(`${Url}/nextdata/data`), // Add the new endpoint
+        axios.get(`${Url}/nextdata/data`),
       ]);
 
       console.log('Responses:', firstApiResponse, secondApiResponse, thirdApiResponse, fourthApiResponse);
@@ -32,7 +31,7 @@ const AllProducts = () => {
       const firstData = firstApiResponse.data;
       const secondData = secondApiResponse.data;
       const thirdData = thirdApiResponse.data;
-      const fourthData = fourthApiResponse.data; // Retrieve data from the new endpoint
+      const fourthData = fourthApiResponse.data;
       console.log('Data:', firstData, secondData, thirdData, fourthData);
 
       // Combine data from all endpoints

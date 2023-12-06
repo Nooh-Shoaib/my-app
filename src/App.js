@@ -51,7 +51,7 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        {/* <Route path="/:slug" element={<LegalPages />} /> */}
+        <Route path="/:slug" element={<LegalPages />} />
         {/* <Route path="/:slug" element={<ComponentSelector />} /> */}
         <Route path="/:slug" element={<DynamicRouteComponent />} />
         <Route path="/products-all" element={<AllProducts />} />

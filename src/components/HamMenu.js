@@ -35,7 +35,7 @@ export default function HamMenu() {
 
 
   return (
-    <nav className="bg-white text-gray-900 lg:hidden sticky top-0 z-10 ">
+    <nav className="bg-white text-gray-900 lg:hidden sticky top-0 z-10 shadow-md">
       <div className="container mx-auto flex justify-between ">
         <div className="p-4 text-xl ">
           <ul className="flex  md:space-x-60 space-x-16">
@@ -66,7 +66,7 @@ export default function HamMenu() {
             </li>
 
             <div>
-              <Link to="#">
+              <Link to="/">
                 <img src={img} alt="Sire Printing Logo" className='' />
               </Link>
             </div>
