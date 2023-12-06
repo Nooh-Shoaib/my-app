@@ -27,8 +27,10 @@ import Home from "./pages/Home";
 import AllProducts from "./pages/AllProducts";
 import Blogs from "./pages/Blogs";
 import ContactUs from "./pages/ContactUs";
-import LegalPages from './pages/LegalPages';
 import NoPage from "./pages/NoPage";
+import AboutUs from "./pages/AboutUs";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermaAndComditions from "./pages/TermaAndComditions";
 
 
 // const ComponentSelector = () => {
@@ -51,12 +53,11 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/:slug" element={<LegalPages />} />
         {/* <Route path="/:slug" element={<ComponentSelector />} /> */}
-        <Route path="/:slug" element={<DynamicRouteComponent />} />
-        <Route path="/products-all" element={<AllProducts />} />
+        {/* <Route path="/:slug" element={<DynamicRouteComponent />} /> */}
+        <Route path="/:slug" element={<AllProducts />} />
         <Route exact path="/portfolio" element={<Portfolio />} />
-        <Route exact path="/cbd-packaging" element={<CBDPackaging />} />
+        {/* <Route exact path="/cbd-packaging" element={<CBDPackaging />} /> */}
         <Route exact path="/custom-retail-packaging" element={<CustomRetailPackaging />} />
         <Route exact path="/rigid-boxes" element={<RigidBoxes />} />
         <Route exact path="/custom-hang-tags" element={<CustomHangTags />} />
@@ -76,6 +77,9 @@ function App() {
         <Route exact path="/custom-box-styles" element={<CustomBoxStyles />} />
         <Route exact path="/custom-stickers" element={<CustomStickers />} />
         <Route exact path="/christmas-boxes" element={<ChristmasBoxes />} />
+        <Route exact path="/about-us" element={<AboutUs />} />
+        <Route exact path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route exact path="/terms-conditions" element={<TermaAndComditions />} />
         <Route exact path="/contact-us" element={<ContactUs />} />
         <Route exact path="/blogs" element={<Blogs />} />
         <Route exact path="*" element={<NoPage />} />

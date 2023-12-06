@@ -3,7 +3,6 @@ import LoadingComponent from './loading';
 import { Link } from 'react-router-dom';
 import Layout from '../layout';
 import Quote from "./2ndpageComponents/beatQuote";
-import { Helmet } from 'react-helmet';
 import axios from 'axios';
 import Title from './utils/Title';
 import Url from './utils/Url';
@@ -13,44 +12,65 @@ import NoPage from './NoPage';
 const AllProducts = () => {
   const [loading, setLoading] = useState(true);
   const [mergedData, setMergedData] = useState([]);
+  const [error, setError] = useState(null);
 
   const getApiData = useCallback(async () => {
     setLoading(true);
     try {
       console.log('Fetching data...');
 
-      const [firstApiResponse, secondApiResponse, thirdApiResponse, fourthApiResponse] = await Promise.all([
+      const [
+        firstResponse,
+        secondResponse,
+        thirdResponse,
+        fourthResponse,
+        fifthResponse,
+        sixthResponse,
+      ] = await Promise.all([
         axios.get(`${Url}/allproducts/data`),
-        axios.get(`${Url}/LeftOverData/data`),
+        axios.get(`${Url}/leftoverdata/data`),
         axios.get(`${Url}/otherdata/data`),
         axios.get(`${Url}/nextdata/data`),
+        axios.get(`${Url}/entireinventory/data`),
+        axios.get(`${Url}/catalog/cbdData`),
       ]);
 
-      console.log('Responses:', firstApiResponse, secondApiResponse, thirdApiResponse, fourthApiResponse);
+      console.log('Responses:', firstResponse, secondResponse, thirdResponse, fourthResponse, fifthResponse, sixthResponse);
 
-      const firstData = firstApiResponse.data;
-      const secondData = secondApiResponse.data;
-      const thirdData = thirdApiResponse.data;
-      const fourthData = fourthApiResponse.data;
-      console.log('Data:', firstData, secondData, thirdData, fourthData);
+      const firstData = firstResponse.data;
+      const secondData = secondResponse.data;
+      const thirdData = thirdResponse.data;
+      const fourthData = fourthResponse.data;
+      const fifthData = fifthResponse.data;
+      const sixthData = sixthResponse.data;
+
+      console.log('Data:', firstData, secondData, thirdData, fourthData, fifthData, sixthData);
+
+      // Check if data is available for all endpoints
+      if (!firstData || !secondData || !thirdData || !fourthData || !fifthData || !sixthData) {
+        throw new Error('Data is missing for one or more endpoints.');
+      }
 
       // Combine data from all endpoints
-      const combinedData = [...firstData, ...secondData, ...thirdData, ...fourthData];
+      const combinedData = [...firstData, ...secondData, ...thirdData, ...fourthData, ...fifthData, ...sixthData];
       setMergedData(combinedData);
     } catch (error) {
       console.error('Error fetching API data:', error.message);
-      setMergedData([]);
+      setError(error);
     } finally {
       setLoading(false);
     }
   }, []);
 
-
   useEffect(() => {
     getApiData();
-  }, []);
+  }, [getApiData]);
 
   const productImages = (category) => {
+    if (!category || !category.allProductImages) {
+      return null; // or handle it in a way that makes sense for your application
+    }
+
     return (
       <div>
         <h1 className="w-full text-center my-12 text-4xl font-semibold">
@@ -83,22 +103,29 @@ const AllProducts = () => {
     );
   };
 
+
   return (
     <Layout>
       <div>
         {loading && <LoadingComponent />}
-        {!loading && !mergedData.length && <NoPage />}
+        {error && <div>Error fetching API data: {error.message}</div>}
+        {!loading && !error && !mergedData.length && <NoPage />}
         {!loading && mergedData && mergedData.length > 0 && (
           <div>
             {mergedData.map((category, categoryIndex) => (
               <div key={categoryIndex}>
                 <div className="py-10 lg:flex md:flex relative">
                   {productImages(category)}
-                  {/* Render Quote component outside the mapping loop */}
-                  <Quote imageCount={mergedData.reduce((total, category) => total + category.allProductImages.length, 0)} />
+                  <Quote />
                 </div>
               </div>
             ))}
+            {mergedData[0]?.description && mergedData[0].description.length > 0 && (
+              <>
+                <h2>{mergedData[0].description[0].heading}</h2>
+                <p>{mergedData[0].description[0].text}</p>
+              </>
+            )}
           </div>
         )}
       </div>
