@@ -6,12 +6,12 @@ import ButtonQuote from './ButtonQuote';
 export default function Navbar() {
   const navItems = [
     { text: 'All Products', link: '/products-all', key: 'all-Products' },
-    { text: 'CBD Packaging', link: '/products/cbd-packaging', key: 'cbdPackaging' },
+    { text: 'CBD Packaging', link: '/cbd-packaging', key: 'cbdPackaging' },
     { text: <CustomBoxes />, key: 'custom-boxes' },
-    { text: 'Custom Box Styles', link: '/products/custom-box-styles', key: 'customBoxStyles' },
+    { text: 'Custom Box Styles', link: '/custom-box-styles', key: 'customBoxStyles' },
     { text: 'logo', key: 'logo' },
-    { text: 'Custom Stickers', link: '/products/custom-stickers', key: 'customStickers' },
-    { text: 'Christmas Boxes', link: '/products/christmas-boxes', key: 'christmasBoxes' },
+    { text: 'Custom Stickers', link: '/custom-stickers', key: 'customStickers' },
+    { text: 'Christmas Boxes', link: '/christmas-boxes', key: 'christmasBoxes' },
     { text: 'Portfolio', link: '/portfolio', key: 'dynamicPortfolio' },
   ];
 

@@ -1,13 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import LoadingComponent from './loading';
-import { Link } from 'react-router-dom';
 import Layout from '../components/layout';
-import Quote from "../components/beatQuote";
 import axios from 'axios';
-import Title from '../utils/Title';
 import Url from '../utils/Url';
-import ProductNotFound from '../utils/ProductNotFound';
-import NoPage from './NoPage';
 import Products from '../components/products';
 
 const AllProducts = () => {
@@ -20,25 +15,29 @@ const AllProducts = () => {
     try {
       console.log('Fetching data...');
 
-      const responseArray = await Promise.all([
-        axios.get(`${Url}/allproducts/data`),
-        axios.get(`${Url}/leftoverdata/data`),
-        axios.get(`${Url}/otherdata/data`),
-        axios.get(`${Url}/nextdata/data`),
-        axios.get(`${Url}/entireinventory/data`),
-        axios.get(`${Url}/catalog/cbdData`),
-      ]);
+      const endpoints = [
+        `${Url}/allproducts/data`,
+        `${Url}/leftoverdata/data`,
+        `${Url}/otherdata/data`,
+        `${Url}/nextdata/data`,
+        `${Url}/entireinventory/data`,
+        `${Url}/catalog/cbdData`,
+      ];
 
-      console.log('Responses:', responseArray);
+      let dataArray = [];
 
-      const dataArray = responseArray.map(response => response.data);
+      for (let i = 0; i < endpoints.length; i++) {
+        console.log(`Fetching data from ${endpoints[i]}...`);
+        const response = await axios.get(endpoints[i]);
+        console.log(`Response ${i + 1}:`, response.data);
+        dataArray.push(response.data);
+      }
 
       console.log('Data Array:', dataArray);
 
       const combinedImages = dataArray.flatMap(data => (
         data.map(category => category.allProductImages || category.productImages || [])
       ));
-
 
       const mergedImages = combinedImages.flat();
 
@@ -50,7 +49,6 @@ const AllProducts = () => {
       setLoading(false);
     }
   }, []);
-
   useEffect(() => {
     getApiData();
   }, [getApiData]);

@@ -12,7 +12,6 @@ import { Helmet } from 'react-helmet';
 import renderStars from '../utils/renderstars';
 import Title from '../utils/Title';
 import Url from '../utils/Url';
-import ProductNotFound from '../utils/ProductNotFound';
 
 
 const DynamicRouteComponent = () => {
