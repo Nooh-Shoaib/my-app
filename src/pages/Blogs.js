@@ -1,6 +1,6 @@
 import React from "react";
 import Post from '../components/Post';
-import Layout from "../components/layout";
+import Layout from "../layout";
 import { Link } from "react-router-dom";
 import { TabTitle } from "../utils/GeneralFunction";
 export default function Blogs() {

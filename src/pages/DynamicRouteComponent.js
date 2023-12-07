@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Layout from '../components/layout';
+import Layout from '../layout';
 import { Link } from 'react-router-dom';
 import ProductInfoSection from '../components/ProductInfoSection';
 import QuoteAdvantages from '../components/QuoteAdvantages';

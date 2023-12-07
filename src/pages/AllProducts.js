@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import LoadingComponent from './loading';
-import Layout from '../components/layout';
+import Layout from '../layout';
 import axios from 'axios';
 import Url from '../utils/Url';
 import Products from '../components/products';

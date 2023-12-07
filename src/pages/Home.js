@@ -5,7 +5,7 @@ import Images from "../components/Images";
 import HowWork from "../components/HowWork";
 import AutoImageSlider from "../components/Herosection";
 import FAQS from "../components/FAQS";
-import Layout from "../components/layout";
+import Layout from "../layout";
 import { TabTitle } from "../utils/GeneralFunction";
 import LoadingComponent from '../pages/loading';
 

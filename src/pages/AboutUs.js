@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from "../layout";
-import { TabTitle } from './utils/GeneralFunction';
+import { TabTitle } from '../utils/GeneralFunction';
 import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet';
 

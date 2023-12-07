@@ -1,9 +1,9 @@
 import React from 'react';
-import Topbar from "./Topbar";
-import Navbar from "./Navbar";
-import Ham from "./HamMenu";
-import Footer from "./Footer";
-import Icons from "./Icons";
+import Topbar from "./components/Topbar";
+import Navbar from "./components/Navbar";
+import Ham from "./components/HamMenu";
+import Footer from "./components/Footer";
+import Icons from "./components/Icons";
 
 
 function Layout({ children }) {
