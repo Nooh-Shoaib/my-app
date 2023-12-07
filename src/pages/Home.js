@@ -13,12 +13,10 @@ const Home = () => {
         const [loading, setLoading] = useState(true);
 
         useEffect(() => {
-                // Simulate loading for demonstration purposes
                 const loadingTimeout = setTimeout(() => {
                         setLoading(false);
                 }, 2000);
 
-                // Cleanup the timeout to avoid memory leaks
                 return () => clearTimeout(loadingTimeout);
         }, []);
 
