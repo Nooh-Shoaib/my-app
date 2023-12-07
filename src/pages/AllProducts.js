@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import LoadingComponent from './loading';
 import { Link } from 'react-router-dom';
-import Layout from '../layout';
-import Quote from "./2ndpageComponents/beatQuote";
+import Layout from '../components/layout';
+import Quote from "../components/beatQuote";
 import axios from 'axios';
-import Title from './utils/Title';
-import Url from './utils/Url';
-import ProductNotFound from './utils/ProductNotFound';
+import Title from '../utils/Title';
+import Url from '../utils/Url';
+import ProductNotFound from '../utils/ProductNotFound';
 import NoPage from './NoPage';
-
+import Products from '../components/products';
 
 const AllProducts = () => {
   const [loading, setLoading] = useState(true);
@@ -31,16 +31,18 @@ const AllProducts = () => {
 
       console.log('Responses:', responseArray);
 
-      const data = responseArray.map(response => response.data);
+      const dataArray = responseArray.map(response => response.data);
 
-      console.log('Data:', data);
+      console.log('Data Array:', dataArray);
 
-      // if (data.some(categoryData => !categoryData)) {
-      //   throw new Error('Data is missing for one or more endpoints.');
-      // }
+      const combinedImages = dataArray.flatMap(data => (
+        data.map(category => category.allProductImages || category.productImages || [])
+      ));
 
-      const combinedData = data.reduce((accumulator, currentData) => [...accumulator, ...currentData], []);
-      setMergedData(combinedData);
+
+      const mergedImages = combinedImages.flat();
+
+      setMergedData(mergedImages);
     } catch (error) {
       console.error('Error fetching API data:', error.message);
       setError(error);
@@ -53,70 +55,11 @@ const AllProducts = () => {
     getApiData();
   }, [getApiData]);
 
-
-  const productImages = (category) => {
-    if (!category || !category.allProductImages) {
-      return null;
-    }
-
-    return (
-      <div>
-        <h1 className="w-full text-center my-12 text-4xl font-semibold">
-          {category.allProductTitle}
-        </h1>
-        <div className="w-full grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 md:px-10 gap-4 py-0 px-1">
-          {category.allProductImages.map((product, productIndex) => (
-            <div key={productIndex}>
-              <Link to={`/${product.slug}`}>
-                <div className="text-center hover:scale-105 duration-500 hover:opacity-60 cursor-pointer">
-                  {product.productImage && (
-                    <img
-                      src={product.productImage}
-                      alt={`Product Image ${productIndex + 1}`}
-                    />
-                  )}
-                  <div>
-                    {product.productTitle && (
-                      <h2 className="font-medium py-2 px-3 lg:py-4 text-[0.6rem] text-black text-sm bg-amber-500">
-                        {product.productTitle}
-                      </h2>
-                    )}
-                  </div>
-                </div>
-              </Link>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  };
-
-
   return (
     <Layout>
-      <div>
-        {loading && <LoadingComponent />}
-        {error && <div>Error fetching API data: {error.message}</div>}
-        {!loading && !error && !mergedData.length && <NoPage />}
-        {!loading && mergedData && mergedData.length > 0 && (
-          <div>
-            {mergedData.map((category, categoryIndex) => (
-              <div key={categoryIndex}>
-                <div className="py-10 lg:flex md:flex relative">
-                  {productImages(category)}
-                  <Quote />
-                </div>
-              </div>
-            ))}
-            {mergedData[0]?.description && mergedData[0].description.length > 0 && (
-              <>
-                <h2>{mergedData[0].description[0].heading}</h2>
-                <p>{mergedData[0].description[0].text}</p>
-              </>
-            )}
-          </div>
-        )}
-      </div>
+      {loading && <LoadingComponent />}
+      {error && <div>1- Error fetching API data: {error.message}</div>}
+      {!loading && <Products pageTitle={'All Products'} mergedData={mergedData} />}
     </Layout>
   );
 };

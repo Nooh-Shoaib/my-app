@@ -36,12 +36,12 @@ const Footercategories = () => {
 };
 
 let usefullLinks = [
-        { label: 'About Us', link: '/legal-data/about-us' },
+        { label: 'About Us', link: '/sireprinting/about-us' },
         { label: "Contact Us", link: '/contact-us' },
         { label: "Portfolio", link: '/portfolio' },
         { label: "Blogs", link: '/blogs' },
-        { label: "Privacy Policy", link: '/legal-data/privacy-policy' },
-        { label: "Terms And Conditions", link: '/legal-data/terms-conditions' },
+        { label: "Privacy Policy", link: '/sireprinting/privacy-policy' },
+        { label: "Terms And Conditions", link: '/sireprinting/terms-conditions' },
 ];
 
 const Footerlinks = () => {
@@ -74,7 +74,7 @@ export default function Footer(props) {
                         <section className=" lg:grid md:grid grid-cols-4 lg:mx-10 lg:space-x-8">
                                 <ul className="px-5">
                                         <li>
-                                                <Link to="#">
+                                                <Link to="/">
                                                         <img
                                                                 src="https://sireprinting.com/frontend-theme/assets/images/logo-white.png"
                                                                 alt=""

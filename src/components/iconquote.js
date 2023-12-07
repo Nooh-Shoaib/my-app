@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@mui/material';
-import FileUploadButton from '../pages/2ndpageComponents/UploadFile'
+import FileUploadButton from './UploadFile'
 function Iconquote() {
   const [isProductMenuOpen, setProductMenuOpen] = useState(false);
 
@@ -23,7 +23,7 @@ function Iconquote() {
         aria-expanded={isProductMenuOpen}
         onClick={toggleProductMenu}
       >
-                 <span className="fab fa-telegram text-2xl px-1 rounded  text-white bg-amber-500"></span>
+        <span className="fab fa-telegram text-2xl px-1 rounded  text-white bg-amber-500"></span>
 
       </button>
 
@@ -56,23 +56,23 @@ function Iconquote() {
 
               <div className='flex'>
                 <span>
-              <h4 className="text-base mx-3 font-semibold">Color:</h4>
-              <select className="focus outline-none focus:ring-0 lg:w-60 w-36 md:w-60 px-4 h-9 border text-sm ml-2">
-                <option>None</option>
-                <option>1 Color</option>
-                <option>2 Color</option>
-                <option>3 Color</option>
-                <option>4 Color</option>
-                <option>4/1 Color</option>
-                <option>4/2 Color</option>
-                <option>4/3 Color</option>
-                <option>4/4 Color</option>
-              </select>
-              </span>
-              <span>
-              <h4  className="text-base font-semibold">*Quantity</h4>
-                <input type="number" className="  md:w-60  mb-2 focus outline-none focus:ring-0 lg:w-60 w-36 px-4 h-9 border text-sm ml-1" />
-              </span>
+                  <h4 className="text-base mx-3 font-semibold">Color:</h4>
+                  <select className="focus outline-none focus:ring-0 lg:w-60 w-36 md:w-60 px-4 h-9 border text-sm ml-2">
+                    <option>None</option>
+                    <option>1 Color</option>
+                    <option>2 Color</option>
+                    <option>3 Color</option>
+                    <option>4 Color</option>
+                    <option>4/1 Color</option>
+                    <option>4/2 Color</option>
+                    <option>4/3 Color</option>
+                    <option>4/4 Color</option>
+                  </select>
+                </span>
+                <span>
+                  <h4 className="text-base font-semibold">*Quantity</h4>
+                  <input type="number" className="  md:w-60  mb-2 focus outline-none focus:ring-0 lg:w-60 w-36 px-4 h-9 border text-sm ml-1" />
+                </span>
               </div>
               <div>
                 <input type="text" placeholder="Full Name" className="my-1.5 w-72 lg:w-[495px] md:w-[490px] h-9 border mx-1 px-2 lg:placeholder:text-sm placeholder:text-xs" />
@@ -84,7 +84,7 @@ function Iconquote() {
                 <input type="text" placeholder="Email Address" className="my-1.5 w-72 lg:w-[495px] md:w-[490px] h-9 border mx-1 px-2 lg:placeholder:text-sm placeholder:text-xs" />
               </div>
               <div className='md:px-12'>
-              <FileUploadButton />
+                <FileUploadButton />
               </div>
               <div>
                 <textarea className="my-1.5 w-72 lg:w-[480px] md:w-[490px] border mx-1 px-2 lg:placeholder:text-sm h-24 placeholder:text-xs" placeholder="Message"></textarea>

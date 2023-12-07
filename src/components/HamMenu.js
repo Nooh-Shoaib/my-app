@@ -1,8 +1,8 @@
 
 import React from 'react';
 import { Link } from "react-router-dom";
-import CustomBoxes from '../pages/2ndpageComponents/CustomBoxes';
-import ButtonQuote from '../pages/2ndpageComponents/ButtonQuote';
+import CustomBoxes from './CustomBoxes';
+import ButtonQuote from './ButtonQuote';
 
 let menuArr = [
   { url: "/products-all", label: "All Products", key: "allProducts" },

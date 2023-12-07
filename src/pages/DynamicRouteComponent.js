@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Layout from '../layout';
+import Layout from '../components/layout';
 import { Link } from 'react-router-dom';
-import ProductInfoSection from './2ndpageComponents/ProductInfoSection';
-import QuoteAdvantages from './2ndpageComponents/QuoteAdvantages';
-import SideTestimonials from './2ndpageComponents/SideTestimonials';
-import ImageWithBox from './2ndpageComponents/ImageWithBox';
+import ProductInfoSection from '../components/ProductInfoSection';
+import QuoteAdvantages from '../components/QuoteAdvantages';
+import SideTestimonials from '../components/SideTestimonials';
+import ImageWithBox from '../components/ImageWithBox';
 import LoadingComponent from './loading';
-import BlogCard from './2ndpageComponents/BlogCard';
+import BlogCard from '../components/BlogCard';
 import { Helmet } from 'react-helmet';
-import renderStars from './utils/renderstars';
-import Title from './utils/Title';
-import Url from './utils/Url';
-import ProductNotFound from './utils/ProductNotFound';
+import renderStars from '../utils/renderstars';
+import Title from '../utils/Title';
+import Url from '../utils/Url';
+import ProductNotFound from '../utils/ProductNotFound';
 
 
 const DynamicRouteComponent = () => {

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import CustomBoxes from '../pages/2ndpageComponents/CustomBoxes';
-import ButtonQuote from '../pages/2ndpageComponents/ButtonQuote';
+import CustomBoxes from './CustomBoxes';
+import ButtonQuote from './ButtonQuote';
 
 export default function Navbar() {
   const navItems = [
-    { text: 'All Products', link: '/products/products-all', key: 'all-Products' },
+    { text: 'All Products', link: '/products-all', key: 'all-Products' },
     { text: 'CBD Packaging', link: '/products/cbd-packaging', key: 'cbdPackaging' },
     { text: <CustomBoxes />, key: 'custom-boxes' },
     { text: 'Custom Box Styles', link: '/products/custom-box-styles', key: 'customBoxStyles' },

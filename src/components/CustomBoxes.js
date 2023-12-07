@@ -17,7 +17,7 @@ function Navbar() {
         aria-expanded={isProductMenuOpen}
         onClick={toggleProductMenu}
       >
-        CustomBoxes
+        Custom Boxes
         <svg
           className="h-5 w-5 flex-none text-black "
           viewBox="0 0 20 20"

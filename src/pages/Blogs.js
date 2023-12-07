@@ -1,8 +1,8 @@
 import React from "react";
-import Post from './2ndpageComponents/Post';
-import Layout from "../layout";
+import Post from '../components/Post';
+import Layout from "../components/layout";
 import { Link } from "react-router-dom";
-import { TabTitle } from "./utils/GeneralFunction";
+import { TabTitle } from "../utils/GeneralFunction";
 export default function Blogs() {
 
   TabTitle('Blogs | Sire Printing')
@@ -314,8 +314,8 @@ export default function Blogs() {
     <div className="bg-white">
       <Layout>
         <img src="https://sireprinting.com/frontend-theme/assets/images/blog.gif" className="w-full" />
-       <h2 className="bg-slate-200 h-12 flex items-center"><Link to={homeLink} className=" mx-7 font-semibold">{linkLabel}</Link><span className="text-xs">&raquo;&nbsp;&nbsp;</span><span className="text-amber-500 font-semibold"><em>{Label}</em></span></h2>
-       <h2 className=" flex justify-center my-12 text-4xl font-semibold">{pageTitle}</h2>
+        <h2 className="bg-slate-200 h-12 flex items-center"><Link to={homeLink} className=" mx-7 font-semibold">{linkLabel}</Link><span className="text-xs">&raquo;&nbsp;&nbsp;</span><span className="text-amber-500 font-semibold"><em>{Label}</em></span></h2>
+        <h2 className=" flex justify-center my-12 text-4xl font-semibold">{pageTitle}</h2>
         <div className=" lg:max-w-[1320px] mx-auto grid lg:grid-cols-2 grid-cols-1 md:grid-cols-2  lg:gap-y-7  lg:gap-x-12 md:px-3  ">
           {postData.map((post, index) => (
             <Post key={index} content={post} />

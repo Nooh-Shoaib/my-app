@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 
-const File = ({ handleFile }) => {
+const UploadFile = ({ handleFile }) => {
   const hiddenFileInput = useRef(null);
 
   const handleClick = (e) => {
@@ -34,18 +34,20 @@ const File = ({ handleFile }) => {
       <button
         className="bg-white border-2 border-black md:w-[360px] w-[250px] mx-0.5 py-2 lg:w-72 lg:mx-3 rounded-lg my-2 md:mx-2"
         onClick={handleClick}>
+
         {Btn}
       </button>
       <input
         type="file"
-        accept=".pdf, .doc, .docx, .png, .jpg" // Specify allowed file types
+        accept=".pdf, .doc, .docx, .png, .jpg"
         onChange={handleChange}
         ref={hiddenFileInput}
+        className="hidden-file-input"
         style={{ display: 'none' }}
       />
     </div>
   );
 };
 
-export default File;
+export default UploadFile;
 

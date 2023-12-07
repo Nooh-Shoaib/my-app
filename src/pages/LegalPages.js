@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import Layout from '../layout';
+import Layout from '../components/layout';
 import LoadingComponent from './loading';
-import Url from './utils/Url';
+import Url from '../utils/Url';
 
 const LegalPages = () => {
   const { slug } = useParams();
