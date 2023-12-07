@@ -36,12 +36,12 @@ const Footercategories = () => {
 };
 
 let usefullLinks = [
-        { label: 'About Us', link: '/about-us' },
+        { label: 'About Us', link: '/legal-data/about-us' },
         { label: "Contact Us", link: '/contact-us' },
         { label: "Portfolio", link: '/portfolio' },
         { label: "Blogs", link: '/blogs' },
-        { label: "Privacy Policy", link: '/privacy-policy' },
-        { label: "Terms And Conditions", link: '/terms-conditions' },
+        { label: "Privacy Policy", link: '/legal-data/privacy-policy' },
+        { label: "Terms And Conditions", link: '/legal-data/terms-conditions' },
 ];
 
 const Footerlinks = () => {
