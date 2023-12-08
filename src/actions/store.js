@@ -1,7 +1,7 @@
 // store.js
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { thunk, withExtraArgument } from 'redux-thunk';
-import productReducer from './actions/productReducer';
+import productReducer from './productReducer';
 
 const rootReducer = combineReducers({
         productState: productReducer,

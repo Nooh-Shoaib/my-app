@@ -12,6 +12,7 @@ import { Helmet } from 'react-helmet';
 import renderStars from '../utils/renderstars';
 import Title from '../utils/Title';
 import Url from '../utils/Url';
+import Repos from '../utils/MyRepos';
 
 
 const DynamicRouteComponent = () => {
@@ -21,7 +22,7 @@ const DynamicRouteComponent = () => {
   const [currentImage, setCurrentImage] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const repos = [
+  const productRepositories = [
     'products/products',
     'otherproducts/products',
     'remainingproducts/products',
@@ -29,40 +30,39 @@ const DynamicRouteComponent = () => {
     'fifthproducts/products',
     'sixthproducts/products',
     'seventhproducts/products',
+    // <Repos />
   ];
 
-  const fetchData = async (repo = 0) => {
+  const fetchProductData = async () => {
     try {
-      if (repos[repo] === undefined) {
-        if (repo === repos.length) {
-          throw new Error('Data not found in any endpoint');
-        }
-        fetchData(++repo);
-        return;
-      }
+      for (const repo of productRepositories) {
+        const response = await fetch(`${Url}/${repo}/${slug}`);
 
-      const response = await fetch(`${Url}/${repos[repo]}/${slug}`);
-      if (repo < repos.length && response.status === 404) {
-        fetchData(++repo);
-      } else {
-        const data = await response.json();
-        setCurrentImage(data?.productImages[0]);
-        setCurrentImageIndex(0);
-        setProduct(data);
+        if (response.status === 404) {
+          continue;
+        } else {
+          const data = await response.json();
+          setCurrentImage(data?.productImages[0]);
+          setCurrentImageIndex(0);
+          setProduct(data);
+          return;
+        }
       }
+      throw new Error('Product data not found in any endpoint');
     } catch (error) {
-      console.error('An error occurred:', error.message);
+      console.error('Error fetching product data:', error.message);
       setProduct({});
     } finally {
       setLoading(false);
     }
   };
 
-  const fetchDataAndSetState = async () => {
-    await fetchData(0);
-  };
 
   useEffect(() => {
+    const fetchDataAndSetState = async () => {
+      await fetchProductData();
+    };
+
     fetchDataAndSetState();
     return () => {
       setProduct({});

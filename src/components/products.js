@@ -8,7 +8,7 @@ const Products = ({ pageTitle, mergedData }) => {
                                 // AllProducts
                                 <div className="py-10 lg:flex md:flex relative">
 
-                                        <div className=" lg:w-2/3 md:w-2/3  mx-3">
+                                        <div className=" lg:w-2/3 md:w-2/3 mx-3">
                                                 <h1 className="w-full text-center my-12 text-4xl font-semibold">
                                                         {pageTitle}
                                                 </h1>

@@ -281,16 +281,7 @@ body.disable-scroll {
 
 }
 
-.custom-spinner {
-  border: 4px solid #8400ff;
-  border-top: 4px solid transparent;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  animation: spin 0.5s linear infinite;
-}
-
-@keyframes spin {
+@keyframes spinKeyframes {
   0% {
     transform: rotate(0deg);
   }
