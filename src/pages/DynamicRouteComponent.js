@@ -10,7 +10,6 @@ import LoadingComponent from './loading';
 import BlogCard from '../components/BlogCard';
 import { Helmet } from 'react-helmet';
 import renderStars from '../utils/renderstars';
-import Title from '../utils/Title';
 import Url from '../utils/Url';
 import Repos from '../utils/MyRepos';
 
@@ -22,45 +21,48 @@ const DynamicRouteComponent = () => {
   const [currentImage, setCurrentImage] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const productRepositories = [
-    'products/products',
-    'otherproducts/products',
-    'remainingproducts/products',
-    'fourthproducts/products',
-    'fifthproducts/products',
-    'sixthproducts/products',
-    'seventhproducts/products',
-    // <Repos />
-  ];
-
   const fetchProductData = async () => {
-    try {
-      for (const repo of productRepositories) {
+    const promises = Repos.map(async (repo) => {
+      try {
         const response = await fetch(`${Url}/${repo}/${id}`);
 
         if (response.status === 404) {
-          continue;
+          return null; // Return null for 404 responses
         } else {
           const data = await response.json();
-          setCurrentImage(data?.productImages[0]);
-          setCurrentImageIndex(0);
-          setProduct(data);
-          return;
+          return {
+            currentImage: data?.productImages[0],
+            product: data,
+          };
         }
+      } catch (error) {
+        console.error(`Error fetching product data from ${repo}:`, error.message);
+        return null;
       }
+    });
+
+    const results = await Promise.all(promises);
+
+    const validResult = results.find((result) => result !== null);
+
+    if (validResult) {
+      setCurrentImage(validResult.currentImage);
+      setProduct(validResult.product);
+    } else {
       throw new Error('Product data not found in any endpoint');
-    } catch (error) {
-      console.error('Error fetching product data:', error.message);
-      setProduct({});
-    } finally {
-      setLoading(false);
     }
   };
 
-
   useEffect(() => {
     const fetchDataAndSetState = async () => {
-      await fetchProductData();
+      try {
+        await fetchProductData();
+      } catch (error) {
+        console.error('Error:', error.message);
+        setProduct({});
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchDataAndSetState();
@@ -68,7 +70,6 @@ const DynamicRouteComponent = () => {
       setProduct({});
     };
   }, [id]);
-
 
   // Carousel with thumbnails
   const [selectedImage, setSelectedImage] = useState(null);
@@ -212,7 +213,7 @@ const DynamicRouteComponent = () => {
         <Helmet>
           <head>
             {`
-          <title>${product?.productTitle} Wholesale | ${<Title />}</title>
+          <title>${product?.productTitle} Wholesale | sireprinting}</title>
           `}
           </head>
         </Helmet>

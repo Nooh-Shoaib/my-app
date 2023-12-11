@@ -1,16 +1,16 @@
 import React from 'react';
 import Layout from "../components/layout";
 import { Link } from "react-router-dom";
-import { TabTitle } from '../utils/GeneralFunction';
+import { Helmet } from 'react-helmet';
 
 const ContactUs = () => {
-  const siteTitle = 'Contact Us | Sire Printing';
-
-  TabTitle(siteTitle);
 
   const formFields = ["Full Name", "Email Address", "Phone"];
 
-  return (
+  return (<>
+    <Helmet>
+      <title>ContactUs</title>
+    </Helmet>
     <Layout>
       <div className='bg-white overflow-hidden '>
         <h2 className="bg-slate-200 h-12 flex items-center">
@@ -58,6 +58,7 @@ const ContactUs = () => {
         </div>
       </div>
     </Layout>
+  </>
   );
 };
 

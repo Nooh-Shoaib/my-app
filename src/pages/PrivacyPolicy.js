@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from "../components/layout";
-import { TabTitle } from "../utils/GeneralFunction";
 import { Link } from "react-router-dom";
+import { Helmet } from 'react-helmet';
 
 const pageTitle = "Privacy Policy"
 const homeLink = "/"
@@ -10,11 +10,11 @@ const linkLabel = "Home";
 const Label = "Privacy Policy";
 
 const PrivacyPolicy = () => {
-        const siteTitle = 'Privacy Policy | Sire Printing';
 
-        TabTitle(siteTitle)
-        return (
-
+        return (<>
+                <Helmet>
+                        <title>Privacy Policy | Sire Printing</title>
+                </Helmet>
                 <Layout>
                         <img src={banner} className="w-full" />
                         <div className="bg-slate-200 h-14 flex items-center"><Link to={homeLink} className=" mx-7 font-semibold">{linkLabel}</Link><span className="text-xs">&raquo;&nbsp;&nbsp;</span><span className="text-amber-500 font-semibold"><em> {Label}</em></span></div>
@@ -67,6 +67,7 @@ const PrivacyPolicy = () => {
                         </div>
 
                 </Layout>
+        </>
         )
 }
 export default PrivacyPolicy;

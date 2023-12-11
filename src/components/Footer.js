@@ -36,12 +36,12 @@ const Footercategories = () => {
 };
 
 let usefullLinks = [
-        { label: 'About Us', link: '/sireprinting/about-us' },
+        { label: 'About Us', link: '/about-us' },
         { label: "Contact Us", link: '/contact-us' },
         { label: "Portfolio", link: '/portfolio' },
         { label: "Blogs", link: '/blogs' },
-        { label: "Privacy Policy", link: '/sireprinting/privacy-policy' },
-        { label: "Terms And Conditions", link: '/sireprinting/terms-conditions' },
+        { label: "Privacy Policy", link: '/privacy-policy' },
+        { label: "Terms And Conditions", link: '/terms-conditions' },
 ];
 
 const Footerlinks = () => {

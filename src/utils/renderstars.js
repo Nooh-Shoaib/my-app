@@ -12,7 +12,7 @@ const renderStars = (starCount) => {
 export default renderStars;
 
 
-        {/* {Array(5)
+{/* {Array(5)
                 .fill(null)
                 .map((_, index) => (
                         <i key={index} className='fa-solid fa-star text-yellow-300'></i>

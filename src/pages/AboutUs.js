@@ -1,6 +1,5 @@
 import React from 'react'
 import Layout from "../components/layout";
-import { TabTitle } from '../utils/GeneralFunction';
 import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet';
 
@@ -10,9 +9,6 @@ const linkLabel = "Home";
 const Label = "About Us ";
 
 const AboutUs = () => {
-        const siteTitle = '  About Us | Sire Printing';
-
-        TabTitle(siteTitle);
 
         return (<>
                 <Helmet>
