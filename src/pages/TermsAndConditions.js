@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from "../layout";
+import Layout from "../components/layout";
 import { TabTitle } from "../utils/GeneralFunction";
 import { Link } from "react-router-dom";
 

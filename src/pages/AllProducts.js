@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import LoadingComponent from './loading';
-import Layout from '../layout';
+import Layout from '../components/layout';
 import axios from 'axios';
 import Url from '../utils/Url';
 import Products from '../components/products';
@@ -8,6 +8,7 @@ import Products from '../components/products';
 const AllProducts = () => {
   const [loading, setLoading] = useState(true);
   const [mergedData, setMergedData] = useState([]);
+  // const [cbdData, setcbdData] = useState([]);
   const [error, setError] = useState(null);
 
   const getApiData = useCallback(async () => {
@@ -18,20 +19,20 @@ const AllProducts = () => {
       const endpoints = [
         `${Url}/allproducts/data`,
         `${Url}/leftoverdata/data`,
-        `${Url}/otherdata/data`,
-        `${Url}/nextdata/data`,
-        `${Url}/entireinventory/data`,
-        `${Url}/catalog/cbdData`,
+        // `${Url}/otherdata/data`,
+        // `${Url}/nextdata/data`,
+        // `${Url}/entireinventory/data`,
+        `${Url}/catalog/data`,
       ];
 
-      let dataArray = [];
+      const fetchData = async (url) => {
+        console.log(`Fetching data from ${url}...`);
+        const response = await axios.get(url);
+        console.log(`Response:`, response.data);
+        return response.data;
+      };
 
-      for (let i = 0; i < endpoints.length; i++) {
-        console.log(`Fetching data from ${endpoints[i]}...`);
-        const response = await axios.get(endpoints[i]);
-        console.log(`Response ${i + 1}:`, response.data);
-        dataArray.push(response.data);
-      }
+      const dataArray = await Promise.all(endpoints.map(fetchData));
 
       console.log('Data Array:', dataArray);
 
@@ -49,6 +50,7 @@ const AllProducts = () => {
       setLoading(false);
     }
   }, []);
+
   useEffect(() => {
     getApiData();
   }, [getApiData]);
@@ -58,6 +60,8 @@ const AllProducts = () => {
       {loading && <LoadingComponent />}
       {error && <div>1- Error fetching API data: {error.message}</div>}
       {!loading && <Products pageTitle={'All Products'} mergedData={mergedData} />}
+      {/* {!loading && <CBDproduct pageTitle={'All Products'} mergedData={mergedData} />} */}
+
     </Layout>
   );
 };

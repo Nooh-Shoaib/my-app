@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Layout from '../layout';
+import Layout from '../components/layout';
 import { Link } from 'react-router-dom';
 import ProductInfoSection from '../components/ProductInfoSection';
 import QuoteAdvantages from '../components/QuoteAdvantages';
@@ -16,7 +16,7 @@ import Repos from '../utils/MyRepos';
 
 
 const DynamicRouteComponent = () => {
-  const { slug } = useParams();
+  const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState({});
   const [currentImage, setCurrentImage] = useState(null);
@@ -36,7 +36,7 @@ const DynamicRouteComponent = () => {
   const fetchProductData = async () => {
     try {
       for (const repo of productRepositories) {
-        const response = await fetch(`${Url}/${repo}/${slug}`);
+        const response = await fetch(`${Url}/${repo}/${id}`);
 
         if (response.status === 404) {
           continue;
@@ -67,7 +67,7 @@ const DynamicRouteComponent = () => {
     return () => {
       setProduct({});
     };
-  }, [slug]);
+  }, [id]);
 
 
   // Carousel with thumbnails
@@ -118,7 +118,7 @@ const DynamicRouteComponent = () => {
         <h2 className='text-2xl lg:text-4xl text-center font-medium mt-5'>Related Products</h2>
         <div className='max-w-[1375px] lg:mx-32  grid lg:grid-cols-4 grid-cols-1 md:grid-cols-2 lg:px-20   mx-5 md:px-4 gap-7 pb-16 mt-5 px-1'>
           {relatedProducts.map((relatedProduct, i) => (
-            <Link key={i} to={'/' + relatedProduct.slug}>
+            <Link key={i} to={'/' + relatedProduct.id}>
               <div className='text-center  hover:scale-105 duration-500 hover:opacity-60 cursor-pointer'>
                 <img src={relatedProduct.productImage} alt={relatedProduct.label} loading='lazy' />
                 <div>
@@ -200,7 +200,7 @@ const DynamicRouteComponent = () => {
 
 
   const ProductView = ({ product }) => {
-    if (product.slug === undefined) {
+    if (product.id === undefined) {
       return (
         <div>
           {/* <ProductNotFound /> */}
@@ -226,10 +226,10 @@ const DynamicRouteComponent = () => {
           <span className="text-xs">&raquo;&nbsp;&nbsp;</span>
           {product?.categories && product?.categories.length > 0 && (
             <>
-              {product.categories[0]?.categorySlug && (
+              {product.categories[0]?.categoryid && (
                 <>
                   <Link
-                    to={product.categories[0].categorySlug}
+                    to={product.categories[0].categoryid}
                     className="mx-7 font-bold hover:text-blue-600"
                   >
                     {product.categories[0].name}

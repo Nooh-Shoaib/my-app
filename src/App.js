@@ -9,8 +9,8 @@ import AboutUs from './pages/AboutUs';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsAndConditions from './pages/TermsAndConditions';
 import NoPage from "./pages/NoPage";
-
-
+import DynamicRouteComponent from './pages/DynamicRouteComponent';
+import AllProducts from './pages/AllProducts';
 
 
 function App() {
@@ -21,6 +21,8 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/:slug" element={<RenderFile />} />
+        <Route path="/:id" element={<DynamicRouteComponent />} />
+        {/* <Route path="/:slug" element={<AllProducts />} /> */}
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-conditions" element={<TermsAndConditions />} />
