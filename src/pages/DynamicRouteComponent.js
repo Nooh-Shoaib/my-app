@@ -14,7 +14,6 @@ import renderStars from '../utils/renderstars';
 import Quote from '../components/beatQuote';
 import ProductNotFound from '../components/ProductNotFound';
 import Repos from '../utils/MyRepos';
-import { stringify } from 'postcss';
 
 const CombinedComponent = () => {
   const { id } = useParams();
@@ -24,49 +23,30 @@ const CombinedComponent = () => {
   const [currentImage, setCurrentImage] = useState(null);
   const navigate = useNavigate();
 
-  const endpointConfigs = [
-    { key: 'product', endpoint: 'products/products', isArray: false },
-    { key: 'allProducts', endpoint: 'allproducts/data', isArray: true },
-  ];
-
-  const getEndpointConfig = (id) => {
-    if (id == 'products-all')
-      return endpointConfigs.find(config => config.key === 'allProducts');
-    else
-
-      return endpointConfigs.find(config => config.key === 'product');
-  };
-
-  const fetchData = async (endpointConfig) => {
-    try {
-      setLoading(true);
-      const response = await axios.get(`${Url}/${endpointConfig.endpoint}${id ? `/${id}` : ''}`);
-
-      if (endpointConfig.isArray) {
-        setData(response.data);
-        if (!response.data || response.data.length === 0) {
-          navigate('/');
-        }
-      } else {
-        setProduct(response.data);
-        setCurrentImage(response.data?.productImages[0]);
-      }
-    } catch (error) {
-      console.error('Error fetching data:', error.message);
-      navigate('/');
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
-    const endpointConfig = getEndpointConfig(id);
-    // console.log(endpointConfig, id);
-    fetchData(endpointConfig);
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const endpoint = id === 'products-all' ? `allproducts/data/${id}` : `products/products/${id}`;
+        const { data: responseData } = await axios.get(`${Url}/${endpoint}`);
+
+        if (Array.isArray(responseData)) {
+          setData(responseData);
+          if (!responseData.length) navigate('/');
+        } else {
+          setProduct(responseData);
+          setCurrentImage(responseData?.productImages?.[0]);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error.message);
+        navigate('/');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
   }, [id, navigate]);
-
-
-
 
   // Carousel with thumbnails
   const [selectedImage, setSelectedImage] = useState(null);
@@ -342,7 +322,7 @@ const CombinedComponent = () => {
                 All Products
               </h1>
               <div className="w-full grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 md:px-10 gap-4 py-0 px-1">
-                {data.map((product, productIndex) => (
+                {[data.map]((product, productIndex) => (
                   <div key={productIndex}>
                     <Link to={`/${product.slug}`}>
                       <div className="text-center hover:scale-105 duration-500 hover:opacity-60 cursor-pointer">
@@ -379,7 +359,7 @@ const CombinedComponent = () => {
         <LoadingComponent />
       ) : (
         <>
-          {JSON.stringify(data)}
+          {/* {JSON.stringify(data)} */}
           {id ? (
             <ProductView product={product} />
           ) : (
