@@ -8,6 +8,7 @@ import FAQS from "../components/FAQS";
 import Layout from "../components/layout";
 import LoadingComponent from '../pages/loading';
 import { Helmet } from 'react-helmet';
+import PopupChat from '../components/popupchat';
 
 const Home = () => {
         const [loading, setLoading] = useState(true);
@@ -45,6 +46,9 @@ const Home = () => {
                                                 <div className="bg-white">
                                                         <FAQS heading="Frequently Asked Questions" />
                                                         <Testimonials heading="Testimonials" />
+                                                </div>
+                                                <div>
+                                                        <PopupChat />
                                                 </div>
                                         </>
                                 )}

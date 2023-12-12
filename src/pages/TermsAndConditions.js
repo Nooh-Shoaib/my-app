@@ -21,7 +21,7 @@ const TermsAndConditions = () => {
                         </Helmet>
 
                         <Layout>
-                                <img src={banner} className="w-full" />
+                                <img src={banner} alt='conditions' className="w-full" />
                                 <h2 className="bg-slate-200 h-14 flex items-center"><Link to={homeLink} className="mx-7 font-semibold">{linkLabel}</Link><span className="text-xs">&raquo;&nbsp;&nbsp;</span><span className="text-amber-500 font-semibold"><em>{Label}</em></span></h2>
                                 <div className='bg-white '>
                                         <div className='lg:container mx-6 lg:mx-56 lg:w-[1320px] py-12'>
