@@ -186,7 +186,7 @@ export default function QuoteAdvantages() {
           <div className='flex lg:justify-end justify-center'>
             <button
               type="submit"
-              className="bg-black text-white lg:px-7 md:px-[150px] lg:mb-6 lg:mt-3   px-24 py-2 hover:animate-pulse font-bold"
+              className="bg-black text-white lg:px-7 md:px-[150px] lg:mb-6 lg:mt-3 px-24 py-2 hover:animate-pulse font-bold"
             >
               {button}
             </button>

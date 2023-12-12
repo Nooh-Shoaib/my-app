@@ -4,10 +4,11 @@ import Layout from '../components/layout';
 import axios from 'axios';
 import Url from '../utils/Url';
 import Products from '../components/products';
+import { data } from 'autoprefixer';
 
 const AllProducts = () => {
   const [loading, setLoading] = useState(true);
-  const [mergedData, setMergedData] = useState([]);
+  const [data, setdata] = useState([]);
   // const [cbdData, setcbdData] = useState([]);
   const [error, setError] = useState(null);
 
@@ -40,9 +41,9 @@ const AllProducts = () => {
         data.map(category => category.allProductImages || category.productImages || [])
       ));
 
-      const mergedImages = combinedImages.flat();
+      const Images = combinedImages.flat();
 
-      setMergedData(mergedImages);
+      setdata(Images);
     } catch (error) {
       console.error('Error fetching API data:', error.message);
       setError(error);
@@ -59,7 +60,7 @@ const AllProducts = () => {
     <Layout>
       {loading && <LoadingComponent />}
       {error && <div>1- Error fetching API data: {error.message}</div>}
-      {!loading && <Products pageTitle={'All Products'} mergedData={mergedData} />}
+      {!loading && <Products pageTitle={'All Products'} data={data} />}
       {/* {!loading && <CBDproduct pageTitle={'All Products'} mergedData={mergedData} />} */}
 
     </Layout>

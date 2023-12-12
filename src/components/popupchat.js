@@ -1,9 +1,9 @@
 // import React, { useState } from 'react';
 import React from 'react'
 
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faTimes, faThumbsUp, faThumbsDown, faSmile } from '@fortawesome/free-solid-svg-icons';
-// import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes, faThumbsUp, faThumbsDown, faSmile } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const PopupChat = () => {
         // const [isChatOpen, setChatOpen] = useState(false);

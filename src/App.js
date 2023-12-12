@@ -19,7 +19,7 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/1/:any_slug" element={<RenderFile />} />
+        {/* <Route path="/products/:any_slug" element={<RenderFile />} /> */}
         <Route path="/:id" element={<DynamicRouteComponent />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
