@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Home from "./pages/Home";
-import RenderFile from './components/RenderFile';
+// import RenderFile from './components/RenderFile';
 import Portfolio from "./pages/DynamicPortfolio";
 import Blogs from "./pages/Blogs";
 import ContactUs from "./pages/ContactUs";

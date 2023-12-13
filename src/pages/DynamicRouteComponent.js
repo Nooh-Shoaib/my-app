@@ -14,6 +14,7 @@ import renderStars from '../utils/renderstars';
 import Quote from '../components/beatQuote';
 import ProductNotFound from '../components/ProductNotFound';
 import Repos from '../utils/MyRepos';
+import ErrorBoundary from '../components/ErrorBoundary'
 
 const CombinedComponent = () => {
   const { id } = useParams();
@@ -44,6 +45,7 @@ const CombinedComponent = () => {
         setLoading(false);
       }
     };
+    console.log(data, product)
 
     fetchData();
   }, [id, navigate]);
@@ -129,7 +131,7 @@ const CombinedComponent = () => {
         <h1 className=' flex justify-center my-12 text-4xl font-semibold'>Related Portfilio</h1>
         <div className=' max-w-[1400px] mx-auto'>
           <div className='   grid lg:grid-cols-4 grid-cols-2 md:grid-cols-4 lg:px-28  md:px-20 gap-6 py-10  '>
-            {relatedPortfolio.map((image, index) => (
+            {(product?.relatedPortfolio ?? []).map((image, index) => (
               <div key={index} className='cursor-pointer' onClick={() => openLightbox(index)}>
                 <img src={image} alt={`Image ${index}`} />
               </div>
@@ -252,7 +254,7 @@ const CombinedComponent = () => {
               </div>
             </div>
             <div className="flex mt-5">
-              {product?.productImages.map((image, index) => (
+              {(product?.productImages ?? []).map((image, index) => (
                 <div
                   key={index}
                   className={`cursor-pointer lg:w-[90px] w-[90px] md:w-[60px]  h-[65px] mx-1 thumbnail ${index === selectedIndex ? 'active' : ''
@@ -308,21 +310,19 @@ const CombinedComponent = () => {
     )
   }
 
-
-
-
-
   const Products = ({ data }) => {
+    const productsData = data && data.data;
+    console.log(productsData)
     return (
       <div>
-        {data && data.length > 0 && (
+        {productsData && productsData.length > 0 && (
           <div className="py-10 lg:flex md:flex relative">
             <div className="lg:w-2/3 md:w-2/3 mx-3">
               <h1 className="w-full text-center my-12 text-4xl font-semibold">
-                All Products
+                {productsData[0].allProductTitle} {/* Display the title from the JSON */}
               </h1>
               <div className="w-full grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 md:px-10 gap-4 py-0 px-1">
-                {[data.map]((product, productIndex) => (
+                {productsData[0].allProductImages.map((product, productIndex) => (
                   <div key={productIndex}>
                     <Link to={`/${product.slug}`}>
                       <div className="text-center hover:scale-105 duration-500 hover:opacity-60 cursor-pointer">
@@ -330,6 +330,7 @@ const CombinedComponent = () => {
                           <img
                             src={product.productImage}
                             alt={`Product Image ${productIndex + 1}`}
+                            className="w-full"
                           />
                         )}
                         <div>
@@ -354,21 +355,21 @@ const CombinedComponent = () => {
 
 
   return (
-    <Layout>
-      {loading ? (
-        <LoadingComponent />
-      ) : (
-        <>
-          {/* {JSON.stringify(data)} */}
-          {id ? (
-            <ProductView product={product} />
-          ) : (
-            <Products pageTitle={'All Products'} data={data} />
-          )}
-        </>
-      )}
-    </Layout>
+    <ErrorBoundary>
+      <Layout>
+        {loading ? (
+          <LoadingComponent />
+        ) : (
+          <>
+            {/* {JSON.stringify(data)} */}
+            {product && Object.keys(product).length > 0 && <ProductView product={product} />}
+            {data && Object.keys(data).length > 0 && <Products pageTitle={'All Products'} data={data} />}
+          </>
+        )}
+      </Layout>
+    </ErrorBoundary>
   );
+
 };
 
 export default CombinedComponent;
