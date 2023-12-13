@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import Ham from "./HamMenu";
 import Footer from "./Footer";
 import Icons from "./Icons";
+import PopupChat from './popupchat';
 
 
 function Layout({ children }) {
@@ -14,6 +15,9 @@ function Layout({ children }) {
       <Ham btnText="Get a Free Quote" />
       <Icons />
       {children}
+      <div>
+        <PopupChat />
+      </div>
       <Footer heading1="Hot Selling Categories" heading2="Useful Links" />
     </div>
   );

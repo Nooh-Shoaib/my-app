@@ -13,13 +13,17 @@ const AutoImageSlider = () => {
       setCurrentImageIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
-      console.log(`Image changed ${currentImageIndex}`);
     }, 5000);
 
     return () => {
       clearInterval(interval);
     };
   }, []);
+
+  useEffect(() => {
+    console.log(`Image changed ${currentImageIndex}`);
+  }, [currentImageIndex]);
+
   return (
     <div className='w-full'>
       <div className='relative h-24 md:h-80 lg:h-96'>

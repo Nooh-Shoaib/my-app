@@ -2,6 +2,7 @@ import React from "react";
 import propTypes from "prop-types";
 import { Link } from "react-router-dom";
 import SearchComponent from "./SearchComponent";
+import DarkModeToggle from "./DarkModeToggle";
 
 export default function Topbar(props) {
   // const [text, setText] = useState('|');
@@ -42,6 +43,8 @@ export default function Topbar(props) {
                 <i className="fas fa-search"></i>
               </span>
             </button>
+            <DarkModeToggle />
+
           </div>
         </div>
       </div>

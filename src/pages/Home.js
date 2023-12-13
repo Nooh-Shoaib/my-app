@@ -47,9 +47,7 @@ const Home = () => {
                                                         <FAQS heading="Frequently Asked Questions" />
                                                         <Testimonials heading="Testimonials" />
                                                 </div>
-                                                <div>
-                                                        <PopupChat />
-                                                </div>
+
                                         </>
                                 )}
                         </Layout>

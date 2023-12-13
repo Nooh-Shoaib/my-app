@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg-color: #fff;
+  --text-color: #333;
+  --input-color: #333;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+body.dark-mode {
+  --bg-color: #333;
+  --text-color: #fff;
+}
+
 
 .mega-menu {
   opacity: 0;

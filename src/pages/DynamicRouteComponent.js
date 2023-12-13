@@ -15,6 +15,8 @@ import Quote from '../components/beatQuote';
 import ProductNotFound from '../components/ProductNotFound';
 import Repos from '../utils/MyRepos';
 import ErrorBoundary from '../components/ErrorBoundary'
+import DarkModeToggle from '../components/DarkModeToggle';
+
 
 const CombinedComponent = () => {
   const { id } = useParams();

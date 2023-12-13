@@ -1,36 +1,33 @@
-// import React, { useState } from 'react';
-import React from 'react'
-
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faThumbsUp, faThumbsDown, faSmile } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 const PopupChat = () => {
-        // const [isChatOpen, setChatOpen] = useState(false);
-        // const [hoveredButton, setHoveredButton] = useState(null);
-        // const [isEmojiOpen, setEmojiOpen] = useState(false);
+        const [isChatOpen, setChatOpen] = useState(false);
+        const [hoveredButton, setHoveredButton] = useState(null);
+        const [isEmojiOpen, setEmojiOpen] = useState(false);
 
-        // const toggleChat = () => {
-        //         setChatOpen(!isChatOpen);
-        // };
+        const toggleChat = () => {
+                setChatOpen(!isChatOpen);
+        };
 
-        // const toggleEmoji = () => {
-        //         setEmojiOpen(!isEmojiOpen);
-        // };
+        const toggleEmoji = () => {
+                setEmojiOpen(!isEmojiOpen);
+        };
 
-        // add this in online button
-        // onClick = { toggleChat }
+
 
 
         return (
                 <div className='fixed bottom-0 right-5'>
-                        {/* {!isChatOpen && ( */}
-                        <button className='py-6 flex justify-start bg-amber-500 w-32 pl-4 font-medium text-sm text-white rounded-t-md'>
-                                Online
-                        </button>
-                        {/* )} */}
+                        {!isChatOpen && (
+                                <button onClick={toggleChat} className='py-6 flex justify-start bg-amber-500 w-32 pl-4 font-medium text-sm text-white rounded-t-md'>
+                                        Online
+                                </button>
+                        )}
 
-                        {/* {isChatOpen && (
+                        {isChatOpen && (
                                 <div className="absolute bottom-0 right-3 bg-white w-80 rounded-t-md">
                                         <div className='bg-gray-100'>
                                                 <div className="bg-amber-500 mb-60 px-4 py-6">
@@ -85,7 +82,7 @@ const PopupChat = () => {
                                                 )}
                                         </div>
                                 </div>
-                        )} */}
+                        )}
                 </div>
         );
 };
