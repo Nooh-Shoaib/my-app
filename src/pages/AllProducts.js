@@ -19,9 +19,9 @@ const AllProducts = () => {
       const endpoints = [
         `${Url}/allproducts/data`,
         `${Url}/leftoverdata/data`,
-        // `${Url}/otherdata/data`,
-        // `${Url}/nextdata/data`,
-        // `${Url}/entireinventory/data`,
+        `${Url}/otherdata/data`,
+        `${Url}/nextdata/data`,
+        `${Url}/entireinventory/data`,
         `${Url}/catalog/data`,
       ];
 

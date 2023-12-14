@@ -50,13 +50,14 @@ const PopupChat = () => {
                                         </div>
                                         <div className="">
                                                 <Link to='https://www.tawk.to/?utm_source=tawk-messenger&utm_medium=link&utm_campaign=referral&utm_term=5fd0ef5e920fc91564cf1056' target='_blank' className='text-xs tracking-widest flex justify-center py-3'>
-                                                        Add free<strong>&nbsp;live chat&nbsp;</strong>to your site
+                                                        <img src='https://www.tawk.to/wp-content/uploads/2020/04/tawk-sitelogo.png' className='w-4' />
+                                                        <p> Add free<strong>&nbsp;live chat&nbsp;</strong>to your site</p>
                                                 </Link>
                                                 <div className="flex justify-between mt-2">
                                                         <input
                                                                 type='chat'
                                                                 className='p-2 placeholder:text-xs focus outline-none focus:ring-0'
-                                                                placeholder={`Write a message...`}
+                                                                placeholder={`Write a reply...`}
                                                                 value={message}
                                                                 onChange={(e) => setMessage(e.target.value)}
                                                         />
@@ -78,8 +79,6 @@ const PopupChat = () => {
                                                                 <FontAwesomeIcon icon={faSmile} className=" bg-white text-gray-600 px-2" />
                                                         </button>
                                                 </div>
-                                                <div className='myElement'></div>
-                                                <div className='myElement'></div>
                                                 {isEmojiOpen && (
                                                         <div className="mt-2">
                                                                 😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎
