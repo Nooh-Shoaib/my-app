@@ -10,8 +10,8 @@ const DarkModeToggle = () => {
         };
 
         return (
-                <button onClick={toggleDarkModeHandler} className='bg-black text-white px-2 mx-4 my-3 py-1 rounded'>
-                        {isDarkMode ? <i className="fa-solid fa-sun"></i> : <i className="fa-solid fa-moon"></i>}
+                <button onClick={toggleDarkModeHandler}>
+                        {isDarkMode ? <i class="fa-regular fa-sun bg-white text-black px-3 py-2.5 rounded mx-1"></i> : <i class="fa-regular fa-moon bg-black text-white px-3.5 py-2.5 rounded mx-1"></i>}
                 </button>
         );
 };

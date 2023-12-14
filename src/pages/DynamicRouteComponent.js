@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom'; // Added Link import
-import LoadingComponent from './loading';
-import Layout from '../components/layout';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Url from '../utils/Url';
+import LoadingComponent from './loading';
+import Layout from '../components/layout';
 import ProductInfoSection from '../components/ProductInfoSection';
 import QuoteAdvantages from '../components/QuoteAdvantages';
 import SideTestimonials from '../components/SideTestimonials';
@@ -13,10 +13,7 @@ import { Helmet } from 'react-helmet';
 import renderStars from '../utils/renderstars';
 import Quote from '../components/beatQuote';
 import ProductNotFound from '../components/ProductNotFound';
-import Repos from '../utils/MyRepos';
-import ErrorBoundary from '../components/ErrorBoundary'
-import DarkModeToggle from '../components/DarkModeToggle';
-
+import ErrorBoundary from '../components/ErrorBoundary';
 
 const CombinedComponent = () => {
   const { id } = useParams();
@@ -24,37 +21,35 @@ const CombinedComponent = () => {
   const [product, setProduct] = useState({});
   const [data, setData] = useState([]);
   const [currentImage, setCurrentImage] = useState(null);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const endpoint = id === 'products-all' ? `allproducts/data/${id}` : `products/products/${id}`;
-        const { data: responseData } = await axios.get(`${Url}/${endpoint}`);
-
-        if (Array.isArray(responseData)) {
-          setData(responseData);
-          if (!responseData.length) navigate('/');
-        } else {
-          setProduct(responseData);
-          setCurrentImage(responseData?.productImages?.[0]);
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error.message);
-        navigate('/');
-      } finally {
-        setLoading(false);
-      }
-    };
-    console.log(data, product)
-
-    fetchData();
-  }, [id, navigate]);
-
-  // Carousel with thumbnails
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+  const navigate = useNavigate();
+
+  const fetchData = useCallback(async () => {
+    try {
+      setLoading(true);
+      const endpoint = id === 'products-all' ? `allproducts/data/${id}` : `products/products/${id}`;
+      const { data: responseData } = await axios.get(`${Url}/${endpoint}`);
+
+      setData(Array.isArray(responseData) ? responseData : []);
+      setProduct(responseData || {});
+      setCurrentImage(responseData?.productImages?.[0]);
+
+      if (!responseData || (Array.isArray(responseData) && !responseData.length)) {
+        navigate('/');
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error.message);
+      navigate('/');
+    } finally {
+      setLoading(false);
+    }
+  }, [id, navigate]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   const handleImageClick = (image, index) => {
     setSelectedImage(image);
@@ -72,8 +67,6 @@ const CombinedComponent = () => {
     setSelectedImage(product?.productImages[newIndex]);
     setSelectedIndex(newIndex);
   };
-  // relatedportfolio
-  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
   const openLightbox = (index) => {
     setSelectedImageIndex(index);
@@ -116,6 +109,7 @@ const CombinedComponent = () => {
       </>
     );
   };
+
   const MyComponent = ({ specifications }) => {
     if (!specifications) return '';
     return (
@@ -126,6 +120,7 @@ const CombinedComponent = () => {
       </div>
     );
   };
+
   const RelatedPortfolio = ({ relatedPortfolio }) => {
     if (!relatedPortfolio) return '';
     return (
@@ -135,7 +130,7 @@ const CombinedComponent = () => {
           <div className='   grid lg:grid-cols-4 grid-cols-2 md:grid-cols-4 lg:px-28  md:px-20 gap-6 py-10  '>
             {(product?.relatedPortfolio ?? []).map((image, index) => (
               <div key={index} className='cursor-pointer' onClick={() => openLightbox(index)}>
-                <img src={image} alt={`Image ${index}`} />
+                <img src={image} alt={`${index}`} />
               </div>
             ))}
           </div>
@@ -152,7 +147,7 @@ const CombinedComponent = () => {
               <span onClick={closeLightbox}>
                 <i className='fa-solid fa-xmark text-2xl  absolute top-10 right-12 cursor-pointer text-white'></i>
               </span>
-              <img src={relatedPortfolio[selectedImageIndex]} alt={`Image ${selectedImageIndex}`} className='max-w-[100%] max-h-[80%]' />
+              <img src={relatedPortfolio[selectedImageIndex]} alt={`${selectedImageIndex}`} className='max-w-[100%] max-h-[80%]' />
               <button className='	absolute top-[350px] left-[480px] ' onClick={goToPreviousImage}>
                 <i className='fa-solid fa-chevron-left text-6xl opacity-75 hover:opacity-100'></i>
               </button>
@@ -180,7 +175,6 @@ const CombinedComponent = () => {
     );
   };
 
-
   const ProductView = ({ product }) => {
     if (product.id === undefined) {
       return (
@@ -199,8 +193,6 @@ const CombinedComponent = () => {
           </head>
         </Helmet>
 
-
-        {/* breadcrumbs */}
         <h1 className="bg-slate-200 h-12 flex items-center">
           <Link to="/" className="mx-7 font-bold hover:text-blue-600">
             Home
@@ -231,19 +223,16 @@ const CombinedComponent = () => {
             <h1 className='lg:text-4xl text-2xl font-medium text-center'>{product?.productTitle}</h1>
           </div>
           <div className='text-center'>
-            {/* stars */}
-
             {renderStars(5)}
-
           </div>
         </div>
-        {/* carousel with thumbnails */}
+
         <div className="lg:flex my-10 md:flex justify-center">
           <div className=" mx-8">
             <div className="w-[100%] relative border rounded mt-7" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', maxWidth: '410px', maxHeight: '600px' }}>
               <img
                 src={selectedImage || currentImage}
-                alt="Main Image"
+                alt="Main"
                 className="hover:scale-110 duration-500 cursor-pointer lg:w-full w-72"
               />
               <div className="absolute lg:top-[50%] top-32 lg:space-x-[358px] space-x-[202px]  mx-3">
@@ -272,20 +261,20 @@ const CombinedComponent = () => {
             <QuoteAdvantages />
           </div>
         </div>
-        {/* specifications */}
+
         <div className='lg:flex justify-center md:flex gap-6'>
           <span>
             <h2 className='bg-amber-500 text-white py-2 rounded font-medium md:text-xl text-2xl lg:w-[950px] mx-2 lg:mx-0 px-7 mb-2'>{product?.productTitle} Specifications</h2>
             <MyComponent specifications={product?.specifications} />
           </span>
           <span>
-            {/* Feedback */}
             <h2 className='bg-amber-500 text-white py-2 rounded font-medium md:text-xl text-2xl text-center lg:w-[400px] mx-2 lg:mx-0  lg:my-0 md:my-0 my-4'>Customer Feedback</h2>
             <div className='flex justify-center mt-6 md:mx-4'>
               <SideTestimonials />
             </div>
           </span>
         </div>
+
         <RelatedPortfolio
           relatedPortfolio={product?.relatedPortfolio}
           openLightbox={openLightbox}
@@ -293,10 +282,12 @@ const CombinedComponent = () => {
           goToPreviousImage={goToPreviousImage}
           goToNextImage={goToNextImage}
         />
-        {/* text on Images */}
+
         <ImageWithBox />
+
         <RelatedProducts relatedProducts={product?.relatedProducts} />
-        {product?.description ? (
+
+        {product.description ? (
           <div className='mx-32 my-10'>
             {product.description.map((item, index) => (
               <div key={index}>
@@ -306,25 +297,34 @@ const CombinedComponent = () => {
             ))}
           </div>
         ) : null}
-        <RelatedBlogs
-          relatedBlogs={product?.relatedBlogs} />
-      </>
-    )
-  }
+        <RelatedBlogs relatedBlogs={product?.relatedBlogs} />
 
-  const Products = ({ data }) => {
-    const productsData = data && data.data;
-    console.log(productsData)
+        <RelatedBlogs relatedBlogs={product?.relatedBlogs} />
+      </>
+    );
+  };
+
+
+  // all product
+  const Products = ({ pageTitle, data }) => {
+    console.log(`Rendering ${pageTitle} component with data:`, data);
+
+    if (!data || data.length === 0) {
+      return <p>No products available.</p>;
+    }
+
+    const hasData = data && data.length > 0;
+
     return (
       <div>
-        {productsData && productsData.length > 0 && (
+        {hasData && (
           <div className="py-10 lg:flex md:flex relative">
             <div className="lg:w-2/3 md:w-2/3 mx-3">
               <h1 className="w-full text-center my-12 text-4xl font-semibold">
-                {productsData[0].allProductTitle} {/* Display the title from the JSON */}
+                {pageTitle}
               </h1>
               <div className="w-full grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 md:px-10 gap-4 py-0 px-1">
-                {productsData[0].allProductImages.map((product, productIndex) => (
+                {data.map((product, productIndex) => (
                   <div key={productIndex}>
                     <Link to={`/${product.slug}`}>
                       <div className="text-center hover:scale-105 duration-500 hover:opacity-60 cursor-pointer">
@@ -332,7 +332,6 @@ const CombinedComponent = () => {
                           <img
                             src={product.productImage}
                             alt={`Product Image ${productIndex + 1}`}
-                            className="w-full"
                           />
                         )}
                         <div>
@@ -356,6 +355,7 @@ const CombinedComponent = () => {
   };
 
 
+
   return (
     <ErrorBoundary>
       <Layout>
@@ -363,23 +363,21 @@ const CombinedComponent = () => {
           <LoadingComponent />
         ) : (
           <>
-            {/* {JSON.stringify(data)} */}
-            {product && Object.keys(product).length > 0 && <ProductView product={product} />}
-            {data && Object.keys(data).length > 0 && <Products pageTitle={'All Products'} data={data} />}
+            <ProductView product={product} />
+            {data && data.length > 0 ? (
+              // all product
+              <Products data={data} />
+            ) : (
+              <p>No products available.</p>
+            )}
           </>
         )}
       </Layout>
     </ErrorBoundary>
   );
-
 };
 
 export default CombinedComponent;
-
-
-
-
-
 
 
 

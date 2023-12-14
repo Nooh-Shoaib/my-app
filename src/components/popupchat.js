@@ -7,6 +7,7 @@ const PopupChat = () => {
         const [isChatOpen, setChatOpen] = useState(false);
         const [hoveredButton, setHoveredButton] = useState(null);
         const [isEmojiOpen, setEmojiOpen] = useState(false);
+        const [message, setMessage] = useState('');
 
         const toggleChat = () => {
                 setChatOpen(!isChatOpen);
@@ -20,7 +21,7 @@ const PopupChat = () => {
 
 
         return (
-                <div className='fixed bottom-0 right-5'>
+                <div className='fixed bottom-0 lg:right-5 right-0'>
                         {!isChatOpen && (
                                 <button onClick={toggleChat} className='py-6 flex justify-start bg-amber-500 w-32 pl-4 font-medium text-sm text-white rounded-t-md'>
                                         Online
@@ -28,7 +29,7 @@ const PopupChat = () => {
                         )}
 
                         {isChatOpen && (
-                                <div className="absolute bottom-0 right-3 bg-white w-80 rounded-t-md">
+                                <div className="absolute bottom-0 lg:right-3 right-0 bg-white w-80 rounded-t-md">
                                         <div className='bg-gray-100'>
                                                 <div className="bg-amber-500 mb-60 px-4 py-6">
                                                         <button onClick={toggleChat}>
@@ -55,7 +56,9 @@ const PopupChat = () => {
                                                         <input
                                                                 type='chat'
                                                                 className='p-2 placeholder:text-xs focus outline-none focus:ring-0'
-                                                                placeholder="Write a message..."
+                                                                placeholder={`Write a message...`}
+                                                                value={message}
+                                                                onChange={(e) => setMessage(e.target.value)}
                                                         />
                                                         <button
                                                                 className={`mr-2 ${hoveredButton === 'like' ? 'text-green-500' : ''}`}
@@ -75,6 +78,8 @@ const PopupChat = () => {
                                                                 <FontAwesomeIcon icon={faSmile} className=" bg-white text-gray-600 px-2" />
                                                         </button>
                                                 </div>
+                                                <div className='myElement'></div>
+                                                <div className='myElement'></div>
                                                 {isEmojiOpen && (
                                                         <div className="mt-2">
                                                                 😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎😀😍😎

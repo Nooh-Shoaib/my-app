@@ -18,6 +18,36 @@ body.dark-mode {
   --text-color: #fff;
 }
 
+/* Add this CSS in your styles file */
+
+/* Style for ::before pseudo-element */
+.myElement::before {
+  content: "\f51e";
+  /* Unicode for a FontAwesome ring icon (adjust as needed) */
+  margin-right: 5px;
+  animation: rotate 2s infinite linear;
+  /* Add a rotation animation */
+}
+
+/* Style for ::after pseudo-element */
+.myElement::after {
+  content: "\f51e";
+  /* Unicode for a FontAwesome ring icon (adjust as needed) */
+  margin-left: 5px;
+  animation: rotate 2s infinite linear;
+  /* Add a rotation animation */
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 
 .mega-menu {
   opacity: 0;

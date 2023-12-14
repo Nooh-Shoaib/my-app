@@ -7,6 +7,7 @@ class ErrorBoundary extends Component {
         }
 
         static getDerivedStateFromError(error) {
+                console.log('Error caught by ErrorBoundary:', error);
                 return { hasError: true, error };
         }
 
@@ -25,7 +26,8 @@ class ErrorBoundary extends Component {
                                 <h1 className='flex justify-center font-extrabold text-3xl my-2'>Something went wrong......</h1>
                                 <p className='text-center font-bold leading-9'>{this.state.errorInfo && this.state.errorInfo.componentStack}</p>
                                 <div className='flex justify-center my-4'>
-                                        <button onClick={this.handleResetError} className='flex justify-center bg-black text-white px-4 py-1 rounded hover:text-black hover:bg-white border-black hover:border-2 '>Try Again</button></div>
+                                        <button onClick={this.handleResetError} className='flex justify-center bg-black text-white px-4 py-1 rounded hover:text-black hover:bg-white border-black hover:border-2 font-bold'>Try Again</button>
+                                </div>
                         </div>
                 );
         }

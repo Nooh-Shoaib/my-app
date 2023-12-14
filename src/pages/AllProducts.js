@@ -4,7 +4,6 @@ import Layout from '../components/layout';
 import axios from 'axios';
 import Url from '../utils/Url';
 import Products from '../components/products';
-import { data } from 'autoprefixer';
 
 const AllProducts = () => {
   const [loading, setLoading] = useState(true);

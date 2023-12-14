@@ -8,7 +8,6 @@ import FAQS from "../components/FAQS";
 import Layout from "../components/layout";
 import LoadingComponent from '../pages/loading';
 import { Helmet } from 'react-helmet';
-import PopupChat from '../components/popupchat';
 
 const Home = () => {
         const [loading, setLoading] = useState(true);
