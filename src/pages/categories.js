@@ -24,7 +24,6 @@ const Categories = () => {
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState({});
   const [data, setData] = useState([]);
-  const [cbdData, setcbdData] = useState([]);
   const [currentImage, setCurrentImage] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -39,8 +38,7 @@ const Categories = () => {
 
       const { data: responseData } = await axios.get(`${PathPage}/${endpoint}`);
       // setData(Array.isArray(responseData) ? responseData : []);
-      setData(responseData.allProductImages || []);
-      setcbdData(responseData.categoryImages || []);
+      setData(responseData.ProductImages || []);
       setProduct(responseData);
       setCurrentImage(responseData?.productImages?.[0]);
       console.log('API Response:', responseData);
@@ -323,53 +321,7 @@ const Categories = () => {
   };
 
 
-  const CBDData = ({ cbdData }) => {
-    console.log('Products Component Data Length:', cbdData.length);
-    if (!cbdData || cbdData.length === 0) {
-      return;
-    }
-
-    const hascbdData = cbdData && cbdData.length > 0;
-
-    return (
-      <div>
-        {hascbdData && (
-          <div className="py-10 lg:flex md:flex relative">
-            <div className="lg:w-2/3 md:w-2/3 mx-3">
-              <h1 className="w-full text-center my-12 text-4xl font-semibold">
-                CBD Packaging
-              </h1>
-              <div className="w-full grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 md:px-10 gap-4 py-0 px-1">
-                {cbdData.map((categoryImages, productIndex) => (
-                  <div key={productIndex}>
-                    <Link to={`/${categoryImages.slug}`}>
-                      <div className="text-center hover:scale-105 duration-500 hover:opacity-60 cursor-pointer">
-                        {categoryImages.categoryImages && (
-                          <img
-                            src={categoryImages.categoryImages[0].image}
-                            alt={`Product Image ${productIndex + 1}`}
-                          />
-                        )}
-                        <div>
-                          {categoryImages.title && (
-                            <h2 className="font-medium py-2 px-3 lg:py-4 text-[0.6rem] text-black text-sm bg-amber-500">
-                              {categoryImages.title}
-                            </h2>
-                          )}
-                        </div>
-                      </div>
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <BeatMyQuote />
-          </div>
-        )}
-      </div>
-    );
-  };
-  console.log('cbdData:', cbdData);
+  console.log('cbdData:', data, id);
   return (
     <ErrorBoundary>
       <Layout>
@@ -379,15 +331,12 @@ const Categories = () => {
           <>
             {console.log('Data Before Rendering Products:', data)}
             {id === 'products-all' && data ? (
-              <Products data={data} cbdData={cbdData} />
+              <Products data={data} />
             ) : (
-              id === 'cbd-packaging' && <CBDData cbdData={cbdData} />
-            )}
-            {product && Object.keys(product).length > 0 && (
               <ProductView product={product} />
+
             )}
 
-            {/* Include other components as needed */}
           </>
         )}
       </Layout>
@@ -395,6 +344,3 @@ const Categories = () => {
   );
 };
 export default Categories;
-
-
-

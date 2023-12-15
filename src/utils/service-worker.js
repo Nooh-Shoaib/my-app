@@ -6,7 +6,6 @@ const STATIC_CACHE_NAME = `static-cache-v${CACHE_VERSION}`;
 const STATIC_FILES = [
         '/',
         '/:id',
-        // Add other essential static assets here
 ];
 
 self.addEventListener('install', (event) => {

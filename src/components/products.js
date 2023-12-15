@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import BeatMyQuote from './BeatMyQuote';
 
 
-const Products = ({ data, cbdData }) => {
+const Products = ({ data }) => {
         console.log('Products Component Data Length:', data.length);
         if (!data || data.length === 0) {
-                return;
+                return 'product not found';
         }
 
         const hasData = data && data.length > 0;
