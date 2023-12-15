@@ -32,21 +32,27 @@ const DynamicRouteComponent = () => {
       setLoading(true);
       const endpoint = id === 'products-all' ? `allproducts/data/${id}` : `products/products/${id}`;
       const { data: responseData } = await axios.get(`${Url}/${endpoint}`);
-      setData(Array.isArray(responseData) ? responseData : []);
+      // setData(Array.isArray(responseData) ? responseData : []);
+      setData(responseData.allProductImages || []);
       setProduct(responseData);
       setCurrentImage(responseData?.productImages?.[0]);
       console.log('API Response:', responseData);
 
       if (!responseData || (Array.isArray(responseData) && !responseData.length)) {
+        console.warn('Empty or invalid data received from the API.');
+        console.log('Full Response Data:', responseData);
         navigate('/');
       }
     } catch (error) {
       console.error('Error fetching data:', error.message);
+      console.error('Error Response:', error.response);
       navigate('/');
     } finally {
       setLoading(false);
     }
   }, [id, navigate]);
+
+
 
   useEffect(() => {
     fetchData();
@@ -306,11 +312,10 @@ const DynamicRouteComponent = () => {
   };
 
   // all product
-  const Products = ({ pageTitle, data }) => {
-    console.log(`Rendering ${pageTitle} component with data:`, data);
-
+  const Products = ({ data }) => {
+    console.log('Products Component Data Length:', data.length);
     if (!data || data.length === 0) {
-      return <p>No products available.</p>;
+      return <ProductNotFound />;
     }
 
     const hasData = data && data.length > 0;
@@ -321,7 +326,7 @@ const DynamicRouteComponent = () => {
           <div className="py-10 lg:flex md:flex relative">
             <div className="lg:w-2/3 md:w-2/3 mx-3">
               <h1 className="w-full text-center my-12 text-4xl font-semibold">
-                {pageTitle}
+
               </h1>
               <div className="w-full grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 md:px-10 gap-4 py-0 px-1">
                 {data.map((product, productIndex) => (
@@ -354,23 +359,25 @@ const DynamicRouteComponent = () => {
     );
   };
 
-
+  console.log('Data:', data);
   return (
-    <ErrorBoundary>
-      <Layout>
-        {loading ? (
-          <LoadingComponent />
-        ) : (
-          <>
-            {id === 'products-all' ? (
-              <Products data={data} />
-            ) : (
-              <ProductView product={product} />
-            )}
-          </>
-        )}
-      </Layout>
-    </ErrorBoundary>
+    // <ErrorBoundary>
+    <Layout>
+      {loading ? (
+        <LoadingComponent />
+      ) : (
+
+        <>
+          {console.log('Data Before Rendering Products:', data)}
+          {id === 'products-all' && data ? (
+            <Products data={data} />
+          ) : (
+            <ProductView product={product} />
+          )}
+        </>
+      )}
+    </Layout>
+    // </ErrorBoundary>
   );
 
 };

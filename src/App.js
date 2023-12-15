@@ -9,7 +9,6 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsAndConditions from './pages/TermsAndConditions';
 import NoPage from "./pages/NoPage";
 import DynamicRouteComponent from './pages/DynamicRouteComponent';
-import AllProducts from './pages/AllProducts';
 
 
 function App() {
@@ -26,7 +25,6 @@ function App() {
         <Route exact path="/portfolio" element={<Portfolio />} />
         <Route exact path="/contact-us" element={<ContactUs />} />
         <Route exact path="/blogs" element={<Blogs />} />
-        {/* <Route exact path="/products-all" element={<AllProducts />} /> */}
         <Route exact path="*" element={<NoPage />} />
       </Routes>
     </Router>
