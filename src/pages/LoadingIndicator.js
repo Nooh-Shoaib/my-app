@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LoadingComponent = () => {
+const LoadingIndicator = () => {
   return (
     <div className="flex justify-center items-center h-[500px]">
       <div role="status">
@@ -14,4 +14,4 @@ const LoadingComponent = () => {
   );
 };
 
-export default LoadingComponent;
+export default LoadingIndicator;

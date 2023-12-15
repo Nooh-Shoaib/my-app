@@ -2,7 +2,7 @@ import React from "react";
 import propTypes from "prop-types";
 import { Link } from "react-router-dom";
 import SearchComponent from "./SearchComponent";
-import DarkModeToggle from "./DarkModeToggle";
+import DarkModeToggle from "../Appearance/DarkModeToggle";
 
 export default function Topbar(props) {
   // const [text, setText] = useState('|');

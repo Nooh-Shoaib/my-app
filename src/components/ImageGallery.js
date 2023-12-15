@@ -281,7 +281,7 @@ const Hoverimgs = () => {
         );
 };
 
-export default function Images(props) {
+export default function ImageGallery(props) {
         return (
                 <>
                         <div className="flex justify-center lg:text-4xl text-2xl  py-7">
@@ -290,7 +290,7 @@ export default function Images(props) {
                         </div>
                         <Advantages />
 
-                        {/* hover images  */}
+                        {/* hover ImageGallery  */}
                         <h2 className="flex justify-center lg:text-4xl font-semibold mb-6 mt-9 text-2xl text-center">
                                 Custom Packaging By Industry
                         </h2>
@@ -317,11 +317,11 @@ export default function Images(props) {
         );
 }
 
-Images.propTypes = {
+ImageGallery.propTypes = {
         heading: propTypes.string.isRequired,
         str: propTypes.string,
 };
-Images.defaultProps = {
+ImageGallery.defaultProps = {
         heading: "Enjoy Sireprinting",
         str: "PERKS",
 };

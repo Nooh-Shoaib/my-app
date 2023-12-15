@@ -59,7 +59,7 @@ const faqItems = [
       'Yes! The packaging industry has the simple formula “Price goes down as the quantity increases”. SirePrinting being a leading packaging company and offering its services for more than a decade, therefore, wholesalers are welcome significantly. In order to serve this niche, we have specially made a department “Beat My Quote” where wholesalers can expect better pricing from the market. All they need to do is submit the requirements along with the market price quote they received, and leave the rest to us, and for sure, we will beat the price for you.'
   },
 ];
-export default function FAQS(props) {
+export default function FAQSection(props) {
   const initialExpandedState = {};
   faqItems.forEach((_item, index) => {
     initialExpandedState[index] = false;
@@ -79,7 +79,7 @@ export default function FAQS(props) {
 
     setTimeout(() => {
       setIsTransitioning(true);
-    }, 15000); 
+    }, 15000);
   };
 
   useEffect(() => {
@@ -130,7 +130,7 @@ export default function FAQS(props) {
   );
 }
 
-FAQS.propTypes = {
+FAQSection.propTypes = {
   heading: PropTypes.string.isRequired,
 };
 

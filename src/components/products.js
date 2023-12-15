@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Quote from './beatQuote';
+import BeatMyQuote from './BeatMyQuote';
 
-const Products = ({ pageTitle, data }) => {
-        console.log(`Rendering ${pageTitle} component with data:`, data);
 
+const Products = ({ data, cbdData }) => {
+        console.log('Products Component Data Length:', data.length);
         if (!data || data.length === 0) {
-                return <p>No products available.</p>;
+                return;
         }
 
         const hasData = data && data.length > 0;
@@ -17,7 +17,7 @@ const Products = ({ pageTitle, data }) => {
                                 <div className="py-10 lg:flex md:flex relative">
                                         <div className="lg:w-2/3 md:w-2/3 mx-3">
                                                 <h1 className="w-full text-center my-12 text-4xl font-semibold">
-                                                        {pageTitle}
+                                                        All Products
                                                 </h1>
                                                 <div className="w-full grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 md:px-10 gap-4 py-0 px-1">
                                                         {data.map((product, productIndex) => (
@@ -43,7 +43,7 @@ const Products = ({ pageTitle, data }) => {
                                                         ))}
                                                 </div>
                                         </div>
-                                        <Quote />
+                                        <BeatMyQuote />
                                 </div>
                         )}
                 </div>

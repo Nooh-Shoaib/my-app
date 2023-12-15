@@ -5,9 +5,8 @@ import Iconquote from "./iconquote";
 let whatsapp = "https://api.whatsapp.com/send/?phone=%2B14109468181&text&type=phone_number&app_absent=0";
 let phone_number = "tel:+14108349965";
 let mail = "mailto:support@sireprinting.com";
-let telegram = "#";
 
-export default function Icons() {
+export default function FloatingIcon() {
         return (
                 <section className="fixed top-44 my-10 space-y-4 lg:hidden z-10 ">
                         <div>
@@ -17,7 +16,7 @@ export default function Icons() {
                         </div>
                         <div>
                                 <Link to={phone_number} target="_blank">
-                                                <span className="fa fa-phone text-xl px-1 rounded text-white bg-amber-500"></span>
+                                        <span className="fa fa-phone text-xl px-1 rounded text-white bg-amber-500"></span>
                                 </Link>
                         </div>
                         <div>
@@ -26,8 +25,8 @@ export default function Icons() {
                                 </Link>
                         </div>
                         <div>
-<Iconquote/>
-                                       
+                                <Iconquote />
+
                         </div>
                 </section>
         );

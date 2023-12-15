@@ -32,23 +32,10 @@
 //     </>
 //   );
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React from "react";
 import { Link } from 'react-router-dom';
 
-const NotFoundPage = () => {
+const Error404 = () => {
   return (
     <main className='grid h-screen px-4 place-content-center bg-zinc-100 dark:bg-amber-100 dot-overlay'>
       <div className='text-center'>
@@ -90,4 +77,4 @@ const NotFoundPage = () => {
   );
 };
 
-export default NotFoundPage;
+export default Error404;

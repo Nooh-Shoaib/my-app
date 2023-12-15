@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import FileUploadButton from './UploadFile'
 
-export default function beatQuote() {
+export default function BeatMyQuote() {
         return (
 
 
@@ -29,8 +29,6 @@ export default function beatQuote() {
                                         <div>
                                                 <select className="focus outline-none focus:ring-0 w-[270px] md:w-48 lg:w-[397px] mx-1 h-8 px-2 border my-2 text-sm font-medium">
                                                         <option>Choose Product</option>
-
-                                                        <option  >Choose Product</option>
                                                         <option value="Custom CBD Stickers &amp; Labels" >
                                                                 Custom CBD Stickers &amp; Labels</option>
 

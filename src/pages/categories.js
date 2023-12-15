@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Url from '../utils/Url';
-import LoadingComponent from './loading';
+import PathPage from '../utils/PathPage';
+import LoadingIndicator from './LoadingIndicator';
 import Layout from '../components/layout';
 import ProductInfoSection from '../components/ProductInfoSection';
 import QuoteAdvantages from '../components/QuoteAdvantages';
@@ -11,16 +11,20 @@ import ImageWithBox from '../components/ImageWithBox';
 import BlogCard from '../components/BlogCard';
 import { Helmet } from 'react-helmet';
 import renderStars from '../utils/renderstars';
-import Quote from '../components/beatQuote';
 import ProductNotFound from '../components/ProductNotFound';
 import ErrorBoundary from '../components/ErrorBoundary';
-import { stringify } from 'postcss';
+import { registerServiceWorker } from '../utils/registerServiceWorker';
+import Products from '../components/products';
+import { generateEndpoint } from '../utils/apiEndpoints';
+import BeatMyQuote from '../components/BeatMyQuote';
 
-const DynamicRouteComponent = () => {
+
+const Categories = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState({});
   const [data, setData] = useState([]);
+  const [cbdData, setcbdData] = useState([]);
   const [currentImage, setCurrentImage] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -30,10 +34,13 @@ const DynamicRouteComponent = () => {
   const fetchData = useCallback(async () => {
     try {
       setLoading(true);
-      const endpoint = id === 'products-all' ? `allproducts/data/${id}` : `products/products/${id}`;
-      const { data: responseData } = await axios.get(`${Url}/${endpoint}`);
+      const endpoint = generateEndpoint(id);
+
+
+      const { data: responseData } = await axios.get(`${PathPage}/${endpoint}`);
       // setData(Array.isArray(responseData) ? responseData : []);
       setData(responseData.allProductImages || []);
+      setcbdData(responseData.categoryImages || []);
       setProduct(responseData);
       setCurrentImage(responseData?.productImages?.[0]);
       console.log('API Response:', responseData);
@@ -55,8 +62,12 @@ const DynamicRouteComponent = () => {
 
 
   useEffect(() => {
+    console.log('Inside useEffect - fetching data');
+    console.log('Current id:', id);
     fetchData();
-  }, [fetchData]);
+    registerServiceWorker();
+
+  }, [id, fetchData]);
 
   const handleImageClick = (image, index) => {
     setSelectedImage(image);
@@ -311,38 +322,38 @@ const DynamicRouteComponent = () => {
     );
   };
 
-  // all product
-  const Products = ({ data }) => {
-    console.log('Products Component Data Length:', data.length);
-    if (!data || data.length === 0) {
-      return <ProductNotFound />;
+
+  const CBDData = ({ cbdData }) => {
+    console.log('Products Component Data Length:', cbdData.length);
+    if (!cbdData || cbdData.length === 0) {
+      return;
     }
 
-    const hasData = data && data.length > 0;
+    const hascbdData = cbdData && cbdData.length > 0;
 
     return (
       <div>
-        {hasData && (
+        {hascbdData && (
           <div className="py-10 lg:flex md:flex relative">
             <div className="lg:w-2/3 md:w-2/3 mx-3">
               <h1 className="w-full text-center my-12 text-4xl font-semibold">
-
+                CBD Packaging
               </h1>
               <div className="w-full grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 md:px-10 gap-4 py-0 px-1">
-                {data.map((product, productIndex) => (
+                {cbdData.map((categoryImages, productIndex) => (
                   <div key={productIndex}>
-                    <Link to={`/${product.slug}`}>
+                    <Link to={`/${categoryImages.slug}`}>
                       <div className="text-center hover:scale-105 duration-500 hover:opacity-60 cursor-pointer">
-                        {product.productImage && (
+                        {categoryImages.categoryImages && (
                           <img
-                            src={product.productImage}
+                            src={categoryImages.categoryImages[0].image}
                             alt={`Product Image ${productIndex + 1}`}
                           />
                         )}
                         <div>
-                          {product.productTitle && (
+                          {categoryImages.title && (
                             <h2 className="font-medium py-2 px-3 lg:py-4 text-[0.6rem] text-black text-sm bg-amber-500">
-                              {product.productTitle}
+                              {categoryImages.title}
                             </h2>
                           )}
                         </div>
@@ -352,33 +363,38 @@ const DynamicRouteComponent = () => {
                 ))}
               </div>
             </div>
-            <Quote />
+            <BeatMyQuote />
           </div>
         )}
       </div>
     );
   };
-
-  console.log('Data:', data);
+  console.log('cbdData:', cbdData);
   return (
-    // <ErrorBoundary>
-    <Layout>
-      {loading ? (
-        <LoadingComponent />
-      ) : (
+    <ErrorBoundary>
+      <Layout>
+        {loading ? (
+          <LoadingIndicator />
+        ) : (
+          <>
+            {console.log('Data Before Rendering Products:', data)}
+            {id === 'products-all' && data ? (
+              <Products data={data} cbdData={cbdData} />
+            ) : (
+              id === 'cbd-packaging' && <CBDData cbdData={cbdData} />
+            )}
+            {product && Object.keys(product).length > 0 && (
+              <ProductView product={product} />
+            )}
 
-        <>
-          {console.log('Data Before Rendering Products:', data)}
-          {id === 'products-all' && data ? (
-            <Products data={data} />
-          ) : (
-            <ProductView product={product} />
-          )}
-        </>
-      )}
-    </Layout>
-    // </ErrorBoundary>
+            {/* Include other components as needed */}
+          </>
+        )}
+      </Layout>
+    </ErrorBoundary>
   );
-
 };
-export default DynamicRouteComponent;
+export default Categories;
+
+
+

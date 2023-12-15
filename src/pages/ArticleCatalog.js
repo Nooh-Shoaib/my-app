@@ -3,7 +3,7 @@ import Post from '../components/Post';
 import Layout from "../components/layout";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
-export default function Blogs() {
+export default function ArticleCatalog() {
 
 
   const postData = [

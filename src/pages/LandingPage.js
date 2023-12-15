@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Testimonials from "../components/Testimonials";
-import BoxReviews from "../components/BoxReviews";
-import Images from "../components/Images";
+import ReviewSection from "../components/ReviewSection";
+import ImageGallery from "../components/ImageGallery";
 import HowWork from "../components/HowWork";
 import AutoImageSlider from "../components/Herosection";
-import FAQS from "../components/FAQS";
+import FAQSection from "../components/FAQSection";
 import Layout from "../components/layout";
-import LoadingComponent from '../pages/loading';
+import LoadingComponent from './LoadingIndicator';
 import { Helmet } from 'react-helmet';
 
-const Home = () => {
+const LandingPage = () => {
         const [loading, setLoading] = useState(true);
 
         useEffect(() => {
@@ -39,11 +39,11 @@ const Home = () => {
                                                         <HowWork />
                                                 </div>
                                                 <div className="bg-white">
-                                                        <Images heading="Enjoy Sireprinting" str="PERKS" />
+                                                        <ImageGallery heading="Enjoy Sireprinting" str="PERKS" />
                                                 </div>
-                                                <BoxReviews />
+                                                <ReviewSection />
                                                 <div className="bg-white">
-                                                        <FAQS heading="Frequently Asked Questions" />
+                                                        <FAQSection heading="Frequently Asked Questions" />
                                                         <Testimonials heading="Testimonials" />
                                                 </div>
 
@@ -54,4 +54,4 @@ const Home = () => {
         );
 };
 
-export default Home;
+export default LandingPage;

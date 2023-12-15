@@ -1,5 +1,5 @@
 import React from "react";
-let revArr = [
+let reviewArr = [
   {
     label: "Sire-Printing Offers Premium-Quality Custom Boxes",
     text: "As we all know the logo is a brand identity of a company. At sireprinting.com, we provide premium-quality Custom Boxes that allow customers a huge relaxation of their products, people do not have to worry about the design, safety of their custom packaging boxes. Our main focus is to make our customers reputation high in the market. For a high reputation, you need to have high-quality custom boxes that engage customers and increase your sales as well. Our custom packaging boxes have extravagant color varieties with the latest design methodologies starting from spot UV to perforation that make custom printed boxes more elegant to consumers with no minimum limit. Apart from that, these custom boxes are available in various stocks which include cardboard stock, kraft stock, or rigid stock that are eco friendly and recycled as well. Last but not least our custom printing and packaging give the boxes an eye-catching look that will make it really worth in the marketplace. So sireprinting.com is an overall package where customers get custom printed boxes according to their choice and requirements.",
@@ -31,11 +31,11 @@ let revArr = [
   },
 ];
 
-const BoxReviews = () => {
+const ReviewSection = () => {
   return (
     <div>
       <div className="  grid lg:grid-cols-2 grid-cols-1 md:grid-cols-2 lg:px-20  md:px-20 gap-7  my-14 ">
-        {revArr.map((v, i) => {
+        {reviewArr.map((v, i) => {
           return (
             <div key={i} className="px-6 py-2 shadow-xl bg-white text-black ">
               <div className="">
@@ -50,4 +50,4 @@ const BoxReviews = () => {
   );
 };
 
-export default BoxReviews;
+export default ReviewSection;
