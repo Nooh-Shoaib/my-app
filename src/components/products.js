@@ -6,7 +6,7 @@ import BeatMyQuote from './BeatMyQuote';
 const Products = ({ data }) => {
         console.log('Products Component Data Length:', data.length);
         if (!data || data.length === 0) {
-                return 'product not found';
+                return;
         }
 
         const hasData = data && data.length > 0;
