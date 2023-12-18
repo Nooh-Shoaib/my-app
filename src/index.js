@@ -3,14 +3,18 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { ThemeProvider } from './Appearance/ThemeContext';
-import { registerServiceWorker } from './utils/registerServiceWorker';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './ReduxTool/store';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <ThemeProvider>
-    <App />
-  </ThemeProvider>
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    </PersistGate>
+  </Provider>
 );
 
-// Register the service worker
-registerServiceWorker();

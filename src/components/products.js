@@ -50,4 +50,5 @@ const Products = ({ data }) => {
         );
 };
 
+
 export default Products;
