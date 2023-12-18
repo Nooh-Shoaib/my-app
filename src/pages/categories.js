@@ -1,20 +1,24 @@
-import React, { useState, useEffect, useCallback, lazy, Suspense } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-const PathPage = lazy(() => import('../utils/PathPage'));
-const LoadingIndicator = lazy(() => import('./LoadingIndicator'));
-const Layout = lazy(() => import('../components/layout'));
-const ImageWithBox = lazy(() => import('../components/ImageWithBox'));
-const ProductNotFound = lazy(() => import('../components/ProductNotFound'));
-const ErrorBoundary = lazy(() => import('../components/ErrorBoundary'));
-const Products = lazy(() => import('../components/products'));
-const CarouselsThumbnails = lazy(() => import('../components/CarouselsThumbnails'));
-const RelatedProducts = lazy(() => import('../components/RelatedProducts'));
-const RelatedBlogsSection = lazy(() => import('../components/RelatedBlogsSection'));
-const RelatedPortfolio = lazy(() => import('../components/RelatedPortfolio'));
-const Breadcrumb = lazy(() => import('../Helpers/Breadcrumb'));
-const ProductDescription = lazy(() => import('../components/ProductDescription'));
-const ProductDetailsSection = lazy(() => import('../components/ProductDetailsSection'));
+import PathPage from '../utils/PathPage';
+import LoadingIndicator from './LoadingIndicator';
+import Layout from '../components/layout';
+import ImageWithBox from '../components/ImageWithBox';
+import { Helmet } from 'react-helmet';
+import renderStars from '../Helpers/renderstars';
+import ProductNotFound from '../components/ProductNotFound';
+import ErrorBoundary from '../components/ErrorBoundary';
+import Products from '../components/products';
+import { generateEndpoint } from '../utils/apiEndpoints';
+import CarouselsThumbnails from '../components/CarouselsThumbnails';
+import RelatedProducts from '../components/RelatedProducts';
+import RelatedBlogsSection from '../components/RelatedBlogsSection';
+import RelatedPortfolio from '../components/RelatedPortfolio';
+import Breadcrumb from '../Helpers/Breadcrumb';
+import ProductDescription from '../components/ProductDescription';
+import ProductDetailsSection from '../components/ProductDetailsSection';
+
 
 const Categories = () => {
   const { id } = useParams();
@@ -31,6 +35,7 @@ const Categories = () => {
       const { data: responseData } = await axios.get(`${PathPage}/${endpoint}`);
       setData(responseData.ProductImages || []);
       setProduct(responseData);
+      console.log('API Response:', responseData);
 
       if (!responseData || (Array.isArray(responseData) && !responseData.length)) {
         console.warn('Empty or invalid data received from the API.');
@@ -47,9 +52,13 @@ const Categories = () => {
   }, [id, navigate]);
 
   useEffect(() => {
+    console.log('Inside useEffect - fetching data');
+    console.log('Current id:', id);
     fetchData();
+    console.log("Data Before Rendering Products:", data);
   }, [id, fetchData]);
 
+  // related Portfolio
   const openLightbox = (index) => {
     setSelectedImageIndex(index);
   };
@@ -67,6 +76,9 @@ const Categories = () => {
       prevIndex < product?.relatedPortfolio.length - 1 ? prevIndex + 1 : 0
     );
   };
+
+
+
 
   const ProductView = ({ product }) => {
     if (!product || Object.keys(product).length === 0) {
@@ -120,15 +132,20 @@ const Categories = () => {
 
   return (
     <ErrorBoundary>
-      <Suspense fallback={<LoadingIndicator />}>
-        <Layout>
-          {id === 'products-all' && data ? (
-            <Products data={data} />
-          ) : (
-            <ProductView product={product} />
-          )}
-        </Layout>
-      </Suspense>
+      <Layout>
+        {loading ? (
+          <LoadingIndicator />
+        ) : (
+          <>
+            {console.log('Data Before Rendering Products:', data)}
+            {id === 'products-all' && data ? (
+              <Products data={data} />
+            ) : (
+              <ProductView product={product} />
+            )}
+          </>
+        )}
+      </Layout>
     </ErrorBoundary>
   );
 };
