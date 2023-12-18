@@ -41,9 +41,11 @@ const RelatedPortfolio = ({
                                                 <button className='absolute top-[350px] left-[480px]' onClick={goToPreviousImage}>
                                                         <i className='fa-solid fa-chevron-left text-6xl opacity-75 hover:opacity-100'></i>
                                                 </button>
-                                                <button className='right-button absolute top-[350px] right-[480px]' onClick={goToNextImage}>
+
+                                                <button className='absolute top-[350px] right-[480px]' onClick={goToNextImage}>
                                                         <i className='fa-solid fa-chevron-right text-6xl opacity-75 hover:opacity-100'></i>
                                                 </button>
+
                                         </div>
                                 )}
                         </div>

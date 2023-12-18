@@ -1,25 +1,20 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, lazy, Suspense } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import PathPage from '../utils/PathPage';
-import LoadingIndicator from './LoadingIndicator';
-import Layout from '../components/layout';
-import ProductInfoSection from '../components/ProductInfoSection';
-import SideTestimonials from '../components/SideTestimonials';
-import ImageWithBox from '../components/ImageWithBox';
-import { Helmet } from 'react-helmet';
-import renderStars from '../utils/renderstars';
-import ProductNotFound from '../components/ProductNotFound';
-import ErrorBoundary from '../components/ErrorBoundary';
-import Products from '../components/products';
-import { generateEndpoint } from '../utils/apiEndpoints';
-import CarouselsThumbnails from '../components/CarouselsThumbnails';
-import RelatedProducts from '../components/RelatedProducts';
-import RelatedBlogsSection from '../components/RelatedBlogsSection';
-import RelatedPortfolio from '../components/RelatedPortfolio';
-import Breadcrumb from '../utils/Breadcrumb';
-import ProductDescription from '../components/ProductDescription';
-
+const PathPage = lazy(() => import('../utils/PathPage'));
+const LoadingIndicator = lazy(() => import('./LoadingIndicator'));
+const Layout = lazy(() => import('../components/layout'));
+const ImageWithBox = lazy(() => import('../components/ImageWithBox'));
+const ProductNotFound = lazy(() => import('../components/ProductNotFound'));
+const ErrorBoundary = lazy(() => import('../components/ErrorBoundary'));
+const Products = lazy(() => import('../components/products'));
+const CarouselsThumbnails = lazy(() => import('../components/CarouselsThumbnails'));
+const RelatedProducts = lazy(() => import('../components/RelatedProducts'));
+const RelatedBlogsSection = lazy(() => import('../components/RelatedBlogsSection'));
+const RelatedPortfolio = lazy(() => import('../components/RelatedPortfolio'));
+const Breadcrumb = lazy(() => import('../Helpers/Breadcrumb'));
+const ProductDescription = lazy(() => import('../components/ProductDescription'));
+const ProductDetailsSection = lazy(() => import('../components/ProductDetailsSection'));
 
 const Categories = () => {
   const { id } = useParams();
@@ -36,7 +31,6 @@ const Categories = () => {
       const { data: responseData } = await axios.get(`${PathPage}/${endpoint}`);
       setData(responseData.ProductImages || []);
       setProduct(responseData);
-      console.log('API Response:', responseData);
 
       if (!responseData || (Array.isArray(responseData) && !responseData.length)) {
         console.warn('Empty or invalid data received from the API.');
@@ -53,12 +47,9 @@ const Categories = () => {
   }, [id, navigate]);
 
   useEffect(() => {
-    console.log('Inside useEffect - fetching data');
-    console.log('Current id:', id);
     fetchData();
   }, [id, fetchData]);
 
-  // related Portfolio
   const openLightbox = (index) => {
     setSelectedImageIndex(index);
   };
@@ -77,18 +68,6 @@ const Categories = () => {
     );
   };
 
-
-  const MyComponent = ({ specifications }) => {
-    if (!specifications) return '';
-    return (
-      <div>
-        {specifications.map((data, index) => (
-          <ProductInfoSection key={index} title={data.name} description={data.detail} />
-        ))}
-      </div>
-    );
-  };
-
   const ProductView = ({ product }) => {
     if (!product || Object.keys(product).length === 0) {
       return (
@@ -99,7 +78,9 @@ const Categories = () => {
     }
     return (
       <>
-        <Helmet><head>{`<title>${product?.productTitle} Wholesale | sireprinting}</title>`}</head></Helmet>
+        <Helmet>
+          <title>{`${product?.productTitle} Wholesale | sireprinting`}</title>
+        </Helmet>
 
         <Breadcrumb product={product} />
 
@@ -108,24 +89,15 @@ const Categories = () => {
             <h1 className='lg:text-4xl text-2xl font-medium text-center'>{product?.productTitle}</h1>
           </div>
           <div className='text-center'>
-            {renderStars(5)}
+            {renderStars() && renderStars().length > 0 && (
+              renderStars(5)
+            )}
           </div>
-        </div>
 
+        </div>
         <CarouselsThumbnails images={product?.productImages} />
 
-        <div className='lg:flex justify-center md:flex gap-6'>
-          <span>
-            <h2 className='bg-amber-500 text-white py-2 rounded font-medium md:text-xl text-2xl lg:w-[950px] mx-2 lg:mx-0 px-7 mb-2'>{product?.productTitle} Specifications</h2>
-            <MyComponent specifications={product?.specifications} />
-          </span>
-          <span>
-            <h2 className='bg-amber-500 text-white py-2 rounded font-medium md:text-xl text-2xl text-center lg:w-[400px] mx-2 lg:mx-0  lg:my-0 md:my-0 my-4'>Customer Feedback</h2>
-            <div className='flex justify-center mt-6 md:mx-4'>
-              <SideTestimonials />
-            </div>
-          </span>
-        </div>
+        <ProductDetailsSection product={product} />
 
         <RelatedPortfolio
           relatedPortfolio={product?.relatedPortfolio}
@@ -148,20 +120,15 @@ const Categories = () => {
 
   return (
     <ErrorBoundary>
-      <Layout>
-        {loading ? (
-          <LoadingIndicator />
-        ) : (
-          <>
-            {console.log('Data Before Rendering Products:', data)}
-            {id === 'products-all' && data ? (
-              <Products data={data} />
-            ) : (
-              <ProductView product={product} />
-            )}
-          </>
-        )}
-      </Layout>
+      <Suspense fallback={<LoadingIndicator />}>
+        <Layout>
+          {id === 'products-all' && data ? (
+            <Products data={data} />
+          ) : (
+            <ProductView product={product} />
+          )}
+        </Layout>
+      </Suspense>
     </ErrorBoundary>
   );
 };

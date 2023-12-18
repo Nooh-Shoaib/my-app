@@ -2,14 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import BeatMyQuote from './BeatMyQuote';
 
-
 const Products = ({ data }) => {
         console.log('Products Component Data Length:', data.length);
         if (!data || data.length === 0) {
-                return;
+                return <p>No data available</p>;
         }
 
         const hasData = data && data.length > 0;
+        console.log('Data:', data);
 
         return (
                 <div>
@@ -17,8 +17,11 @@ const Products = ({ data }) => {
                                 <div className="py-10 lg:flex md:flex relative">
                                         <div className="lg:w-2/3 md:w-2/3 mx-3">
                                                 <h1 className="w-full text-center my-12 text-4xl font-semibold">
-                                                        All Products
+                                                        {data[0]?.allProductTitle || 'All Products'}
                                                 </h1>
+
+
+
                                                 <div className="w-full grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 md:px-10 gap-4 py-0 px-1">
                                                         {data.map((product, productIndex) => (
                                                                 <div key={productIndex}>
@@ -49,6 +52,5 @@ const Products = ({ data }) => {
                 </div>
         );
 };
-
 
 export default Products;

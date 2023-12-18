@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import QuoteAdvantages from './QuoteAdvantages';
 const CarouselsThumbnails = ({ images, onSelect, onPrevious, onNext }) => {
         if (!images || images.length === 0) {
-                // Handle the case when images are not available or empty
-                return null; // Or any fallback content or message
+                return null;
         }
 
         const [selectedImage, setSelectedImage] = useState(images[0]);

@@ -132,11 +132,17 @@ const Imgsboxtext = () => {
         );
 };
 
-export default function ImageWithBox() {
+const ImageWithBox = ({ data }) => {
+        if (!data || !data.length) {
+                return;
+        }
+
         return (
                 <div>
                         <Hoverimgs />
                         <Imgsboxtext />
                 </div>
         );
-}
+};
+
+export default ImageWithBox;
