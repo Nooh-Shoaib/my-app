@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 const RelatedPortfolio = ({
         relatedPortfolio,
         openLightbox,
@@ -11,8 +10,12 @@ const RelatedPortfolio = ({
         goToPreviousImage,
         goToNextImage
 }) => {
-        if (!relatedPortfolio) return '';
 
+        if (!relatedPortfolio || relatedPortfolio.length === 0) {
+                // No data available
+                return null;
+        }
+        // Render the component with data
         return (
                 <>
                         <h1 className='flex justify-center my-12 text-4xl font-semibold'>Related Portfolio</h1>
@@ -38,11 +41,11 @@ const RelatedPortfolio = ({
                                                         <i className='fa-solid fa-xmark text-2xl absolute top-10 right-12 cursor-pointer text-white'></i>
                                                 </span>
                                                 <img src={relatedPortfolio[selectedImageIndex]} alt={`${selectedImageIndex}`} className='max-w-[100%] max-h-[80%]' />
-                                                <button className='absolute top-[350px] left-[480px]' onClick={goToPreviousImage}>
-                                                        <i className='fa-solid fa-chevron-left text-6xl opacity-75 hover:opacity-100'></i>
+                                                <button className='absolute top-[350px] left-[530px]' onClick={goToPreviousImage}>
+                                                        <i className='fa-solid fa-chevron-left text-6xl opacity-80 hover:opacity-100'></i>
                                                 </button>
 
-                                                <button className='absolute top-[350px] right-[480px]' onClick={goToNextImage}>
+                                                <button className='absolute top-[350px] right-[530px]' onClick={goToNextImage}>
                                                         <i className='fa-solid fa-chevron-right text-6xl opacity-75 hover:opacity-100'></i>
                                                 </button>
 

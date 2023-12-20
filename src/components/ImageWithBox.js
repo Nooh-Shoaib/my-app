@@ -132,10 +132,7 @@ const Imgsboxtext = () => {
         );
 };
 
-const ImageWithBox = ({ data }) => {
-        if (!data || !data.length) {
-                return;
-        }
+const ImageWithBox = () => {
 
         return (
                 <div>

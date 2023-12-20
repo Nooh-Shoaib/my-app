@@ -18,45 +18,54 @@ import RelatedPortfolio from '../components/RelatedPortfolio';
 import Breadcrumb from '../Helpers/Breadcrumb';
 import ProductDescription from '../components/ProductDescription';
 import ProductDetailsSection from '../components/ProductDetailsSection';
-
+import { useDispatch } from 'react-redux';
+import { setSelectedProduct } from '../ReduxTool/productSlice';
 
 const Categories = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+  const dispatch = useDispatch();
   const [product, setProduct] = useState({});
   const [data, setData] = useState([]);
-  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
-  const navigate = useNavigate();
-
-  const fetchData = useCallback(async () => {
-    try {
-      setLoading(true);
-      const endpoint = generateEndpoint(id);
-      const { data: responseData } = await axios.get(`${PathPage}/${endpoint}`);
-      setData(responseData.ProductImages || []);
-      setProduct(responseData);
-      console.log('API Response:', responseData);
-
-      if (!responseData || (Array.isArray(responseData) && !responseData.length)) {
-        console.warn('Empty or invalid data received from the API.');
-        console.log('Full Response Data:', responseData);
-        navigate('/');
-      }
-    } catch (error) {
-      console.error('Error fetching data:', error.message);
-      console.error('Error Response:', error.response);
-      navigate('/');
-    } finally {
-      setLoading(false);
-    }
-  }, [id, navigate]);
 
   useEffect(() => {
     console.log('Inside useEffect - fetching data');
     console.log('Current id:', id);
+
+    const fetchData = async () => {
+      try {
+        dispatch(setLoading(true));
+        const endpoint = generateEndpoint(id);
+        const { data: responseData } = await axios.get(`${PathPage}/${endpoint}`);
+        setData(responseData.ProductImages || []);
+        setProduct(responseData);
+        console.log('API Response:', responseData);
+
+        if (!responseData || (Array.isArray(responseData) && !responseData.length)) {
+          console.warn('Empty or invalid data received from the API.');
+          console.log('Full Response Data:', responseData);
+          navigate('/');
+        } else {
+          dispatch(setData(responseData.ProductImages || []));
+          dispatch(setSelectedProduct(responseData));
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error.message);
+        console.error('Error Response:', error.response);
+        navigate('/');
+      } finally {
+        dispatch(setLoading(false));
+      }
+    };
+
     fetchData();
-    console.log("Data Before Rendering Products:", data);
-  }, [id, fetchData]);
+  }, [id, dispatch, navigate]);
+
+
+  console.log('Data Before Rendering Products:', product);
+
 
   // related Portfolio
   const openLightbox = (index) => {
@@ -87,6 +96,9 @@ const Categories = () => {
           <ProductNotFound />
         </div>
       );
+    }
+    if (!product.productTitle || !product.productImages) {
+      return <LoadingIndicator />;
     }
     return (
       <>
@@ -137,7 +149,6 @@ const Categories = () => {
           <LoadingIndicator />
         ) : (
           <>
-            {console.log('Data Before Rendering Products:', data)}
             {id === 'products-all' && data ? (
               <Products data={data} />
             ) : (

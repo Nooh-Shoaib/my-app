@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import QuoteAdvantages from './QuoteAdvantages';
-const CarouselsThumbnails = ({ images, onSelect, onPrevious, onNext }) => {
-        if (!images || images.length === 0) {
-                return null;
-        }
 
-        const [selectedImage, setSelectedImage] = useState(images[0]);
-        const [selectedIndex, setSelectedIndex] = useState(0);
+const CarouselsThumbnails = ({ images }) => {
+        const defaultImage = images && images.length > 0 ? images[0] : null;
+        const defaultIndex = defaultImage ? 0 : -1;
+
+        const [selectedImage, setSelectedImage] = useState(defaultImage);
+        const [selectedIndex, setSelectedIndex] = useState(defaultIndex);
 
         const handleImageClick = (image, index) => {
                 setSelectedImage(image);
@@ -24,6 +24,10 @@ const CarouselsThumbnails = ({ images, onSelect, onPrevious, onNext }) => {
                 setSelectedImage(images[newIndex]);
                 setSelectedIndex(newIndex);
         };
+
+        if (!images || images.length === 0) {
+                return null;
+        }
 
         return (
                 <div className="lg:flex my-10 md:flex justify-center">

@@ -38,7 +38,7 @@ export default function Navbar() {
           ))}
 
           <ButtonQuote />
-          <Link to="/small-pillow-boxes" className='bg-black text-white px-2 py-2 rounded text-xs hover:shadow-amber-500 hover:shadow-2xl'>small pillow boxes</Link>
+
         </ul>
       </div>
     </nav>

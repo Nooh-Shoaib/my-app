@@ -19,11 +19,12 @@ function Navbar() {
     <header className="bg-white">
       <button
         type="button"
-        className="h-10 bg-black text-sm font-semibold fa-beat text-white px-4 rounded  hover:animate-none hover:shadow-2xl hover:shadow-amber-500"
+        className="blink h-10 bg-black text-sm font-semibold fa-beat text-white px-4 rounded  hover:animate-none hover:shadow-2xl hover:shadow-amber-500"
         aria-expanded={isProductMenuOpen}
         onClick={toggleProductMenu}
       >
         Get a Free Quote
+
       </button>
 
       {isProductMenuOpen && (
